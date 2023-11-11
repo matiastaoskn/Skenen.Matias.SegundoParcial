@@ -1,4 +1,4 @@
-# SEGUNDO PARCIAL LABORATORIO 2
+# PRIMER PARCIAL LABORATORIO 2
 
 Este proyecto trata de una veterinaria para animales domesticos
 

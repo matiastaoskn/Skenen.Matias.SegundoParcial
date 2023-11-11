@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Animales.Animales">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAACEgAAAAAAEAAAEAIAAAAoAAAAAAiA=</HashCode>
+      <FileName>Animales.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animales.Conejo">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAgAAAAAAAAAAAAAAAABAAAAAAg=</HashCode>
+      <FileName>Conejo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animales.Gato">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAEAAgAAAAEAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Gato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animales.Perro">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAEAAgABAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Perro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animales.Veterinaria">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAwAEAAAAAAAAAAIAAAAAAACAAAiA=</HashCode>
+      <FileName>Veterinaria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Alimentacion">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Enumerador.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

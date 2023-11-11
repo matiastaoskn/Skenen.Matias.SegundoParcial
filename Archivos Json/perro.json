@@ -1,0 +1,15 @@
+[
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "tamaño": "grande",
+      "entrenamiento": "poco",
+      "tipoDeAnimal": "Perro",
+      "nombre": "matias",
+      "edad": 12,
+      "raza": "carnivoro",
+      "alimentacion": 0,
+      "TipoDeAnimal": "Perro"
+    }
+  }
+]
