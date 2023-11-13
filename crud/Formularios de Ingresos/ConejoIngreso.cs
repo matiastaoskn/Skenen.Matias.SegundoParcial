@@ -25,6 +25,23 @@ namespace WindFormCrud.Ingresos
         /// </summary>
         private void validarInputs()
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(this.textBox1.Text) &&
+                    string.IsNullOrWhiteSpace(this.textBox2.Text) &&
+                    string.IsNullOrWhiteSpace(this.textBox4.Text) &&
+                    string.IsNullOrWhiteSpace(this.textBox5.Text) &&
+                    string.IsNullOrWhiteSpace(this.textBox6.Text) &&
+                    string.IsNullOrWhiteSpace(this.comboBox1.Text))
+                { 
+                }
+            }
+            catch(CamposVaciosException)
+            {
+                MessageBox.Show($"Campos vacios", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new CamposVaciosException();
+            }
+
             string tipoDeAnimal = this.TipoAnimal;
 
             string nombre = this.textBox1.Text;
@@ -78,15 +95,7 @@ namespace WindFormCrud.Ingresos
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(this.textBox1.Text) &&
-                string.IsNullOrWhiteSpace(this.textBox2.Text) &&
-                string.IsNullOrWhiteSpace(this.textBox4.Text) &&
-                string.IsNullOrWhiteSpace(this.textBox5.Text) &&
-                string.IsNullOrWhiteSpace(this.textBox6.Text) &&
-                string.IsNullOrWhiteSpace(this.comboBox1.Text))
-            {
-                throw new CamposVaciosException();
-            }
+
 
             this.animales = new Animales.Conejo(habitad, comportamiento, nombre, tipoDeAnimal, edad, alimentacion, raza);
             this.DialogResult = DialogResult.OK;

@@ -89,11 +89,12 @@ namespace WindFormCrud
                             this.DialogResult = DialogResult.OK;
                         }
                     }
-                    throw new CredencialesInvalidasException();
+                    
                 }
                 catch (CredencialesInvalidasException ex)
                 {
                     MessageBox.Show($"Error: {ex.Message}", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new CredencialesInvalidasException();
                 }
 
 
