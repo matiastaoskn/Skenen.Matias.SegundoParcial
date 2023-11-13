@@ -1,6 +1,7 @@
 ﻿using Animales;
 using WindFormCrud.Ingresos;
 using Newtonsoft.Json.Converters;
+using CrudVeterinaria;
 
 namespace WindFormCrud
 {
@@ -86,26 +87,33 @@ namespace WindFormCrud
         /// <param name="e"></param>
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.listBoxMenu.SelectedIndex > -1)
+            if (perfil == "administrador")
             {
-                int indice = this.listBoxMenu.SelectedIndex;
-
-                // Preguntar al usuario si realmente quiere eliminar
-                DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este elemento?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (resultado == DialogResult.Yes)
+                if (this.listBoxMenu.SelectedIndex > -1)
                 {
-                    // El usuario ha confirmado la eliminación
-                    this.veterinaria.listaPacientes.RemoveAt(indice);
-                    this.ActualizarVisor();
-                }
-                else
-                {
-                    // El usuario ha cancelado la eliminación
-                    // No es necesario hacer nada en este caso
+                    int indice = this.listBoxMenu.SelectedIndex;
+
+                    // Preguntar al usuario si realmente quiere eliminar
+                    DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este elemento?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        // El usuario ha confirmado la eliminación
+                        this.veterinaria.listaPacientes.RemoveAt(indice);
+                        this.ActualizarVisor();
+                    }
+                    else
+                    {
+                        // El usuario ha cancelado la eliminación
+                        // No es necesario hacer nada en este caso
+                    }
                 }
             }
-            
+            else
+            {
+                btnEliminarMenu.Enabled = false;
+            }
+
         }
         /// <summary>
         /// Cuando el usuario cierra el formulario, se guardara una copia de seguridad en una carpeta aparte
@@ -499,15 +507,36 @@ namespace WindFormCrud
                     break;
                 case "supervisor":
                     modificarToolStripMenuItem.Enabled = false;
-                    MessageBox.Show("No tienes permisos para realizar esta accion", "Permiso insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 case "vendedor":
                     btnEliminarMenu.Enabled = false;
                     modificarToolStripMenuItem.Enabled = false;
-                    MessageBox.Show("No tienes permisos para realizar esta accion", "Permiso insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
+
             }
         }
+
+        /*
+        private void modificarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (perfil == "vendedor")
+                {
+                    modificarToolStripMenuItem.Enabled = false;
+                    btnModificarPerro.Enabled = false;
+                    btnModificarConejo.Enabled = false;
+                    btnModificarGato.Enabled = false;
+
+                    throw new InsuficientePermisoException();
+                }
+            }
+            catch (CredencialesInvalidasException ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "No tienes permisos para realizar esta accion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        */
     }
 
 }

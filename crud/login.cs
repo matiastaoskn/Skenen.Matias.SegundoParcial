@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using CrudVeterinaria;
+using System.Text.Json;
 
 namespace WindFormCrud
 {
@@ -75,18 +76,29 @@ namespace WindFormCrud
 
                 List<Persona> personas = JsonSerializer.Deserialize<List<Persona>>(json_str);
 
-                foreach (var persona in personas)
+                try
                 {
-                    if (textUser.Text == persona.nombre && textPass.Text == persona.clave && comboBox1.Text == persona.perfil)
+                    foreach (var persona in personas)
                     {
-                        UserNameLogin.setTipoPerfil(comboBox1.Text);
-                        UserNameLogin.setUserName(textUser.Text);
+                        if (textUser.Text == persona.nombre && textPass.Text == persona.clave && comboBox1.Text == persona.perfil)
+                        {
+                            UserNameLogin.setTipoPerfil(comboBox1.Text);
+                            UserNameLogin.setUserName(textUser.Text);
 
-                        agregarRegistroTxt(persona.nombre);
-                        this.DialogResult = DialogResult.OK;
+                            agregarRegistroTxt(persona.nombre);
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
+                    throw new CredencialesInvalidasException();
                 }
+                catch (CredencialesInvalidasException ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
             }
+            
         }
         /// <summary>
         /// Este metodo deja un registro con el nombre y la fecha actual, en un archivo txt
@@ -94,23 +106,26 @@ namespace WindFormCrud
         /// <param name="usuario"></param>
         private void agregarRegistroTxt(string usuario)
         {
-            // Dominio de la maquina del usuario
-            string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
-            //Retrocedo de la carpeta bin
-            string rutaRelativa = Path.Combine("..", "..", "..", "RegistroLogin.txt");
-            string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaRelativa));
-
-
-            using (StreamWriter sw = File.AppendText(filePath))
+            try
             {
-                sw.WriteLine($"Usuario: {usuario} - Fecha y hora de inicio de sesión: {DateTime.Now}");
+                // Dominio de la maquina del usuario
+                string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
+                //Retrocedo de la carpeta bin
+                string rutaRelativa = Path.Combine("..", "..", "..", "RegistroLogin.txt");
+                string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaRelativa));
+
+                using (StreamWriter sw = File.AppendText(filePath))
+                {
+                    sw.WriteLine($"Usuario: {usuario} - Fecha y hora de inicio de sesión: {DateTime.Now}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error de registro TXT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new RegistroNoGuardado();
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

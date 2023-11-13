@@ -1,4 +1,6 @@
-﻿namespace WindFormCrud.Ingresos
+﻿using CrudVeterinaria;
+
+namespace WindFormCrud.Ingresos
 {
     public partial class ConejoIngreso : AnimalIngresoForm
     {
@@ -74,6 +76,16 @@
             {
                 MessageBox.Show("El habitad no puede ser un número");
                 return;
+            }
+
+            if (string.IsNullOrWhiteSpace(this.textBox1.Text) &&
+                string.IsNullOrWhiteSpace(this.textBox2.Text) &&
+                string.IsNullOrWhiteSpace(this.textBox4.Text) &&
+                string.IsNullOrWhiteSpace(this.textBox5.Text) &&
+                string.IsNullOrWhiteSpace(this.textBox6.Text) &&
+                string.IsNullOrWhiteSpace(this.comboBox1.Text))
+            {
+                throw new CamposVaciosException();
             }
 
             this.animales = new Animales.Conejo(habitad, comportamiento, nombre, tipoDeAnimal, edad, alimentacion, raza);
