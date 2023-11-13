@@ -68,7 +68,7 @@ namespace WindFormCrud
             //Retrocedo de la carpeta bin
             string rutaArchivo = Path.Combine("..", "..", "..", "MOCK_DATA.json");
             string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaArchivo));
-            
+
             if (File.Exists(filePath))
             {
                 string json_str = File.ReadAllText(filePath);
@@ -77,13 +77,11 @@ namespace WindFormCrud
 
                 foreach (var persona in personas)
                 {
-                    Console.WriteLine("Nombre: " + persona.nombre);
-                    Console.WriteLine("Clave: " + persona.clave);
-                    Console.WriteLine(); // Salto de línea para separar las personas
-
-                    if (textUser.Text == persona.nombre && textPass.Text == persona.clave)
+                    if (textUser.Text == persona.nombre && textPass.Text == persona.clave && comboBox1.Text == persona.perfil)
                     {
-                        UserNameLogin.SetUserName(textUser.Text);
+                        UserNameLogin.setTipoPerfil(comboBox1.Text);
+                        UserNameLogin.setUserName(textUser.Text);
+
                         agregarRegistroTxt(persona.nombre);
                         this.DialogResult = DialogResult.OK;
                     }

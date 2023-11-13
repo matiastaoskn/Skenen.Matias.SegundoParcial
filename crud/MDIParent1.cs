@@ -6,6 +6,7 @@ namespace WindFormCrud
 {
     public partial class MDIformularioMain : AnimalIngresoForm
     {
+        private string perfil = UserNameLogin.TipoPerfil;
         private Veterinaria veterinaria;
         /// <summary>
         /// Este contructor, inicializa una nueva lista de tipo Animales
@@ -15,8 +16,10 @@ namespace WindFormCrud
         public MDIformularioMain()
         {
             InitializeComponent();
+            validarUsuario();
             veterinaria = new Veterinaria();
             stripUser.Text = UserNameLogin.UserName;
+
             stripDateTime.Text = DateTime.Now.ToString();
 
         }
@@ -102,6 +105,7 @@ namespace WindFormCrud
                     // No es necesario hacer nada en este caso
                 }
             }
+            
         }
         /// <summary>
         /// Cuando el usuario cierra el formulario, se guardara una copia de seguridad en una carpeta aparte
@@ -481,6 +485,29 @@ namespace WindFormCrud
             }
         }
 
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void validarUsuario()
+        {
+            switch (perfil)
+            {
+                case "administrador":
+
+                    break;
+                case "supervisor":
+                    modificarToolStripMenuItem.Enabled = false;
+                    MessageBox.Show("No tienes permisos para realizar esta accion", "Permiso insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case "vendedor":
+                    btnEliminarMenu.Enabled = false;
+                    modificarToolStripMenuItem.Enabled = false;
+                    MessageBox.Show("No tienes permisos para realizar esta accion", "Permiso insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+            }
+        }
     }
 
 }

@@ -39,13 +39,15 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            label7 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(76, 116);
+            label1.Location = new Point(86, 92);
             label1.Name = "label1";
             label1.Size = new Size(68, 21);
             label1.TabIndex = 0;
@@ -55,7 +57,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(57, 150);
+            label2.Location = new Point(67, 126);
             label2.Name = "label2";
             label2.Size = new Size(89, 21);
             label2.TabIndex = 1;
@@ -63,14 +65,14 @@
             // 
             // textUser
             // 
-            textUser.Location = new Point(150, 114);
+            textUser.Location = new Point(162, 90);
             textUser.Name = "textUser";
             textUser.Size = new Size(100, 23);
             textUser.TabIndex = 2;
             // 
             // textPass
             // 
-            textPass.Location = new Point(152, 148);
+            textPass.Location = new Point(162, 124);
             textPass.Name = "textPass";
             textPass.PasswordChar = '*';
             textPass.Size = new Size(100, 23);
@@ -80,7 +82,7 @@
             // 
             btnAceptar.BackColor = Color.DarkGreen;
             btnAceptar.ForeColor = Color.MintCream;
-            btnAceptar.Location = new Point(57, 191);
+            btnAceptar.Location = new Point(57, 199);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(102, 28);
             btnAceptar.TabIndex = 4;
@@ -91,7 +93,7 @@
             // btnReiniciar
             // 
             btnReiniciar.ForeColor = SystemColors.ActiveCaptionText;
-            btnReiniciar.Location = new Point(57, 225);
+            btnReiniciar.Location = new Point(57, 233);
             btnReiniciar.Name = "btnReiniciar";
             btnReiniciar.Size = new Size(75, 23);
             btnReiniciar.TabIndex = 5;
@@ -103,7 +105,7 @@
             // 
             btnCancelar.BackColor = Color.IndianRed;
             btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(187, 191);
+            btnCancelar.Location = new Point(187, 199);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(102, 28);
             btnCancelar.TabIndex = 6;
@@ -134,7 +136,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.CornflowerBlue;
-            label5.Location = new Point(95, 47);
+            label5.Location = new Point(105, 23);
             label5.Name = "label5";
             label5.Size = new Size(184, 37);
             label5.TabIndex = 9;
@@ -144,17 +146,38 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(85, 84);
+            label6.Location = new Point(95, 60);
             label6.Name = "label6";
             label6.Size = new Size(204, 21);
             label6.TabIndex = 10;
             label6.Text = "VETERINARIA PET ANIMALS";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(109, 159);
+            label7.Name = "label7";
+            label7.Size = new Size(45, 21);
+            label7.TabIndex = 11;
+            label7.Text = "Perfil";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "vendedor", "supervisor", "administrador" });
+            comboBox1.Location = new Point(162, 157);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 12;
             // 
             // login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(373, 302);
+            Controls.Add(comboBox1);
+            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -186,5 +209,7 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private Label label7;
+        private ComboBox comboBox1;
     }
 }
