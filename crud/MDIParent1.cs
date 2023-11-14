@@ -27,6 +27,7 @@ namespace WindFormCrud
         /// <summary>
         /// Recorre la lista y por cada paciente, muestra su respectivo metodo sobrecargado depende el tipo
         /// </summary>
+
         private void ActualizarVisor()
         {
             this.listBoxMenu.Items.Clear();
@@ -38,6 +39,9 @@ namespace WindFormCrud
             }
 
         }
+
+
+
         /// <summary>
         /// Este método gestiona el cierre de un formulario de ingreso de animales, añadiendo la información ingresada a una lista.
         /// Detecta el tipo de animal ingresado y lo convierte al tipo correspondiente antes de agregarlo a la lista.
@@ -515,28 +519,6 @@ namespace WindFormCrud
 
             }
         }
-
-        /*
-        private void modificarToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                if (perfil == "vendedor")
-                {
-                    modificarToolStripMenuItem.Enabled = false;
-                    btnModificarPerro.Enabled = false;
-                    btnModificarConejo.Enabled = false;
-                    btnModificarGato.Enabled = false;
-
-                    throw new InsuficientePermisoException();
-                }
-            }
-            catch (CredencialesInvalidasException ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "No tienes permisos para realizar esta accion", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        */
     }
 
 }
