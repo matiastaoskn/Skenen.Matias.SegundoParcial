@@ -1,10 +1,12 @@
 ﻿using CrudVeterinaria;
+using System.Data.SqlClient;
 
 namespace WindFormCrud
 {
     public partial class PerroIngreso : AnimalIngresoForm
     {
         public Animales.Animales? animales;
+         private bool esActualizacion = false;
 
         public PerroIngreso(Animales.Animales animales, Animales.Perro perros) : this()
         {
@@ -98,8 +100,42 @@ namespace WindFormCrud
             }
 
             this.animales = new Animales.Perro(tamaño, entrenamiento, nombre, tipoDeAnimal, edad, alimentacion, raza);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            conexion.Conectar();
+
+            try
+            {
+                string insertar = "INSERT INTO ANIMALES(TIPO,NOMBRE,EDAD,RAZA, ALIMENTACION, VIDAS, PESO, TAMAÑO, ENTRENAMIENTO, HABITAD, COMPORTAMIENTO)VALUES(@TIPO,@NOMBRE,@EDAD,@RAZA,@ALIMENTACION,@VIDAS,@PESO,@TAMAÑO,@ENTRENAMIENTO,@HABITAD,@COMPORTAMIENTO)";
+                SqlCommand cmd = new SqlCommand(insertar, conexion.Conectar());
+                cmd.Parameters.AddWithValue("@TIPO", TipoAnimal);
+                cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
+                cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
+                cmd.Parameters.AddWithValue("@RAZA", textBox4.Text);
+                cmd.Parameters.AddWithValue("@ALIMENTACION", comboBox1.Text);
+                cmd.Parameters.AddWithValue("@TAMAÑO", comboBox2.Text);
+                cmd.Parameters.AddWithValue("@ENTRENAMIENTO", textBox6.Text);
+
+                cmd.Parameters.AddWithValue("@VIDAS", DBNull.Value);
+                cmd.Parameters.AddWithValue("@PESO", DBNull.Value);
+                cmd.Parameters.AddWithValue("@HABITAD", DBNull.Value);
+                cmd.Parameters.AddWithValue("@COMPORTAMIENTO", DBNull.Value);
+
+
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("DATOS INGRESADOS");
+
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error SQL: {ex.Message}");
+            }
+{
+                
+}
+
 
         }
         /// <summary>

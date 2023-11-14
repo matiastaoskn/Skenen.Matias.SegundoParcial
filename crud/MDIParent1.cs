@@ -5,7 +5,7 @@ using CrudVeterinaria;
 
 namespace WindFormCrud
 {
-    public partial class MDIformularioMain : AnimalIngresoForm
+    public partial class MDIformularioMain : AnimalIngresoForm //IArchivosDatos
     {
         private string perfil = UserNameLogin.TipoPerfil;
         private Veterinaria veterinaria;
@@ -497,11 +497,6 @@ namespace WindFormCrud
             }
         }
 
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void validarUsuario()
         {
             switch (perfil)
@@ -518,6 +513,12 @@ namespace WindFormCrud
                     break;
 
             }
+        }
+
+        private void MDIformularioMain_Load(object sender, EventArgs e)
+        {
+            conexion.Conectar();
+            MessageBox.Show("Conexcion existosa");
         }
     }
 

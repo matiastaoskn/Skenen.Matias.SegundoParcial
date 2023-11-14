@@ -149,45 +149,45 @@
             // toolStripSeparator6
             // 
             toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(177, 6);
+            toolStripSeparator6.Size = new Size(139, 6);
             // 
             // toolStripSeparator7
             // 
             toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(177, 6);
+            toolStripSeparator7.Size = new Size(139, 6);
             // 
             // modificarToolStripMenuItem
             // 
             modificarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { btnModificarPerro, btnModificarGato, btnModificarConejo });
             modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            modificarToolStripMenuItem.Size = new Size(180, 24);
+            modificarToolStripMenuItem.Size = new Size(142, 24);
             modificarToolStripMenuItem.Text = "Modificar";
             // 
             // btnModificarPerro
             // 
             btnModificarPerro.Name = "btnModificarPerro";
-            btnModificarPerro.Size = new Size(180, 24);
+            btnModificarPerro.Size = new Size(131, 24);
             btnModificarPerro.Text = "Perros";
             btnModificarPerro.Click += modificarPerroForm;
             // 
             // btnModificarGato
             // 
             btnModificarGato.Name = "btnModificarGato";
-            btnModificarGato.Size = new Size(180, 24);
+            btnModificarGato.Size = new Size(131, 24);
             btnModificarGato.Text = "Gatos";
             btnModificarGato.Click += modificarGatoForm;
             // 
             // btnModificarConejo
             // 
             btnModificarConejo.Name = "btnModificarConejo";
-            btnModificarConejo.Size = new Size(180, 24);
+            btnModificarConejo.Size = new Size(131, 24);
             btnModificarConejo.Text = "Conejos";
             btnModificarConejo.Click += modificarConejoForm;
             // 
             // btnEliminarMenu
             // 
             btnEliminarMenu.Name = "btnEliminarMenu";
-            btnEliminarMenu.Size = new Size(180, 24);
+            btnEliminarMenu.Size = new Size(142, 24);
             btnEliminarMenu.Text = "Eliminar";
             btnEliminarMenu.Click += eliminarToolStripMenuItem_Click;
             // 
@@ -387,6 +387,7 @@
             Name = "MDIformularioMain";
             Text = "Veterinaria";
             FormClosing += MDIParent1_FormClosing;
+            Load += MDIformularioMain_Load;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             toolStrip.ResumeLayout(false);

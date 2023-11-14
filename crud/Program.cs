@@ -14,7 +14,7 @@ namespace crud
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-
+            /*
             login formlogin = new login();
 
             formlogin.ShowDialog();
@@ -23,7 +23,8 @@ namespace crud
             {
                 Application.Run(new MDIformularioMain());
             }
-
+            */
+            Application.Run(new MDIformularioMain());
 
         }
 
