@@ -6,16 +6,35 @@ namespace WindFormCrud
     public partial class PerroIngreso : AnimalIngresoForm
     {
         public Animales.Animales? animales;
-         private bool esActualizacion = false;
+        private bool esActualizacion = false;
+        int id;
 
         public PerroIngreso(Animales.Animales animales, Animales.Perro perros) : this()
         {
+            esActualizacion = true;
+
             this.textBox1.Text = animales.nombre?.ToString();
             this.textBox2.Text = animales.edad.ToString();
             this.comboBox1.Text = animales.alimentacion.ToString();
             this.textBox4.Text = animales.raza?.ToString();
             this.comboBox2.Text = perros.entrenamiento;
             this.textBox6.Text = perros.tamaño;
+
+            try
+            {
+                conexion.Conectar();
+                string consulta = $"SELECT ID FROM ANIMALES WHERE NOMBRE = '{textBox1.Text}'";
+                SqlCommand cmd2 = new SqlCommand(consulta, conexion.Conectar());
+
+                id = (int)cmd2.ExecuteScalar();
+
+                MessageBox.Show($"{id}");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
         }
         public PerroIngreso()
         {
@@ -102,40 +121,70 @@ namespace WindFormCrud
             this.animales = new Animales.Perro(tamaño, entrenamiento, nombre, tipoDeAnimal, edad, alimentacion, raza);
             conexion.Conectar();
 
-            try
+            if (esActualizacion == false)
             {
-                string insertar = "INSERT INTO ANIMALES(TIPO,NOMBRE,EDAD,RAZA, ALIMENTACION, VIDAS, PESO, TAMAÑO, ENTRENAMIENTO, HABITAD, COMPORTAMIENTO)VALUES(@TIPO,@NOMBRE,@EDAD,@RAZA,@ALIMENTACION,@VIDAS,@PESO,@TAMAÑO,@ENTRENAMIENTO,@HABITAD,@COMPORTAMIENTO)";
-                SqlCommand cmd = new SqlCommand(insertar, conexion.Conectar());
-                cmd.Parameters.AddWithValue("@TIPO", TipoAnimal);
-                cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
-                cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
-                cmd.Parameters.AddWithValue("@RAZA", textBox4.Text);
-                cmd.Parameters.AddWithValue("@ALIMENTACION", comboBox1.Text);
-                cmd.Parameters.AddWithValue("@TAMAÑO", comboBox2.Text);
-                cmd.Parameters.AddWithValue("@ENTRENAMIENTO", textBox6.Text);
+                try
+                {
+                    string insertar = "INSERT INTO ANIMALES(TIPO,NOMBRE,EDAD,RAZA, ALIMENTACION, VIDAS, PESO, TAMAÑO, ENTRENAMIENTO, HABITAD, COMPORTAMIENTO)VALUES(@TIPO,@NOMBRE,@EDAD,@RAZA,@ALIMENTACION,@VIDAS,@PESO,@TAMAÑO,@ENTRENAMIENTO,@HABITAD,@COMPORTAMIENTO)";
+                    SqlCommand cmd = new SqlCommand(insertar, conexion.Conectar());
+                    cmd.Parameters.AddWithValue("@TIPO", TipoAnimal);
+                    cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@RAZA", textBox4.Text);
+                    cmd.Parameters.AddWithValue("@ALIMENTACION", comboBox1.Text);
+                    cmd.Parameters.AddWithValue("@TAMAÑO", comboBox2.Text);
+                    cmd.Parameters.AddWithValue("@ENTRENAMIENTO", textBox6.Text);
 
-                cmd.Parameters.AddWithValue("@VIDAS", DBNull.Value);
-                cmd.Parameters.AddWithValue("@PESO", DBNull.Value);
-                cmd.Parameters.AddWithValue("@HABITAD", DBNull.Value);
-                cmd.Parameters.AddWithValue("@COMPORTAMIENTO", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@VIDAS", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PESO", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@HABITAD", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@COMPORTAMIENTO", DBNull.Value);
 
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("DATOS INGRESADOS");
 
-
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("DATOS INGRESADOS");
-
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Error SQL: {ex.Message}");
+                }
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show($"Error SQL: {ex.Message}");
-            }
-{
-                
-}
+                try
+                {
+                    conexion.Conectar();  // Asumiendo que Conectar() abre la conexión
+                    string actualizar = "UPDATE ANIMALES SET NOMBRE=@NOMBRE, EDAD=@EDAD, RAZA=@RAZA, ALIMENTACION=@ALIMENTACION, TAMAÑO=@TAMAÑO, ENTRENAMIENTO=@ENTRENAMIENTO WHERE ID=@ID";
 
+                    using (SqlCommand cmd = new SqlCommand(actualizar, conexion.Conectar()))
+                    {
+                        cmd.Parameters.AddWithValue("@ID", id); // Usar el nombre original en la condición WHERE
+                        cmd.Parameters.AddWithValue("@NOMBRE", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@RAZA", comboBox1.Text);
+                        cmd.Parameters.AddWithValue("@ALIMENTACION", textBox4.Text);
+                        cmd.Parameters.AddWithValue("@TAMAÑO", comboBox2.Text);
+                        cmd.Parameters.AddWithValue("@ENTRENAMIENTO", textBox6.Text);
+
+                        int filasActualizadas = cmd.ExecuteNonQuery();
+
+                        if (filasActualizadas > 0)
+                        {
+                            MessageBox.Show("SE ACTUALIZARON LOS DATOS");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se realizaron cambios");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar datos: " + ex.Message);
+                }
+            }
 
         }
         /// <summary>

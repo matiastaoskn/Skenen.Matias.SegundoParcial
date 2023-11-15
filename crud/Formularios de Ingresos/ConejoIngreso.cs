@@ -1,10 +1,13 @@
 ﻿using CrudVeterinaria;
+using System.Data.SqlClient;
 
 namespace WindFormCrud.Ingresos
 {
     public partial class ConejoIngreso : AnimalIngresoForm
     {
         public Animales.Animales? animales;
+        int id;
+        private bool esActualizacion = false;
         public ConejoIngreso()
         {
             InitializeComponent();
@@ -13,12 +16,30 @@ namespace WindFormCrud.Ingresos
 
         public ConejoIngreso(Animales.Animales animales, Animales.Conejo conejo): this()
         {
+            esActualizacion = true;
+
             this.textBox1.Text = animales.nombre?.ToString();
             this.textBox2.Text = animales.edad.ToString();
             this.comboBox1.Text = animales.alimentacion.ToString();
             this.textBox4.Text = animales.raza?.ToString();
             this.textBox5.Text = conejo.comportamiento;
             this.textBox6.Text = conejo.habitad;
+
+            try
+            {
+                conexion.Conectar();
+                string consulta = $"SELECT ID FROM ANIMALES WHERE NOMBRE = '{textBox1.Text}'";
+                SqlCommand cmd2 = new SqlCommand(consulta, conexion.Conectar());
+
+                id = (int)cmd2.ExecuteScalar();
+
+                MessageBox.Show($"{id}");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
         }
         /// <summary>
         /// Este metodo valida los datos ingresados por el usuario para no generar error de tipo null
@@ -98,6 +119,75 @@ namespace WindFormCrud.Ingresos
 
 
             this.animales = new Animales.Conejo(habitad, comportamiento, nombre, tipoDeAnimal, edad, alimentacion, raza);
+
+            if (esActualizacion == false)
+            {
+                try
+                {
+                    string insertar = "INSERT INTO ANIMALES(TIPO,NOMBRE,EDAD,RAZA, ALIMENTACION, VIDAS, PESO, TAMAÑO, ENTRENAMIENTO, HABITAD, COMPORTAMIENTO)VALUES(@TIPO,@NOMBRE,@EDAD,@RAZA,@ALIMENTACION,@VIDAS,@PESO,@TAMAÑO,@ENTRENAMIENTO,@HABITAD,@COMPORTAMIENTO)";
+                    SqlCommand cmd = new SqlCommand(insertar, conexion.Conectar());
+                    cmd.Parameters.AddWithValue("@TIPO", TipoAnimal);
+                    cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@RAZA", textBox4.Text);
+                    cmd.Parameters.AddWithValue("@ALIMENTACION", comboBox1.Text);
+                    cmd.Parameters.AddWithValue("@HABITAD", textBox6.Text);
+                    cmd.Parameters.AddWithValue("@COMPORTAMIENTO", textBox5.Text);
+
+                    cmd.Parameters.AddWithValue("@VIDAS", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PESO", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TAMAÑO", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ENTRENAMIENTO", DBNull.Value);
+
+
+
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("DATOS INGRESADOS");
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Error SQL: {ex.Message}");
+                }
+            }
+            else
+            {
+                try
+                {
+                    conexion.Conectar();  // Asumiendo que Conectar() abre la conexión
+                    string actualizar = "UPDATE ANIMALES SET NOMBRE=@NOMBRE, EDAD=@EDAD, RAZA=@RAZA, ALIMENTACION=@ALIMENTACION, HABITAD=@HABITAD, COMPORTAMIENTO=@COMPORTAMIENTO WHERE ID=@ID";
+
+                    using (SqlCommand cmd = new SqlCommand(actualizar, conexion.Conectar()))
+                    {
+                        cmd.Parameters.AddWithValue("@ID", id); // Usar el nombre original en la condición WHERE
+                        cmd.Parameters.AddWithValue("@NOMBRE", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@RAZA", comboBox1.Text);
+                        cmd.Parameters.AddWithValue("@ALIMENTACION", textBox4.Text);
+                        cmd.Parameters.AddWithValue("@HABITAD", textBox6.Text);
+                        cmd.Parameters.AddWithValue("@COMPORTAMIENTO", textBox5.Text);
+
+                        int filasActualizadas = cmd.ExecuteNonQuery();
+
+                        if (filasActualizadas > 0)
+                        {
+                            MessageBox.Show("SE ACTUALIZARON LOS DATOS");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se realizaron cambios. El nombre no fue encontrado o no se hicieron cambios en los datos.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar datos: " + ex.Message);
+                }
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
 
