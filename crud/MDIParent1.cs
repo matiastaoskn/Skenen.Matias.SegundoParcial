@@ -11,7 +11,7 @@ namespace WindFormCrud
     {
 
         private string perfil = UserNameLogin.TipoPerfil;
-        private Veterinaria veterinaria;
+        private Veterinaria<Animales.Animales, Comida> veterinaria;
         /// <summary>
         /// Este contructor, inicializa una nueva lista de tipo Animales
         /// Toma el nombe de usuario guardado en el login
@@ -21,7 +21,7 @@ namespace WindFormCrud
         {
             InitializeComponent();
             validarUsuario();
-            veterinaria = new Veterinaria();
+            veterinaria = new Veterinaria<Animales.Animales, Comida>();
             stripUser.Text = UserNameLogin.UserName;
 
             stripDateTime.Text = DateTime.Now.ToString();

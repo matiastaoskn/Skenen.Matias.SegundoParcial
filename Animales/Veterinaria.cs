@@ -1,17 +1,21 @@
-﻿namespace Animales
+﻿using Animal;
+
+namespace Animales
 {
-    public class Veterinaria
+    public class Veterinaria<T, P> where T : Animales
     {
 
         private int cantMaxPacientes;
-        public List<Animales>? listaPacientes;
+        public List<T>? listaPacientes;
+        public List<P>? listaComida;
 
         public Veterinaria()
         {
-            this.listaPacientes = new List<Animales>();
+            this.listaPacientes = new List<T>();
+            this.listaComida = new List<P>();
         }
 
-        public static bool operator ==(Animales a, Veterinaria b)
+        public static bool operator ==(Animales a, Veterinaria<T, P> b)
         {
             bool retorno = false;
             if (b.listaPacientes != null)
@@ -28,12 +32,12 @@
 
         }
 
-        public static bool operator !=(Animales a, Veterinaria b)
+        public static bool operator !=(Animales a, Veterinaria<T, P> b)
         {
             return !(a == b);
         }
 
-        public static Veterinaria operator +(Animales a, Veterinaria b)
+        public static Veterinaria<T, P> operator +(Animales a, Veterinaria<T, P> b)
         {
             if (b.listaPacientes != null)
             {
@@ -41,7 +45,7 @@
                 {
                     if (a != b && !(b.listaPacientes.Contains(a)))
                     {
-                        b.listaPacientes.Add(a);
+                        b.listaPacientes.Add((T)a);
                         return b;
                     }
                     else
@@ -64,13 +68,15 @@
             return b;
         }
 
-        public static Veterinaria operator -(Animales a, Veterinaria b)
+
+
+        public static Veterinaria<T, P> operator -(Animales a, Veterinaria<T, P> b)
         {
             if (b.listaPacientes != null)
             {
                 if (b.listaPacientes.Contains(a))
                 {
-                    b.listaPacientes.Remove(a);
+                    b.listaPacientes.Remove((T)a);
                     return b;
                 }
                 else

@@ -1,8 +1,9 @@
-﻿using System.Text;
+﻿using Animal;
+using System.Text;
 
 namespace Animales
 {
-    public class Perro : Animales
+    public class Perro : Animales, IfechaCarga
     {
         public string? tamaño;
         public string? entrenamiento;
@@ -28,7 +29,14 @@ namespace Animales
 
         public override string ToString()
         {
-            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.tamaño}-{this.entrenamiento}-Perro";
+            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.tamaño}-{this.entrenamiento}-Perro | {cargarFecha()}";
         }
+
+        public string cargarFecha()
+        {
+            string fecha = DateTime.Now.ToString("dd/MM");
+            return fecha;
+        }
+
     }
 }

@@ -7,9 +7,9 @@ namespace Animal
     public class updateCrudBaseDatos
     {
         public Animales.Animales? animales;
-        private Veterinaria veterinaria;
+        private Veterinaria<Animales.Animales, Comida> veterinaria;
 
-        public void actualizarCrudBaseDatos(Veterinaria veterinaria)
+        public void actualizarCrudBaseDatos(Veterinaria<Animales.Animales, Comida> veterinaria)
         {
             try
             {
@@ -40,26 +40,26 @@ namespace Animal
                                 if (!Enum.TryParse(valorColumna4, out alimentacion))
                                 {
                                 }
-                                
+
                                 int vidas;
                                 if (int.TryParse(valorColumna5, out vidas))
                                 {
                                     // La conversión fue exitosa, y el valor de vidas se encuentra en la variable 'vidas'
                                 }
-                                
+
 
                                 int edad;
                                 if (int.TryParse(valorColumna2, out edad))
                                 {
                                     // La conversión fue exitosa, y el valor de vidas se encuentra en la variable 'vidas'
                                 }
-                                
+
                                 int peso;
                                 if (int.TryParse(valorColumna6, out peso))
                                 {
                                     // La conversión fue exitosa, y el valor de vidas se encuentra en la variable 'vidas'
                                 }
-                                
+
 
                                 animales = new Animales.Gato(peso, vidas, valorColumna1, "Gato", edad, alimentacion, valorColumna3);
                                 veterinaria.listaPacientes.Add(animales);
@@ -137,7 +137,7 @@ namespace Animal
                                 this.animales = new Animales.Conejo(valorColumna5, valorColumna6, valorColumna1, "Conejo", edad, alimentacion, valorColumna3);
                                 veterinaria.listaPacientes.Add(animales);
                             }
-                                
+
                         }
                     }
                 }
