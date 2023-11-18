@@ -49,9 +49,10 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(86, 92);
             label1.Name = "label1";
-            label1.Size = new Size(68, 21);
+            label1.Size = new Size(58, 21);
             label1.TabIndex = 0;
-            label1.Text = "Nombre";
+            label1.Text = "Correo";
+            label1.Click += label1_Click;
             // 
             // label2
             // 

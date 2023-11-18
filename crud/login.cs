@@ -89,7 +89,7 @@ namespace WindFormCrud
                             this.DialogResult = DialogResult.OK;
                         }
                     }
-                    
+
                 }
                 catch (CredencialesInvalidasException ex)
                 {
@@ -99,7 +99,7 @@ namespace WindFormCrud
 
 
             }
-            
+
         }
         /// <summary>
         /// Este metodo deja un registro con el nombre y la fecha actual, en un archivo txt
@@ -127,6 +127,10 @@ namespace WindFormCrud
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

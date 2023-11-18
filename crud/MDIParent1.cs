@@ -95,6 +95,13 @@ namespace WindFormCrud
             }
 
         }
+        private class Elemento
+        {
+            public string Nombre { get; set; }
+            // Puedes agregar otras propiedades según sea necesario
+        }
+
+
         /// <summary>
         /// Permite al usuario eliminar el elemento seleccionado
         /// </summary>
@@ -107,9 +114,12 @@ namespace WindFormCrud
                 if (this.listBoxMenu.SelectedIndex > -1)
                 {
                     int indice = this.listBoxMenu.SelectedIndex;
+                    string nombreElementoAEliminar = veterinaria.listaPacientes[indice].nombre;
+
+
 
                     // Preguntar al usuario si realmente quiere eliminar
-                    DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este elemento?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult resultado = MessageBox.Show($"¿Está seguro de que desea eliminar este elemento? + {nombreElementoAEliminar}", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (resultado == DialogResult.Yes)
                     {
