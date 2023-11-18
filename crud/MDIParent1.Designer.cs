@@ -69,6 +69,7 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            productosToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             SuspendLayout();
@@ -97,7 +98,7 @@
             // fileMenu
             // 
             fileMenu.BackColor = Color.CornflowerBlue;
-            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, toolStripSeparator5, btnPerroMenuAgregar, btnGatoMenuAgregar, btnConejoMenuAgregar });
+            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, toolStripSeparator5, btnPerroMenuAgregar, btnGatoMenuAgregar, btnConejoMenuAgregar, productosToolStripMenuItem });
             fileMenu.ImageTransparentColor = SystemColors.ActiveBorder;
             fileMenu.Name = "fileMenu";
             fileMenu.Size = new Size(75, 24);
@@ -106,36 +107,36 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(122, 6);
+            toolStripSeparator3.Size = new Size(177, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(122, 6);
+            toolStripSeparator4.Size = new Size(177, 6);
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(122, 6);
+            toolStripSeparator5.Size = new Size(177, 6);
             // 
             // btnPerroMenuAgregar
             // 
             btnPerroMenuAgregar.Name = "btnPerroMenuAgregar";
-            btnPerroMenuAgregar.Size = new Size(125, 24);
+            btnPerroMenuAgregar.Size = new Size(180, 24);
             btnPerroMenuAgregar.Text = "Perro";
             btnPerroMenuAgregar.Click += formIngresoPerro;
             // 
             // btnGatoMenuAgregar
             // 
             btnGatoMenuAgregar.Name = "btnGatoMenuAgregar";
-            btnGatoMenuAgregar.Size = new Size(125, 24);
+            btnGatoMenuAgregar.Size = new Size(180, 24);
             btnGatoMenuAgregar.Text = "Gato";
             btnGatoMenuAgregar.Click += formIngresoGato;
             // 
             // btnConejoMenuAgregar
             // 
             btnConejoMenuAgregar.Name = "btnConejoMenuAgregar";
-            btnConejoMenuAgregar.Size = new Size(125, 24);
+            btnConejoMenuAgregar.Size = new Size(180, 24);
             btnConejoMenuAgregar.Text = "Conejo";
             btnConejoMenuAgregar.Click += formIngresoConejo;
             // 
@@ -365,6 +366,13 @@
             label6.TabIndex = 12;
             label6.Text = "Atributo 2";
             // 
+            // productosToolStripMenuItem
+            // 
+            productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            productosToolStripMenuItem.Size = new Size(180, 24);
+            productosToolStripMenuItem.Text = "Productos";
+            productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
+            // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -436,6 +444,7 @@
         private Label label6;
         private ToolStripButton stripDateTime;
         private ToolStripButton stripUser;
+        private ToolStripMenuItem productosToolStripMenuItem;
     }
 }
 

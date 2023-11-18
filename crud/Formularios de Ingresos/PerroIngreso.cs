@@ -9,6 +9,12 @@ namespace WindFormCrud
         private bool esActualizacion = false;
         int id;
 
+        public PerroIngreso()
+        {
+            InitializeComponent();
+            TipoAnimal = "Perro";
+        }
+
         public PerroIngreso(Animales.Animales animales, Animales.Perro perros) : this()
         {
             esActualizacion = true;
@@ -36,11 +42,7 @@ namespace WindFormCrud
             }
 
         }
-        public PerroIngreso()
-        {
-            InitializeComponent();
-            TipoAnimal = "Perro";
-        }
+ 
         /// <summary>
         /// Este metodo valida los datos ingresados por el usuario para no generar error de tipo null
         /// </summary>

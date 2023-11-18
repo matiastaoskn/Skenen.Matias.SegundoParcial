@@ -46,6 +46,11 @@ namespace WindFormCrud
             foreach (Animales.Animales paciente in veterinaria.listaPacientes)
             {
                 listBoxMenu.Items.Add(paciente.ToString());
+            }
+
+            foreach (Animal.Comida paciente in veterinaria.listaComida)
+            {
+                listBoxMenu.Items.Add(paciente.ToString());
 
             }
 
@@ -63,6 +68,7 @@ namespace WindFormCrud
         {
             //Guarda el formulario que se abrio en la variable
             AnimalIngresoForm ingresoAnimal = (AnimalIngresoForm)sender;
+            
 
             //Desoues de guardar el objeto, consulta su dialogo result.
             DialogResult dialogo = ingresoAnimal.DialogResult;
@@ -83,22 +89,23 @@ namespace WindFormCrud
                     this.veterinaria.listaPacientes.Add(IngresoConejoForm.animales);
 
                 }
-                else
+                else if (ingresoAnimal.TipoAnimal == "Gato")
                 {
                     GatoIngreso IngresoGatoForm = (GatoIngreso)sender;
 
                     this.veterinaria.listaPacientes.Add(IngresoGatoForm.animales);
 
                 }
+                else
+                {
+                    ProductoIngreso IngresoProducto = (ProductoIngreso)sender;
+
+                    this.veterinaria.listaComida.Add(IngresoProducto.comida);
+                }
 
                 this.ActualizarVisor();
             }
 
-        }
-        private class Elemento
-        {
-            public string Nombre { get; set; }
-            // Puedes agregar otras propiedades según sea necesario
         }
 
 
@@ -309,6 +316,17 @@ namespace WindFormCrud
             formIngresoConejo.Show();
         }
 
+        // Ingreso Productos
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductoIngreso formIngresoProducto = new ProductoIngreso();
+            formIngresoProducto.MdiParent = this;
+
+            formIngresoProducto.FormClosed += Form2_FormClosed;
+
+            formIngresoProducto.Show();
+        }
 
         // Modificar animales
 
@@ -535,7 +553,8 @@ namespace WindFormCrud
 
             }
         }
-        
+
+
     }
 
 }
