@@ -387,7 +387,6 @@
             Name = "MDIformularioMain";
             Text = "Veterinaria";
             FormClosing += MDIParent1_FormClosing;
-            Load += MDIformularioMain_Load;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             toolStrip.ResumeLayout(false);

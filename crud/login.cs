@@ -80,7 +80,7 @@ namespace WindFormCrud
                 {
                     foreach (var persona in personas)
                     {
-                        if (textUser.Text == persona.nombre && textPass.Text == persona.clave && comboBox1.Text == persona.perfil)
+                        if (textUser.Text == persona.correo && textPass.Text == persona.clave && comboBox1.Text == persona.perfil)
                         {
                             UserNameLogin.setTipoPerfil(comboBox1.Text);
                             UserNameLogin.setUserName(textUser.Text);

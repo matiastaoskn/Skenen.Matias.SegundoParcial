@@ -168,16 +168,7 @@ namespace WindFormCrud
                         cmd.Parameters.AddWithValue("@TAMAÑO", comboBox2.Text);
                         cmd.Parameters.AddWithValue("@ENTRENAMIENTO", textBox6.Text);
 
-                        int filasActualizadas = cmd.ExecuteNonQuery();
-
-                        if (filasActualizadas > 0)
-                        {
-                            MessageBox.Show("SE ACTUALIZARON LOS DATOS");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se realizaron cambios");
-                        }
+                        cmd.ExecuteNonQuery();
                     }
                 }
                 catch (Exception ex)

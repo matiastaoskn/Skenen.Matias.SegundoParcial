@@ -120,6 +120,8 @@ namespace WindFormCrud
                 return;
             }
 
+
+
             this.animales = new Animales.Gato(peso, vidas, nombre, TipoAnimal, edad, alimentacion, raza);
 
             if (esActualizacion == false)
@@ -172,16 +174,7 @@ namespace WindFormCrud
                         cmd.Parameters.AddWithValue("@VIDAS", textBox5.Text);
                         cmd.Parameters.AddWithValue("@PESO", textBox6.Text);
 
-                        int filasActualizadas = cmd.ExecuteNonQuery();
-
-                        if (filasActualizadas > 0)
-                        {
-                            MessageBox.Show("SE ACTUALIZARON LOS DATOS");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se realizaron cambios. El nombre no fue encontrado o no se hicieron cambios en los datos.");
-                        }
+                        cmd.ExecuteNonQuery();
                     }
                 }
                 catch (Exception ex)

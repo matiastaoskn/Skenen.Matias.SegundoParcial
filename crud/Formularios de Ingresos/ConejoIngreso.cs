@@ -170,16 +170,8 @@ namespace WindFormCrud.Ingresos
                         cmd.Parameters.AddWithValue("@HABITAD", textBox6.Text);
                         cmd.Parameters.AddWithValue("@COMPORTAMIENTO", textBox5.Text);
 
-                        int filasActualizadas = cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
 
-                        if (filasActualizadas > 0)
-                        {
-                            MessageBox.Show("SE ACTUALIZARON LOS DATOS");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se realizaron cambios. El nombre no fue encontrado o no se hicieron cambios en los datos.");
-                        }
                     }
                 }
                 catch (Exception ex)

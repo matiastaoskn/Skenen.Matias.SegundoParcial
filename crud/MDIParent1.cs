@@ -2,11 +2,14 @@
 using WindFormCrud.Ingresos;
 using Newtonsoft.Json.Converters;
 using CrudVeterinaria;
+using System.Data.SqlClient;
+using Animal;
 
 namespace WindFormCrud
 {
     public partial class MDIformularioMain : AnimalIngresoForm //IArchivosDatos
     {
+
         private string perfil = UserNameLogin.TipoPerfil;
         private Veterinaria veterinaria;
         /// <summary>
@@ -22,11 +25,19 @@ namespace WindFormCrud
             stripUser.Text = UserNameLogin.UserName;
 
             stripDateTime.Text = DateTime.Now.ToString();
+            conectarBaseDatos();
 
         }
         /// <summary>
         /// Recorre la lista y por cada paciente, muestra su respectivo metodo sobrecargado depende el tipo
         /// </summary>
+
+        private void conectarBaseDatos()
+        {
+            updateCrudBaseDatos actualizador = new updateCrudBaseDatos();
+            actualizador.actualizarCrudBaseDatos(veterinaria);
+            ActualizarVisor();
+        }
 
         private void ActualizarVisor()
         {
@@ -514,12 +525,7 @@ namespace WindFormCrud
 
             }
         }
-
-        private void MDIformularioMain_Load(object sender, EventArgs e)
-        {
-            conexion.Conectar();
-            MessageBox.Show("Conexcion existosa");
-        }
+        
     }
 
 }
