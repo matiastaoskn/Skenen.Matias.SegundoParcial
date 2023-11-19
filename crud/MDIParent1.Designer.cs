@@ -62,6 +62,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             stripDateTime = new ToolStripButton();
             stripUser = new ToolStripButton();
+            toolStripLabel1 = new ToolStripLabel();
             statusStrip = new StatusStrip();
             toolTip = new ToolTip(components);
             listBoxMenu = new ListBox();
@@ -158,52 +159,52 @@
             // toolStripSeparator6
             // 
             toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(177, 6);
+            toolStripSeparator6.Size = new Size(139, 6);
             // 
             // toolStripSeparator7
             // 
             toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(177, 6);
+            toolStripSeparator7.Size = new Size(139, 6);
             // 
             // modificarToolStripMenuItem
             // 
             modificarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { btnModificarPerro, btnModificarGato, btnModificarConejo, pToolStripMenuItem });
             modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            modificarToolStripMenuItem.Size = new Size(180, 24);
+            modificarToolStripMenuItem.Size = new Size(142, 24);
             modificarToolStripMenuItem.Text = "Modificar";
             // 
             // btnModificarPerro
             // 
             btnModificarPerro.Name = "btnModificarPerro";
-            btnModificarPerro.Size = new Size(180, 24);
+            btnModificarPerro.Size = new Size(138, 24);
             btnModificarPerro.Text = "Perros";
             btnModificarPerro.Click += modificarPerroForm;
             // 
             // btnModificarGato
             // 
             btnModificarGato.Name = "btnModificarGato";
-            btnModificarGato.Size = new Size(180, 24);
+            btnModificarGato.Size = new Size(138, 24);
             btnModificarGato.Text = "Gatos";
             btnModificarGato.Click += modificarGatoForm;
             // 
             // btnModificarConejo
             // 
             btnModificarConejo.Name = "btnModificarConejo";
-            btnModificarConejo.Size = new Size(180, 24);
+            btnModificarConejo.Size = new Size(138, 24);
             btnModificarConejo.Text = "Conejos";
             btnModificarConejo.Click += modificarConejoForm;
             // 
             // pToolStripMenuItem
             // 
             pToolStripMenuItem.Name = "pToolStripMenuItem";
-            pToolStripMenuItem.Size = new Size(180, 24);
+            pToolStripMenuItem.Size = new Size(138, 24);
             pToolStripMenuItem.Text = "Producto";
             pToolStripMenuItem.Click += modificarProducto;
             // 
             // btnEliminarMenu
             // 
             btnEliminarMenu.Name = "btnEliminarMenu";
-            btnEliminarMenu.Size = new Size(180, 24);
+            btnEliminarMenu.Size = new Size(142, 24);
             btnEliminarMenu.Text = "Eliminar";
             btnEliminarMenu.Click += eliminarToolStripMenuItem_Click;
             // 
@@ -265,7 +266,7 @@
             // 
             // toolStrip
             // 
-            toolStrip.Items.AddRange(new ToolStripItem[] { btnGuardar, toolStripSeparator1, stripDateTime, stripUser });
+            toolStrip.Items.AddRange(new ToolStripItem[] { btnGuardar, toolStripSeparator1, stripDateTime, stripUser, toolStripLabel1 });
             toolStrip.Location = new Point(0, 28);
             toolStrip.Name = "toolStrip";
             toolStrip.Size = new Size(984, 25);
@@ -307,6 +308,12 @@
             stripUser.Name = "stripUser";
             stripUser.Size = new Size(98, 22);
             stripUser.Text = "toolStripButton2";
+            // 
+            // toolStripLabel1
+            // 
+            toolStripLabel1.Name = "toolStripLabel1";
+            toolStripLabel1.Size = new Size(61, 22);
+            toolStripLabel1.Text = "MOSTRAR";
             // 
             // statusStrip
             // 
@@ -454,6 +461,7 @@
         private ToolStripButton stripUser;
         private ToolStripMenuItem productosToolStripMenuItem;
         private ToolStripMenuItem pToolStripMenuItem;
+        private ToolStripLabel toolStripLabel1;
     }
 }
 

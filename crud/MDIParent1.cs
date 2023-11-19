@@ -78,6 +78,7 @@ namespace WindFormCrud
             {
                 // Si se está llamando desde un subproceso diferente, invocar al hilo principal.
                 listBoxMenu.Invoke(new MethodInvoker(() => ActualizarVisor()));
+                listBoxMenu.Invoke(new MethodInvoker(async () => await guardarDatosAutomaticoAsync()));
             }
             else
             {
@@ -93,6 +94,7 @@ namespace WindFormCrud
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
                 }
+
             }
         }
         /// <summary>
@@ -202,7 +204,7 @@ namespace WindFormCrud
             }
         }
 
-        
+
 
         /// <summary>
         /// Cuando el usuario cierra el formulario, se guardara una copia de seguridad en una carpeta aparte
@@ -218,7 +220,7 @@ namespace WindFormCrud
             }
         }
 
-        private void guardarDatosAutomatico()
+        private async Task guardarDatosAutomaticoAsync()
         {
             try
             {
@@ -680,7 +682,7 @@ namespace WindFormCrud
             }
         }
 
-
+        
     }
 
 }

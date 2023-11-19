@@ -33,3 +33,8 @@ Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 12:18:17 a. m.
 Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 06:50:22 p. m.
 Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 06:52:43 p. m.
 Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 07:54:20 p. m.
+Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 08:32:56 p. m.
+Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 08:33:49 p. m.
+Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 08:34:49 p. m.
+Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 08:35:58 p. m.
+Usuario: Michael - Fecha y hora de inicio de sesión: 19/11/2023 08:36:26 p. m.

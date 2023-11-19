@@ -1,0 +1,67 @@
+[
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "tamaño": "pequeño",
+      "entrenamiento": null,
+      "tipoDeAnimal": "Perro",
+      "nombre": "asd",
+      "edad": 123,
+      "raza": "a",
+      "alimentacion": 0,
+      "TipoDeAnimal": "Perro"
+    }
+  },
+  {
+    "Tipo": "Gato",
+    "Datos": {
+      "vidas": 123,
+      "peso": 124,
+      "tipoDeAnimal": "Gato",
+      "nombre": "asda",
+      "edad": 124,
+      "raza": "asd",
+      "alimentacion": 0,
+      "TipoDeAnimal": "Gato"
+    }
+  },
+  {
+    "Tipo": "Conejo",
+    "Datos": {
+      "comportamiento": "asd",
+      "habitad": "asdas",
+      "tipoDeAnimal": "Conejo",
+      "nombre": "sa",
+      "edad": 1331,
+      "raza": "asd",
+      "alimentacion": 0,
+      "TipoDeAnimal": "Conejo"
+    }
+  },
+  {
+    "Tipo": "Gato",
+    "Datos": {
+      "vidas": 6,
+      "peso": 1,
+      "tipoDeAnimal": "Gato",
+      "nombre": "sad",
+      "edad": 5,
+      "raza": "asd",
+      "alimentacion": 1,
+      "TipoDeAnimal": "Gato"
+    }
+  },
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "tamaño": "pequeño",
+      "entrenamiento": null,
+      "tipoDeAnimal": "Perro",
+      "nombre": "perrito",
+      "edad": 12,
+      "raza": "sa",
+      "alimentacion": 1,
+      "TipoDeAnimal": "Perro"
+    }
+  }
+]
