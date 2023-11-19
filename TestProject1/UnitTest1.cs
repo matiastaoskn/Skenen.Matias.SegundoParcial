@@ -13,10 +13,7 @@ namespace TestProject1
             //Retrocedo de la carpeta bin
             string rutaArchivo = Path.Combine("..", "..", "..", "MOCK_DATA.json");
             string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaArchivo));
-
-
             // Act
-
             if (File.Exists(filePath))
             {
                 // Assert

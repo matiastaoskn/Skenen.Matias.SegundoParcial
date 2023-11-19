@@ -7,6 +7,7 @@ namespace Animal
     public class updateCrudBaseDatos
     {
         public Animales.Animales? animales;
+        public Comida comida;
         private Veterinaria<Animales.Animales, Comida>? veterinaria;
 
         public void actualizarCrudBaseDatos(Veterinaria<Animales.Animales, Comida> veterinaria)
@@ -65,7 +66,7 @@ namespace Animal
                                 veterinaria.listaPacientes.Add(animales);
 
                             }
-                            else if (reader["TIPO"].ToString() == "Gato")
+                            else if (reader["TIPO"].ToString() == "Perro")
                             {
                                 string valorColumna1 = reader["NOMBRE"].ToString();
                                 string valorColumna2 = reader["EDAD"].ToString();
@@ -136,6 +137,14 @@ namespace Animal
 
                                 this.animales = new Animales.Conejo(valorColumna5, valorColumna6, valorColumna1, "Conejo", edad, alimentacion, valorColumna3);
                                 veterinaria.listaPacientes.Add(animales);
+                            }
+                            else
+                            {
+                                string valorColumna1 = reader["NOMBRE"].ToString();
+                                string valorColumna2 = reader["TIPO"].ToString();
+
+                                this.comida = new Animal.Comida (valorColumna1, valorColumna2);
+                                veterinaria.listaComida.Add(comida);
                             }
 
                         }

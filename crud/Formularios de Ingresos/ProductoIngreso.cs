@@ -31,7 +31,6 @@ namespace CrudVeterinaria
             esActualizacion = true;
 
             this.textBox1.Text = comida.nombre?.ToString();
-            this.textBox1.Text = comida.tamaño.ToString();
 
             try
             {

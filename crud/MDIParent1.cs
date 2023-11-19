@@ -5,6 +5,7 @@ using CrudVeterinaria;
 using System.Data.SqlClient;
 using Animal;
 using System.Drawing.Text;
+using System.IO;
 
 namespace WindFormCrud
 {
@@ -33,27 +34,36 @@ namespace WindFormCrud
 
         public void actualizarCrudBaseDatos()
         {
-            updateCrudBaseDatos actualizador = new updateCrudBaseDatos();
-            actualizador.actualizarCrudBaseDatos(veterinaria);
-            ActualizarVisor();
+            Thread actualizarThread = new Thread(() =>
+            {
+                updateCrudBaseDatos actualizador = new updateCrudBaseDatos();
+                actualizador.actualizarCrudBaseDatos(veterinaria);
+                ActualizarVisor();
+            });
+
+            actualizarThread.Start();
         }
 
 
         public void eliminarElementoBaseDatos(string nombre)
         {
-            try
+            Thread eliminarThread = new Thread(() =>
             {
-                conexion.Conectar();
-                string consulta = "DELETE FROM ANIMALES WHERE NOMBRE = @NombreAEliminar";
-                SqlCommand cmd = new SqlCommand(consulta, conexion.Conectar());
-                cmd.Parameters.AddWithValue("@NombreAEliminar", nombre);
-                cmd.ExecuteNonQuery();
-                ElementoEliminadoEvent?.Invoke(nombre);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                try
+                {
+                    conexion.Conectar();
+                    string consulta = "DELETE FROM ANIMALES WHERE NOMBRE = @NombreAEliminar";
+                    SqlCommand cmd = new SqlCommand(consulta, conexion.Conectar());
+                    cmd.Parameters.AddWithValue("@NombreAEliminar", nombre);
+                    cmd.ExecuteNonQuery();
+                    ElementoEliminadoEvent?.Invoke(nombre);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            });
+            eliminarThread.Start();
         }
 
         private void MDIformularioMain_ElementoEliminadoEvent(string nombreElemento)
@@ -64,23 +74,27 @@ namespace WindFormCrud
 
         private void ActualizarVisor()
         {
-            this.listBoxMenu.Items.Clear();
-
-            foreach (Animales.Animales paciente in veterinaria.listaPacientes)
+            if (listBoxMenu.InvokeRequired)
             {
-                listBoxMenu.Items.Add(paciente.ToString());
+                // Si se está llamando desde un subproceso diferente, invocar al hilo principal.
+                listBoxMenu.Invoke(new MethodInvoker(() => ActualizarVisor()));
             }
-
-            foreach (Animal.Comida paciente in veterinaria.listaComida)
+            else
             {
-                listBoxMenu.Items.Add(paciente.ToString());
+                // Actualizar la interfaz de usuario en el hilo principal.
+                this.listBoxMenu.Items.Clear();
 
+                foreach (Animales.Animales paciente in veterinaria.listaPacientes)
+                {
+                    listBoxMenu.Items.Add(paciente.ToString());
+                }
+
+                foreach (Animal.Comida paciente in veterinaria.listaComida)
+                {
+                    listBoxMenu.Items.Add(paciente.ToString());
+                }
             }
-
         }
-
-
-
         /// <summary>
         /// Este método gestiona el cierre de un formulario de ingreso de animales, añadiendo la información ingresada a una lista.
         /// Detecta el tipo de animal ingresado y lo convierte al tipo correspondiente antes de agregarlo a la lista.
@@ -153,12 +167,10 @@ namespace WindFormCrud
                     {
                         nombreElementoAEliminar = veterinaria.listaPacientes[indice].nombre;
 
-                        // Preguntar al usuario si realmente quiere eliminar
                         DialogResult resultado = MessageBox.Show($"¿Está seguro de que desea eliminar este animal? {nombreElementoAEliminar}", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (resultado == DialogResult.Yes)
                         {
-                            // El usuario ha confirmado la eliminación
                             this.veterinaria.listaPacientes.RemoveAt(indice);
                             eliminarElementoBaseDatos(nombreElementoAEliminar);
                         }
@@ -166,7 +178,6 @@ namespace WindFormCrud
                     else
                     {
                         // Si el índice está fuera del rango de la lista de animales, 
-                        // asumimos que se trata de la lista de productos
                         int indiceProducto = indice - veterinaria.listaPacientes.Count;
 
                         if (indiceProducto < veterinaria.listaComida.Count)
@@ -178,7 +189,6 @@ namespace WindFormCrud
 
                             if (resultadoProducto == DialogResult.Yes)
                             {
-                                // El usuario ha confirmado la eliminación
                                 this.veterinaria.listaComida.RemoveAt(indiceProducto);
                                 eliminarElementoBaseDatos(nombreElementoAEliminar);
                             }
@@ -207,6 +217,45 @@ namespace WindFormCrud
                 e.Cancel = true;
             }
         }
+
+        private void guardarDatosAutomatico()
+        {
+            try
+            {
+                // Dominio de la maquina del usuario
+                string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
+                //Retrocedo de la carpeta bin
+                string rutaRelativa = Path.Combine("..", "..", "..", "Registro.JSON");
+                string filePath = Path.Combine(directorioEjecutable, rutaRelativa);
+
+                List<ObjetoSerializado> listaSerializada = new List<ObjetoSerializado>();
+
+                foreach (var paciente in veterinaria.listaPacientes)
+                {
+                    // Obtener el nombre del tipo de objeto (Perro, Gato, Conejo)
+                    string tipo = paciente.GetType().Name;
+
+                    // Crear un ObjetoSerializado con el tipo y los datos
+                    var objetoSerializado = new ObjetoSerializado
+                    {
+                        Tipo = tipo,
+                        Datos = paciente
+                    };
+
+                    listaSerializada.Add(objetoSerializado);
+                }
+
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(listaSerializada, Newtonsoft.Json.Formatting.Indented);
+
+                File.WriteAllText(filePath, json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new RegistroNoGuardado();
+            }
+        }
+
         /// <summary>
         /// Cuando el usuario decida guardar, se le permitira elegir la ruta en especifico con el explorador, guardando un archivo tipo JSON
         /// </summary>
