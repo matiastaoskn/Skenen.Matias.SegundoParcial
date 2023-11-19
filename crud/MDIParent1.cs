@@ -68,7 +68,7 @@ namespace WindFormCrud
         {
             //Guarda el formulario que se abrio en la variable
             AnimalIngresoForm ingresoAnimal = (AnimalIngresoForm)sender;
-            
+
 
             //Desoues de guardar el objeto, consulta su dialogo result.
             DialogResult dialogo = ingresoAnimal.DialogResult;
@@ -121,23 +121,43 @@ namespace WindFormCrud
                 if (this.listBoxMenu.SelectedIndex > -1)
                 {
                     int indice = this.listBoxMenu.SelectedIndex;
-                    string nombreElementoAEliminar = veterinaria.listaPacientes[indice].nombre;
+                    string nombreElementoAEliminar;
 
-
-
-                    // Preguntar al usuario si realmente quiere eliminar
-                    DialogResult resultado = MessageBox.Show($"¿Está seguro de que desea eliminar este elemento? + {nombreElementoAEliminar}", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (resultado == DialogResult.Yes)
+                    // Verificar si el índice está dentro del rango de la lista de animales
+                    if (indice < veterinaria.listaPacientes.Count)
                     {
-                        // El usuario ha confirmado la eliminación
-                        this.veterinaria.listaPacientes.RemoveAt(indice);
-                        this.ActualizarVisor();
+                        nombreElementoAEliminar = veterinaria.listaPacientes[indice].nombre;
+
+                        // Preguntar al usuario si realmente quiere eliminar
+                        DialogResult resultado = MessageBox.Show($"¿Está seguro de que desea eliminar este animal? {nombreElementoAEliminar}", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (resultado == DialogResult.Yes)
+                        {
+                            // El usuario ha confirmado la eliminación
+                            this.veterinaria.listaPacientes.RemoveAt(indice);
+                            this.ActualizarVisor();
+                        }
                     }
                     else
                     {
-                        // El usuario ha cancelado la eliminación
-                        // No es necesario hacer nada en este caso
+                        // Si el índice está fuera del rango de la lista de animales, 
+                        // asumimos que se trata de la lista de productos
+                        int indiceProducto = indice - veterinaria.listaPacientes.Count;
+
+                        if (indiceProducto < veterinaria.listaComida.Count)
+                        {
+                            nombreElementoAEliminar = veterinaria.listaComida[indiceProducto].nombre;
+
+                            // Preguntar al usuario si realmente quiere eliminar
+                            DialogResult resultadoProducto = MessageBox.Show($"¿Está seguro de que desea eliminar este producto? {nombreElementoAEliminar}", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (resultadoProducto == DialogResult.Yes)
+                            {
+                                // El usuario ha confirmado la eliminación
+                                this.veterinaria.listaComida.RemoveAt(indiceProducto);
+                                this.ActualizarVisor();
+                            }
+                        }
                     }
                 }
             }
@@ -145,7 +165,6 @@ namespace WindFormCrud
             {
                 btnEliminarMenu.Enabled = false;
             }
-
         }
         /// <summary>
         /// Cuando el usuario cierra el formulario, se guardara una copia de seguridad en una carpeta aparte
@@ -434,6 +453,36 @@ namespace WindFormCrud
                 }
             }
 
+        }
+        private void modificarProducto(object sender, EventArgs e)
+        {
+            // Verificar si hay un ítem seleccionado en el listBoxMenu
+            if (this.listBoxMenu.SelectedIndex > -1)
+            {
+                int selectedIndex = listBoxMenu.SelectedIndex;
+
+                // Verificar si el índice pertenece a la lista de comida
+                if (selectedIndex < veterinaria.listaPacientes.Count + veterinaria.listaComida.Count)
+                {
+                    // El índice pertenece a la lista de comida
+                    int comidaIndex = selectedIndex - veterinaria.listaPacientes.Count;
+                    Animal.Comida a = this.veterinaria.listaComida[comidaIndex];
+
+                    // Verificar si es comida y mostrar el formulario correspondiente
+                    if (a is Animal.Comida)
+                    {
+                        Animal.Comida p = a as Animal.Comida;
+                        ProductoIngreso form2 = new ProductoIngreso(p);
+                        form2.ShowDialog();
+
+                        if (form2.DialogResult == DialogResult.OK)
+                        {
+                            this.veterinaria.listaComida[comidaIndex] = form2.comida;
+                            this.ActualizarVisor();
+                        }
+                    }
+                }
+            }
         }
 
         //Ordenar por Tipo

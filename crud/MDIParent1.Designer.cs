@@ -39,6 +39,7 @@
             btnPerroMenuAgregar = new ToolStripMenuItem();
             btnGatoMenuAgregar = new ToolStripMenuItem();
             btnConejoMenuAgregar = new ToolStripMenuItem();
+            productosToolStripMenuItem = new ToolStripMenuItem();
             editMenu = new ToolStripMenuItem();
             toolStripSeparator6 = new ToolStripSeparator();
             toolStripSeparator7 = new ToolStripSeparator();
@@ -46,6 +47,7 @@
             btnModificarPerro = new ToolStripMenuItem();
             btnModificarGato = new ToolStripMenuItem();
             btnModificarConejo = new ToolStripMenuItem();
+            pToolStripMenuItem = new ToolStripMenuItem();
             btnEliminarMenu = new ToolStripMenuItem();
             ordenarMenu = new ToolStripMenuItem();
             edadesToolStripMenuItem = new ToolStripMenuItem();
@@ -69,7 +71,6 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            productosToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             SuspendLayout();
@@ -107,38 +108,45 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(177, 6);
+            toolStripSeparator3.Size = new Size(141, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(177, 6);
+            toolStripSeparator4.Size = new Size(141, 6);
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(177, 6);
+            toolStripSeparator5.Size = new Size(141, 6);
             // 
             // btnPerroMenuAgregar
             // 
             btnPerroMenuAgregar.Name = "btnPerroMenuAgregar";
-            btnPerroMenuAgregar.Size = new Size(180, 24);
+            btnPerroMenuAgregar.Size = new Size(144, 24);
             btnPerroMenuAgregar.Text = "Perro";
             btnPerroMenuAgregar.Click += formIngresoPerro;
             // 
             // btnGatoMenuAgregar
             // 
             btnGatoMenuAgregar.Name = "btnGatoMenuAgregar";
-            btnGatoMenuAgregar.Size = new Size(180, 24);
+            btnGatoMenuAgregar.Size = new Size(144, 24);
             btnGatoMenuAgregar.Text = "Gato";
             btnGatoMenuAgregar.Click += formIngresoGato;
             // 
             // btnConejoMenuAgregar
             // 
             btnConejoMenuAgregar.Name = "btnConejoMenuAgregar";
-            btnConejoMenuAgregar.Size = new Size(180, 24);
+            btnConejoMenuAgregar.Size = new Size(144, 24);
             btnConejoMenuAgregar.Text = "Conejo";
             btnConejoMenuAgregar.Click += formIngresoConejo;
+            // 
+            // productosToolStripMenuItem
+            // 
+            productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            productosToolStripMenuItem.Size = new Size(144, 24);
+            productosToolStripMenuItem.Text = "Productos";
+            productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
             // 
             // editMenu
             // 
@@ -150,45 +158,52 @@
             // toolStripSeparator6
             // 
             toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(139, 6);
+            toolStripSeparator6.Size = new Size(177, 6);
             // 
             // toolStripSeparator7
             // 
             toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(139, 6);
+            toolStripSeparator7.Size = new Size(177, 6);
             // 
             // modificarToolStripMenuItem
             // 
-            modificarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { btnModificarPerro, btnModificarGato, btnModificarConejo });
+            modificarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { btnModificarPerro, btnModificarGato, btnModificarConejo, pToolStripMenuItem });
             modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            modificarToolStripMenuItem.Size = new Size(142, 24);
+            modificarToolStripMenuItem.Size = new Size(180, 24);
             modificarToolStripMenuItem.Text = "Modificar";
             // 
             // btnModificarPerro
             // 
             btnModificarPerro.Name = "btnModificarPerro";
-            btnModificarPerro.Size = new Size(131, 24);
+            btnModificarPerro.Size = new Size(180, 24);
             btnModificarPerro.Text = "Perros";
             btnModificarPerro.Click += modificarPerroForm;
             // 
             // btnModificarGato
             // 
             btnModificarGato.Name = "btnModificarGato";
-            btnModificarGato.Size = new Size(131, 24);
+            btnModificarGato.Size = new Size(180, 24);
             btnModificarGato.Text = "Gatos";
             btnModificarGato.Click += modificarGatoForm;
             // 
             // btnModificarConejo
             // 
             btnModificarConejo.Name = "btnModificarConejo";
-            btnModificarConejo.Size = new Size(131, 24);
+            btnModificarConejo.Size = new Size(180, 24);
             btnModificarConejo.Text = "Conejos";
             btnModificarConejo.Click += modificarConejoForm;
+            // 
+            // pToolStripMenuItem
+            // 
+            pToolStripMenuItem.Name = "pToolStripMenuItem";
+            pToolStripMenuItem.Size = new Size(180, 24);
+            pToolStripMenuItem.Text = "Producto";
+            pToolStripMenuItem.Click += modificarProducto;
             // 
             // btnEliminarMenu
             // 
             btnEliminarMenu.Name = "btnEliminarMenu";
-            btnEliminarMenu.Size = new Size(142, 24);
+            btnEliminarMenu.Size = new Size(180, 24);
             btnEliminarMenu.Text = "Eliminar";
             btnEliminarMenu.Click += eliminarToolStripMenuItem_Click;
             // 
@@ -366,13 +381,6 @@
             label6.TabIndex = 12;
             label6.Text = "Atributo 2";
             // 
-            // productosToolStripMenuItem
-            // 
-            productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            productosToolStripMenuItem.Size = new Size(180, 24);
-            productosToolStripMenuItem.Text = "Productos";
-            productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
-            // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -445,6 +453,7 @@
         private ToolStripButton stripDateTime;
         private ToolStripButton stripUser;
         private ToolStripMenuItem productosToolStripMenuItem;
+        private ToolStripMenuItem pToolStripMenuItem;
     }
 }
 

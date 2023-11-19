@@ -101,7 +101,7 @@ namespace Animal
                                 this.animales = new Animales.Perro(valorColumna5, valorColumna6, valorColumna1, "Perro", edad, alimentacion, valorColumna3);
                                 veterinaria.listaPacientes.Add(animales);
                             }
-                            else
+                            else if (reader["TIPO"].ToString() == "Conejo")
                             {
                                 string valorColumna1 = reader["NOMBRE"].ToString();
                                 string valorColumna2 = reader["EDAD"].ToString();
