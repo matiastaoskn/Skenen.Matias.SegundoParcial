@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace CrudVeterinaria
 {
-    public interface IfechaCarga
+    public interface IOperacionesBaseDatos
     {
-        string cargarFecha();
+        public void actualizarCrudBaseDatos();
+
+        public void eliminarElementoBaseDatos(string nombre);
+
     }
 }

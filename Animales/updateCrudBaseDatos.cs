@@ -7,7 +7,7 @@ namespace Animal
     public class updateCrudBaseDatos
     {
         public Animales.Animales? animales;
-        private Veterinaria<Animales.Animales, Comida> veterinaria;
+        private Veterinaria<Animales.Animales, Comida>? veterinaria;
 
         public void actualizarCrudBaseDatos(Veterinaria<Animales.Animales, Comida> veterinaria)
         {

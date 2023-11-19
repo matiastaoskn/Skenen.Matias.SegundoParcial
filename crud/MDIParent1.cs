@@ -4,10 +4,11 @@ using Newtonsoft.Json.Converters;
 using CrudVeterinaria;
 using System.Data.SqlClient;
 using Animal;
+using System.Drawing.Text;
 
 namespace WindFormCrud
 {
-    public partial class MDIformularioMain : AnimalIngresoForm //IArchivosDatos
+    public partial class MDIformularioMain : AnimalIngresoForm, IOperacionesBaseDatos
     {
 
         private string perfil = UserNameLogin.TipoPerfil;
@@ -25,17 +26,39 @@ namespace WindFormCrud
             stripUser.Text = UserNameLogin.UserName;
 
             stripDateTime.Text = DateTime.Now.ToString();
-            conectarBaseDatos();
+            actualizarCrudBaseDatos();
+            ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
 
         }
-        /// <summary>
-        /// Recorre la lista y por cada paciente, muestra su respectivo metodo sobrecargado depende el tipo
-        /// </summary>
 
-        private void conectarBaseDatos()
+        public void actualizarCrudBaseDatos()
         {
             updateCrudBaseDatos actualizador = new updateCrudBaseDatos();
             actualizador.actualizarCrudBaseDatos(veterinaria);
+            ActualizarVisor();
+        }
+
+
+        public void eliminarElementoBaseDatos(string nombre)
+        {
+            try
+            {
+                conexion.Conectar();
+                string consulta = "DELETE FROM ANIMALES WHERE NOMBRE = @NombreAEliminar";
+                SqlCommand cmd = new SqlCommand(consulta, conexion.Conectar());
+                cmd.Parameters.AddWithValue("@NombreAEliminar", nombre);
+                cmd.ExecuteNonQuery();
+                ElementoEliminadoEvent?.Invoke(nombre);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void MDIformularioMain_ElementoEliminadoEvent(string nombreElemento)
+        {
+            // Actualiza la vista después de eliminar un elemento
             ActualizarVisor();
         }
 
@@ -108,6 +131,8 @@ namespace WindFormCrud
 
         }
 
+        public delegate void ElementoEliminadoDelegate(string nombreElemento);
+        public event ElementoEliminadoDelegate ElementoEliminadoEvent;
 
         /// <summary>
         /// Permite al usuario eliminar el elemento seleccionado
@@ -135,7 +160,7 @@ namespace WindFormCrud
                         {
                             // El usuario ha confirmado la eliminación
                             this.veterinaria.listaPacientes.RemoveAt(indice);
-                            this.ActualizarVisor();
+                            eliminarElementoBaseDatos(nombreElementoAEliminar);
                         }
                     }
                     else
@@ -155,7 +180,7 @@ namespace WindFormCrud
                             {
                                 // El usuario ha confirmado la eliminación
                                 this.veterinaria.listaComida.RemoveAt(indiceProducto);
-                                this.ActualizarVisor();
+                                eliminarElementoBaseDatos(nombreElementoAEliminar);
                             }
                         }
                     }
@@ -166,6 +191,9 @@ namespace WindFormCrud
                 btnEliminarMenu.Enabled = false;
             }
         }
+
+        
+
         /// <summary>
         /// Cuando el usuario cierra el formulario, se guardara una copia de seguridad en una carpeta aparte
         /// </summary>

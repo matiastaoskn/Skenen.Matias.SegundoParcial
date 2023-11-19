@@ -7,7 +7,7 @@ namespace Animales
     {
         public string? tamaño;
         public string? entrenamiento;
-        public string tipoDeAnimal;
+        public string? tipoDeAnimal;
 
         public Perro()
         {

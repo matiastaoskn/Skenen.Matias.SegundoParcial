@@ -1,8 +1,9 @@
-﻿using System.Text;
+﻿using Animal;
+using System.Text;
 
 namespace Animales
 {
-    public class Conejo : Animales
+    public class Conejo : Animales, IfechaCarga
     {
         public string? comportamiento;
         public string? habitad;
@@ -23,8 +24,12 @@ namespace Animales
         }
         public override string ToString()
         {
-            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.comportamiento}-{this.habitad}-Conejo";
+            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.comportamiento}-{this.habitad}-Conejo | {cargarFecha()}";
         }
-
+        public string cargarFecha()
+        {
+            string fecha = DateTime.Now.ToString("dd/MM");
+            return fecha;
+        }
     }
 }
