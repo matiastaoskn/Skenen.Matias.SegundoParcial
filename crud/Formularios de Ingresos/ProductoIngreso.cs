@@ -110,7 +110,7 @@ namespace CrudVeterinaria
         {
           
             this.DialogResult = DialogResult.OK;
-
+            agregarRegistro();
             this.Close();
         }
     }

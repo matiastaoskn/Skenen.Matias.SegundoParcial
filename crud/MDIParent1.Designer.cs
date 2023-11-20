@@ -109,45 +109,45 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(141, 6);
+            toolStripSeparator3.Size = new Size(177, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(141, 6);
+            toolStripSeparator4.Size = new Size(177, 6);
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(141, 6);
+            toolStripSeparator5.Size = new Size(177, 6);
             // 
             // btnPerroMenuAgregar
             // 
             btnPerroMenuAgregar.Name = "btnPerroMenuAgregar";
-            btnPerroMenuAgregar.Size = new Size(144, 24);
+            btnPerroMenuAgregar.Size = new Size(180, 24);
             btnPerroMenuAgregar.Text = "Perro";
             btnPerroMenuAgregar.Click += formIngresoPerro;
             // 
             // btnGatoMenuAgregar
             // 
             btnGatoMenuAgregar.Name = "btnGatoMenuAgregar";
-            btnGatoMenuAgregar.Size = new Size(144, 24);
+            btnGatoMenuAgregar.Size = new Size(180, 24);
             btnGatoMenuAgregar.Text = "Gato";
             btnGatoMenuAgregar.Click += formIngresoGato;
             // 
             // btnConejoMenuAgregar
             // 
             btnConejoMenuAgregar.Name = "btnConejoMenuAgregar";
-            btnConejoMenuAgregar.Size = new Size(144, 24);
+            btnConejoMenuAgregar.Size = new Size(180, 24);
             btnConejoMenuAgregar.Text = "Conejo";
             btnConejoMenuAgregar.Click += formIngresoConejo;
             // 
             // productosToolStripMenuItem
             // 
             productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            productosToolStripMenuItem.Size = new Size(144, 24);
+            productosToolStripMenuItem.Size = new Size(180, 24);
             productosToolStripMenuItem.Text = "Productos";
-            productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
+            productosToolStripMenuItem.Click += formIngresoProducto;
             // 
             // editMenu
             // 
@@ -227,14 +227,14 @@
             btnEdadesMayoraMenor.Name = "btnEdadesMayoraMenor";
             btnEdadesMayoraMenor.Size = new Size(179, 24);
             btnEdadesMayoraMenor.Text = "Mayor a menor";
-            btnEdadesMayoraMenor.Click += mayorAMenorToolStripMenuItem_Click;
+            btnEdadesMayoraMenor.Click += mayorAmenorOrdenarElementos;
             // 
             // btnEdadesMenoraMayor
             // 
             btnEdadesMenoraMayor.Name = "btnEdadesMenoraMayor";
             btnEdadesMenoraMayor.Size = new Size(179, 24);
             btnEdadesMenoraMayor.Text = "Menor a mayor";
-            btnEdadesMenoraMayor.Click += menorAMayorToolStripMenuItem_Click;
+            btnEdadesMenoraMayor.Click += menorAmayorOrdenarElementos;
             // 
             // animalesToolStripMenuItem
             // 
@@ -248,21 +248,21 @@
             btnOrdenarPerro.Name = "btnOrdenarPerro";
             btnOrdenarPerro.Size = new Size(131, 24);
             btnOrdenarPerro.Text = "Perros";
-            btnOrdenarPerro.Click += perrosToolStripMenuItem_Click;
+            btnOrdenarPerro.Click += filtroTipoPerro;
             // 
             // btnOrdenarGato
             // 
             btnOrdenarGato.Name = "btnOrdenarGato";
             btnOrdenarGato.Size = new Size(131, 24);
             btnOrdenarGato.Text = "Gatos";
-            btnOrdenarGato.Click += gatosToolStripMenuItem_Click;
+            btnOrdenarGato.Click += filtroTipoGato;
             // 
             // btnOrdenarConejo
             // 
             btnOrdenarConejo.Name = "btnOrdenarConejo";
             btnOrdenarConejo.Size = new Size(131, 24);
             btnOrdenarConejo.Text = "Conejos";
-            btnOrdenarConejo.Click += conejosToolStripMenuItem1_Click;
+            btnOrdenarConejo.Click += filtroTipoConejo;
             // 
             // toolStrip
             // 
