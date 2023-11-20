@@ -1,5 +1,7 @@
+using System.IO;
 namespace TestProject1
 {
+    
     [TestClass]
     public class UnitTest1
     {
@@ -19,6 +21,22 @@ namespace TestProject1
                 // Assert
                 Assert.IsTrue(File.Exists(filePath));
             }
+        }
+        public void CrearRegistro_DeberiaInsertarCorrectamente()
+        {
+            /*
+            // Arrange: Configura el escenario de prueba
+            
+            Anima instanciaMiClase = new MiClase();
+            DatosRegistro datosRegistro = new DatosRegistro { Campo1 = "valor1", Campo2 = "valor2" };
+
+            // Act: Llama a la función que deseas probar
+            bool resultado = instanciaMiClase.CrearRegistro(datosRegistro);
+
+            // Assert: Verifica el resultado
+            Assert.IsTrue(resultado);  // Puedes personalizar según lo que devuelve tu función
+                                       // Además, puedes realizar consultas a la base de datos de prueba para asegurarte de que se insertó correctamente el registro
+            */
         }
     }
 }
