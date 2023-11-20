@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "Tipo": "Conejo",
+    "Datos": {
+      "nombre": "12",
+      "edad": 12,
+      "raza": "carnivoro",
+      "alimentacion": 0,
+      "Comportamiento": "bueno",
+      "Habitad": "grande",
+      "TipoDeAnimal": "Conejo"
+    }
+  }
+]

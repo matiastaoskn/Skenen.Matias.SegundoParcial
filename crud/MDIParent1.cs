@@ -599,6 +599,7 @@ namespace WindFormCrud
             });
 
             actualizarThread.Start();
+            
             ActualizacionBaseDatosCompletaEvent?.Invoke();
         }
         public void eliminarElementoBaseDatos(string nombre)

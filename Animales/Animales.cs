@@ -10,32 +10,30 @@ namespace Animales
         public string? raza;
         public Alimentacion alimentacion;
 
-        public string TipoDeAnimal;
+        public string TipoDeAnimal { get; }
 
         public Animales()
         {
 
         }
+
         public Animales(string? nombre, string tipoDeAnimal)
         {
             this.nombre = nombre;
             TipoDeAnimal = tipoDeAnimal;
         }
+
         public Animales(string? nombre, string tipoDeAnimal, int edad, string raza) : this(nombre, tipoDeAnimal)
         {
             this.edad = edad;
             this.raza = raza;
-            this.nombre = nombre;
-            TipoDeAnimal = tipoDeAnimal;
         }
+
         public Animales(string? nombre, string tipoDeAnimal, int edad, Alimentacion alimentacion, string raza) : this(nombre, tipoDeAnimal, edad, raza)
         {
             this.alimentacion = alimentacion;
-            this.nombre = nombre;
-            TipoDeAnimal = tipoDeAnimal;
-            this.edad = edad;
-            this.raza = raza;
         }
+
 
         public override string ToString()
         {
@@ -45,21 +43,22 @@ namespace Animales
         }
         public override bool Equals(object? obj)
         {
-            bool retorno = false;
-            if (obj is Animales)
+            if (obj == null)
             {
-                retorno = this == (Animales)obj;
+                return false;
             }
-            return retorno;
+
+            if (obj is Animales otherAnimal)
+            {
+                return this == otherAnimal;
+            }
+
+            return false;
         }
 
         public static bool operator ==(Animales a1, Animales a2)
         {
-            if (a1.nombre == a2.nombre && a1.edad == a2.edad)
-            {
-                return false;
-            }
-            return true;
+            return a1.nombre == a2.nombre && a1.edad == a2.edad;
         }
 
         public static bool operator !=(Animales a1, Animales a2)

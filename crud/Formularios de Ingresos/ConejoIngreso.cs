@@ -22,8 +22,8 @@ namespace WindFormCrud.Ingresos
             this.textBox2.Text = animales.edad.ToString();
             this.comboBox1.Text = animales.alimentacion.ToString();
             this.textBox4.Text = animales.raza?.ToString();
-            this.textBox5.Text = conejo.comportamiento;
-            this.textBox6.Text = conejo.habitad;
+            this.textBox5.Text = conejo.Comportamiento;
+            this.textBox6.Text = conejo.Habitad;
 
             try
             {
@@ -117,8 +117,7 @@ namespace WindFormCrud.Ingresos
             }
 
 
-
-            this.animales = new Animales.Conejo(habitad, comportamiento, nombre, tipoDeAnimal, edad, alimentacion, raza);
+            this.animales = new Animales.Conejo(habitad, comportamiento, nombre, edad, alimentacion, raza);
 
             if (esActualizacion == false)
             {
@@ -163,7 +162,7 @@ namespace WindFormCrud.Ingresos
                     using (SqlCommand cmd = new SqlCommand(actualizar, conexion.Conectar()))
                     {
                         cmd.Parameters.AddWithValue("@ID", id); // Usar el nombre original en la condición WHERE
-                        cmd.Parameters.AddWithValue("@NOMBRE", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
                         cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
                         cmd.Parameters.AddWithValue("@RAZA", comboBox1.Text);
                         cmd.Parameters.AddWithValue("@ALIMENTACION", textBox4.Text);
