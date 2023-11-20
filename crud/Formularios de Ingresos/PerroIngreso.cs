@@ -23,8 +23,8 @@ namespace WindFormCrud
             this.textBox2.Text = animales.edad.ToString();
             this.comboBox1.Text = animales.alimentacion.ToString();
             this.textBox4.Text = animales.raza?.ToString();
-            this.comboBox2.Text = perros.entrenamiento;
-            this.textBox6.Text = perros.tamaño;
+            this.comboBox2.Text = perros.Entrenamiento;
+            this.textBox6.Text = perros.Tamaño;
 
             try
             {
@@ -120,7 +120,7 @@ namespace WindFormCrud
                 return;
             }
 
-            this.animales = new Animales.Perro(tamaño, entrenamiento, nombre, tipoDeAnimal, edad, alimentacion, raza);
+            this.animales = new Animales.Perro(tamaño, entrenamiento, nombre, edad, alimentacion, raza);
             conexion.Conectar();
 
             if (esActualizacion == false)

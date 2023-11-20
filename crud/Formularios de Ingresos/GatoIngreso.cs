@@ -22,8 +22,8 @@ namespace WindFormCrud
             this.textBox2.Text = animales.edad.ToString();
             this.textBox4.Text = animales.raza?.ToString();
             this.comboBox1.Text = animales.alimentacion.ToString();
-            this.textBox5.Text = gato.vidas.ToString();
-            this.textBox6.Text = gato.peso.ToString();
+            this.textBox5.Text = gato.Vidas.ToString();
+            this.textBox6.Text = gato.Peso.ToString();
 
             try
             {
@@ -122,7 +122,7 @@ namespace WindFormCrud
 
 
 
-            this.animales = new Animales.Gato(peso, vidas, nombre, TipoAnimal, edad, alimentacion, raza);
+            this.animales = new Animales.Gato(peso, vidas, nombre, edad, alimentacion, raza);
 
             if (esActualizacion == false)
             {
