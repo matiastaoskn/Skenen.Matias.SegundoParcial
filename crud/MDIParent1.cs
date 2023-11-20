@@ -550,7 +550,7 @@ namespace WindFormCrud
             foreach (Animales.Animales paciente in pacientesOrdenados)
             {
                 // Agrega el paciente ordenado a la lista.
-                this.listBoxMenu.Items.Add($"{paciente.nombre} - Edad: {paciente.edad}");
+                this.listBoxMenu.Items.Add($"{paciente.nombre} - Edad: {paciente.edad} - Raza: {paciente.raza} - Alimentacion: {paciente.alimentacion} - Tipo: {paciente.TipoDeAnimal} ");
             }
         }
         /// <summary>
@@ -569,7 +569,7 @@ namespace WindFormCrud
             foreach (Animales.Animales paciente in pacientesOrdenados)
             {
                 // Agrega el paciente ordenado a la lista.
-                this.listBoxMenu.Items.Add($"{paciente.nombre} - Edad: {paciente.edad}");
+                this.listBoxMenu.Items.Add($"{paciente.nombre} - Edad: {paciente.edad} - Raza: {paciente.raza} - Alimentacion: {paciente.alimentacion} - Tipo: {paciente.TipoDeAnimal} ");
             }
         }
         private void validarUsuario()
@@ -580,11 +580,12 @@ namespace WindFormCrud
 
                     break;
                 case "supervisor":
-                    modificarToolStripMenuItem.Enabled = false;
+                    btnEliminarMenu.Enabled = false;
                     break;
                 case "vendedor":
                     btnEliminarMenu.Enabled = false;
                     modificarToolStripMenuItem.Enabled = false;
+                    agregarBoton.Enabled = false;
                     break;
 
             }
@@ -599,7 +600,7 @@ namespace WindFormCrud
             });
 
             actualizarThread.Start();
-            
+
             ActualizacionBaseDatosCompletaEvent?.Invoke();
         }
         public void eliminarElementoBaseDatos(string nombre)

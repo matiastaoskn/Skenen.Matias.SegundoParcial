@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIformularioMain));
             menuStrip = new MenuStrip();
             btnAbrirMenu = new ToolStripMenuItem();
-            fileMenu = new ToolStripMenuItem();
+            agregarBoton = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripSeparator4 = new ToolStripSeparator();
             toolStripSeparator5 = new ToolStripSeparator();
@@ -80,7 +80,7 @@
             // 
             menuStrip.BackColor = Color.CornflowerBlue;
             menuStrip.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { btnAbrirMenu, fileMenu, editMenu, ordenarMenu });
+            menuStrip.Items.AddRange(new ToolStripItem[] { btnAbrirMenu, agregarBoton, editMenu, ordenarMenu });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(7, 2, 0, 2);
@@ -97,14 +97,14 @@
             btnAbrirMenu.Text = "Abrir";
             btnAbrirMenu.Click += abrirToolStripMenuItem_Click;
             // 
-            // fileMenu
+            // agregarBoton
             // 
-            fileMenu.BackColor = Color.CornflowerBlue;
-            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, toolStripSeparator5, btnPerroMenuAgregar, btnGatoMenuAgregar, btnConejoMenuAgregar, productosToolStripMenuItem });
-            fileMenu.ImageTransparentColor = SystemColors.ActiveBorder;
-            fileMenu.Name = "fileMenu";
-            fileMenu.Size = new Size(75, 24);
-            fileMenu.Text = "&Agregar";
+            agregarBoton.BackColor = Color.CornflowerBlue;
+            agregarBoton.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, toolStripSeparator5, btnPerroMenuAgregar, btnGatoMenuAgregar, btnConejoMenuAgregar, productosToolStripMenuItem });
+            agregarBoton.ImageTransparentColor = SystemColors.ActiveBorder;
+            agregarBoton.Name = "agregarBoton";
+            agregarBoton.Size = new Size(75, 24);
+            agregarBoton.Text = "&Agregar";
             // 
             // toolStripSeparator3
             // 
@@ -429,7 +429,7 @@
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripSeparator toolStripSeparator7;
-        private ToolStripMenuItem fileMenu;
+        private ToolStripMenuItem agregarBoton;
         private ToolStripMenuItem editMenu;
         private ToolStripMenuItem ordenarMenu;
         private ToolTip toolTip;
