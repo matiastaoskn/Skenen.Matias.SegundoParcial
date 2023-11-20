@@ -533,6 +533,11 @@ namespace WindFormCrud
             }
 
         }
+        private void normalizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarVisor();
+        }
+
         //Ordenar elementos
         /// <summary>
         /// Ordena la lista de pacientes de la veterinaria de mayor a menor edad.
@@ -661,6 +666,8 @@ namespace WindFormCrud
                 throw new RegistroNoGuardado();
             }
         }
+
+
     }
 
 }

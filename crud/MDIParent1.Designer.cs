@@ -72,6 +72,7 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            normalizarToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             SuspendLayout();
@@ -210,7 +211,7 @@
             // 
             // ordenarMenu
             // 
-            ordenarMenu.DropDownItems.AddRange(new ToolStripItem[] { edadesToolStripMenuItem, animalesToolStripMenuItem });
+            ordenarMenu.DropDownItems.AddRange(new ToolStripItem[] { edadesToolStripMenuItem, animalesToolStripMenuItem, normalizarToolStripMenuItem });
             ordenarMenu.Name = "ordenarMenu";
             ordenarMenu.Size = new Size(75, 24);
             ordenarMenu.Text = "&Ordenar";
@@ -219,7 +220,7 @@
             // 
             edadesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { btnEdadesMayoraMenor, btnEdadesMenoraMayor });
             edadesToolStripMenuItem.Name = "edadesToolStripMenuItem";
-            edadesToolStripMenuItem.Size = new Size(139, 24);
+            edadesToolStripMenuItem.Size = new Size(180, 24);
             edadesToolStripMenuItem.Text = "Edades";
             // 
             // btnEdadesMayoraMenor
@@ -240,7 +241,7 @@
             // 
             animalesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { btnOrdenarPerro, btnOrdenarGato, btnOrdenarConejo });
             animalesToolStripMenuItem.Name = "animalesToolStripMenuItem";
-            animalesToolStripMenuItem.Size = new Size(139, 24);
+            animalesToolStripMenuItem.Size = new Size(180, 24);
             animalesToolStripMenuItem.Text = "Animales";
             // 
             // btnOrdenarPerro
@@ -388,6 +389,13 @@
             label6.TabIndex = 12;
             label6.Text = "Atributo 2";
             // 
+            // normalizarToolStripMenuItem
+            // 
+            normalizarToolStripMenuItem.Name = "normalizarToolStripMenuItem";
+            normalizarToolStripMenuItem.Size = new Size(180, 24);
+            normalizarToolStripMenuItem.Text = "Normalizar";
+            normalizarToolStripMenuItem.Click += normalizarToolStripMenuItem_Click;
+            // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -462,6 +470,7 @@
         private ToolStripMenuItem productosToolStripMenuItem;
         private ToolStripMenuItem pToolStripMenuItem;
         private ToolStripLabel toolStripLabel1;
+        private ToolStripMenuItem normalizarToolStripMenuItem;
     }
 }
 

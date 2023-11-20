@@ -54,3 +54,4 @@ Usuario: Michael - Fecha y hora de inicio de sesión: 20/11/2023 02:03:45 p. m.
 Usuario: Michael - Fecha y hora de inicio de sesión: 20/11/2023 02:04:09 p. m.
 Usuario: Tilda - Fecha y hora de inicio de sesión: 20/11/2023 02:16:33 p. m.
 Usuario: Steve - Fecha y hora de inicio de sesión: 20/11/2023 02:18:52 p. m.
+Usuario: Michael - Fecha y hora de inicio de sesión: 20/11/2023 02:22:56 p. m.

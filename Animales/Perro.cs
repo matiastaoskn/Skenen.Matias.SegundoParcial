@@ -29,7 +29,7 @@ namespace Animales
 
         public override string ToString()
         {
-            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.tamaño}-{this.entrenamiento}-Perro | {cargarFecha()}";
+            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.tamaño}-{this.entrenamiento}Perro | {cargarFecha()}";
         }
 
         public string cargarFecha()
