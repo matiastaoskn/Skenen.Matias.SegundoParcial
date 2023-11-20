@@ -49,10 +49,11 @@ namespace Prueba
         public void Veterinaria_AgregarAnimales()
         {
             Veterinaria<Animales.Animales, Comida> veterinaria = new Veterinaria<Animales.Animales, Comida>();
-            Animales.Animales perro = new Perro("Poco", "Dog", "Perro", 13, Alimentacion.carnivoro, "PitBull"); // Puedes ajustar los valores según tu implementación
+            Perro perro = new Perro("Poco", "Dog", "Perro", 13, Alimentacion.carnivoro, "PitBull");
             veterinaria.listaPacientes.Add(perro);
+
             // Asegúrate de que el perro se haya agregado correctamente a la lista
-            Assert.IsTrue(veterinaria.listaPacientes.Contains(perro));
+            CollectionAssert.Contains(veterinaria.listaPacientes, perro);
         }
 
         [TestMethod]
