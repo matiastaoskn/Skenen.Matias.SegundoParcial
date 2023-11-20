@@ -38,7 +38,6 @@ namespace WindFormCrud
             ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
 
         }
-
         private void MDIformularioMain_ElementoEliminadoEvent(string nombreElemento)
         {
             // Actualiza la vista después de eliminar un elemento
@@ -537,7 +536,6 @@ namespace WindFormCrud
         {
             ActualizarVisor();
         }
-
         //Ordenar elementos
         /// <summary>
         /// Ordena la lista de pacientes de la veterinaria de mayor a menor edad.
