@@ -44,7 +44,7 @@ namespace WindFormCrud.Ingresos
         /// <summary>
         /// Este metodo valida los datos ingresados por el usuario para no generar error de tipo null
         /// </summary>
-        private void validarInputs()
+        public void validarInputs()
         {
             try
             {

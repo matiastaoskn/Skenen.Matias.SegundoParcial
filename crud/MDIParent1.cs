@@ -220,7 +220,7 @@ namespace WindFormCrud
             }
         }
 
-        private async Task guardarDatosAutomaticoAsync()
+        public async Task guardarDatosAutomaticoAsync()
         {
             try
             {

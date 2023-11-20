@@ -26,7 +26,7 @@ namespace CrudVeterinaria
         }
 
         //Chekear esto
-        public ProductoIngreso(Animal.Comida comida) : this()
+        public ProductoIngreso(Comida comida) : this()
         {
             esActualizacion = true;
 
@@ -50,10 +50,9 @@ namespace CrudVeterinaria
 
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        public void agregarRegistro()
         {
-            this.comida = new Comida(textBox1.Text, textBox1.Text);
+            this.comida = new Comida(textBox1.Text, "grande");
             if (esActualizacion == false)
             {
                 try
@@ -84,7 +83,7 @@ namespace CrudVeterinaria
                 {
                     MessageBox.Show($"Error SQL: {ex.Message}");
                 }
-                
+
             }
             else
             {
@@ -105,11 +104,11 @@ namespace CrudVeterinaria
                     MessageBox.Show("Error al actualizar datos: " + ex.Message);
                 }
             }
-            
+        }
 
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+          
             this.DialogResult = DialogResult.OK;
 
             this.Close();

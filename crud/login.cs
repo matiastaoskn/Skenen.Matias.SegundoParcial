@@ -83,7 +83,7 @@ namespace WindFormCrud
                         if (textUser.Text == persona.correo && textPass.Text == persona.clave && comboBox1.Text == persona.perfil)
                         {
                             UserNameLogin.setTipoPerfil(comboBox1.Text);
-                            UserNameLogin.setUserName(textUser.Text);
+                            UserNameLogin.setUserName(persona.nombre);
 
                             agregarRegistroTxt(persona.nombre);
                             this.DialogResult = DialogResult.OK;
