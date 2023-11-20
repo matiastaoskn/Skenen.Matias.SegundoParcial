@@ -35,5 +35,16 @@ namespace Animales
             string fecha = DateTime.Now.ToString("dd/MM");
             return fecha;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            Conejo conejoingreso = (Conejo)obj;
+            return base.Equals(obj) &&
+                   Comportamiento == conejoingreso.Comportamiento &&
+                   Habitad == conejoingreso.Habitad;
+        }
     }
 }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Animal
 {
-    public class Comida
+    public class Producto
     {
         public string nombre;
         public string tamaño;
-        public Comida()
+        public Producto()
         {
 
         }
-        public Comida(string? nombre, string tamaño)
+        public Producto(string? nombre, string tamaño)
         {
             this.nombre = nombre;
             this.tamaño = tamaño;
@@ -26,16 +26,17 @@ namespace Animal
             sb.AppendLine($"Nombre: {this.nombre} tamaño: {this.tamaño}");
             return sb.ToString();
         }
-        /*
-        public override bool Equals(object? obj)
+
+        public override bool Equals(object obj)
         {
-            bool retorno = false;
-            if (obj is Animales)
+            if (obj == null || GetType() != obj.GetType())
             {
-                retorno = this == (Animales)obj;
+                // No son iguales
+                return false;
             }
-            return retorno;
+            Producto productoIngreso = (Producto)obj;
+            return string.Equals(nombre, productoIngreso.nombre) &&
+                   string.Equals(tamaño, productoIngreso.tamaño);
         }
-        */
     }
 }

@@ -39,5 +39,20 @@ namespace Animales
             return fecha;
         }
 
+        public override bool Equals(object obj)
+        {
+            // Comprobar si el objeto proporcionado es nulo o no es del mismo tipo
+            if (obj == null || GetType() != obj.GetType())
+            {
+                // No son iguales
+                return false;
+            }
+
+            Perro perroingreso = (Perro)obj;
+
+            return base.Equals(obj) &&
+                   object.Equals(Tamaño, perroingreso.Tamaño) &&
+                   object.Equals(Entrenamiento, perroingreso.Entrenamiento);
+        }
     }
 }

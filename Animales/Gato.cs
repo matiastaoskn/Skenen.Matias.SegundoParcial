@@ -38,5 +38,19 @@ namespace Animales
             string fecha = DateTime.Now.ToString("dd/MM");
             return fecha;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                // No son iguales
+                return false;
+            }
+            Gato gatoingreso = (Gato)obj;
+
+            return base.Equals(obj) &&
+                   object.Equals(Vidas, gatoingreso.Vidas) &&
+                   object.Equals(Peso, gatoingreso.Peso);
+        }
     }
 }

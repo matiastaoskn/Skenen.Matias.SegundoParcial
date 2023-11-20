@@ -13,7 +13,7 @@ namespace WindFormCrud
     {
 
         private string perfil = UserNameLogin.TipoPerfil;
-        private Veterinaria<Animales.Animales, Comida> veterinaria;
+        private Veterinaria<Animales.Animales, Producto> veterinaria;
 
         public delegate void ElementoEliminadoDelegate(string nombreElemento);
         public event ElementoEliminadoDelegate ElementoEliminadoEvent;
@@ -30,7 +30,7 @@ namespace WindFormCrud
         {
             InitializeComponent();
             validarUsuario();
-            veterinaria = new Veterinaria<Animales.Animales, Comida>();
+            veterinaria = new Veterinaria<Animales.Animales, Producto>();
             stripUser.Text = UserNameLogin.UserName;
 
             stripDateTime.Text = DateTime.Now.ToString();
@@ -61,7 +61,7 @@ namespace WindFormCrud
                     listBoxMenu.Items.Add(paciente.ToString());
                 }
 
-                foreach (Animal.Comida paciente in veterinaria.listaComida)
+                foreach (Animal.Producto paciente in veterinaria.listaComida)
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
                 }
@@ -462,12 +462,12 @@ namespace WindFormCrud
                 {
                     // El índice pertenece a la lista de comida
                     int comidaIndex = selectedIndex - veterinaria.listaPacientes.Count;
-                    Animal.Comida a = this.veterinaria.listaComida[comidaIndex];
+                    Animal.Producto a = this.veterinaria.listaComida[comidaIndex];
 
                     // Verificar si es comida y mostrar el formulario correspondiente
-                    if (a is Animal.Comida)
+                    if (a is Animal.Producto)
                     {
-                        Animal.Comida p = a as Animal.Comida;
+                        Animal.Producto p = a as Animal.Producto;
                         ProductoIngreso form2 = new ProductoIngreso(p);
                         form2.ShowDialog();
 

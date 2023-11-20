@@ -6,10 +6,10 @@ namespace Animal
     public class updateCrudBaseDatos
     {
         public Animales.Animales? animales;
-        public Comida comida;
-        private Veterinaria<Animales.Animales, Comida>? veterinaria;
+        public Producto comida;
+        private Veterinaria<Animales.Animales, Producto>? veterinaria;
 
-        public void actualizarCrudBaseDatos(Veterinaria<Animales.Animales, Comida> veterinaria)
+        public void actualizarCrudBaseDatos(Veterinaria<Animales.Animales, Producto> veterinaria)
         {
             try
             {
@@ -129,7 +129,7 @@ namespace Animal
                                 string valorColumna1 = reader["NOMBRE"].ToString();
                                 string valorColumna2 = reader["TIPO"].ToString();
 
-                                this.comida = new Animal.Comida(valorColumna1, valorColumna2);
+                                this.comida = new Animal.Producto(valorColumna1, valorColumna2);
                                 veterinaria.listaComida.Add(comida);
                             }
 

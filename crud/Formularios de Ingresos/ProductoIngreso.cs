@@ -16,7 +16,7 @@ namespace CrudVeterinaria
 {
     public partial class ProductoIngreso : AnimalIngresoForm
     {
-        public Animal.Comida? comida;
+        public Animal.Producto? comida;
         bool esActualizacion = false;
         int id;
         public ProductoIngreso()
@@ -26,7 +26,7 @@ namespace CrudVeterinaria
         }
 
         //Chekear esto
-        public ProductoIngreso(Comida comida) : this()
+        public ProductoIngreso(Producto comida) : this()
         {
             esActualizacion = true;
 
@@ -46,13 +46,13 @@ namespace CrudVeterinaria
             {
                 MessageBox.Show(e.Message);
             }
-            
+
 
         }
 
         public void agregarRegistro()
         {
-            this.comida = new Comida(textBox1.Text, "grande");
+            this.comida = new Producto(textBox1.Text, "grande");
             if (esActualizacion == false)
             {
                 try
@@ -61,6 +61,7 @@ namespace CrudVeterinaria
                     SqlCommand cmd = new SqlCommand(insertar, conexion.Conectar());
                     cmd.Parameters.AddWithValue("@TIPO", "Producto");
                     cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@TAMAÑO", textBox2.Text);
 
                     cmd.Parameters.AddWithValue("@EDAD", DBNull.Value);
                     cmd.Parameters.AddWithValue("@RAZA", DBNull.Value);
@@ -69,7 +70,6 @@ namespace CrudVeterinaria
                     cmd.Parameters.AddWithValue("@COMPORTAMIENTO", DBNull.Value);
                     cmd.Parameters.AddWithValue("@VIDAS", DBNull.Value);
                     cmd.Parameters.AddWithValue("@PESO", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@TAMAÑO", DBNull.Value);
                     cmd.Parameters.AddWithValue("@ENTRENAMIENTO", DBNull.Value);
 
 
@@ -90,12 +90,13 @@ namespace CrudVeterinaria
                 try
                 {
                     conexion.Conectar();  // Asumiendo que Conectar() abre la conexión
-                    string actualizar = "UPDATE ANIMALES SET NOMBRE=@NOMBRE WHERE ID=@ID";
+                    string actualizar = "UPDATE ANIMALES SET NOMBRE=@NOMBRE, TAMAÑO=@TAMAÑO WHERE ID=@ID";
 
                     using (SqlCommand cmd = new SqlCommand(actualizar, conexion.Conectar()))
                     {
                         cmd.Parameters.AddWithValue("@ID", id); // Usar el nombre original en la condición WHERE
                         cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
+                        cmd.Parameters.AddWithValue("@TAMAÑO", textBox2.Text);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -108,10 +109,11 @@ namespace CrudVeterinaria
 
         private void button1_Click(object sender, EventArgs e)
         {
-          
+
             this.DialogResult = DialogResult.OK;
             agregarRegistro();
             this.Close();
         }
+
     }
 }

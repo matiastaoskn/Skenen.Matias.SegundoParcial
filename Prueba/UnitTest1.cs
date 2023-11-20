@@ -40,7 +40,7 @@ namespace Prueba
 
         public void Veterinaria_InicializacionCorrecta()
         {
-            Veterinaria<Animales.Animales, Comida> veterinaria = new Veterinaria<Animales.Animales, Comida>();
+            Veterinaria<Animales.Animales, Producto> veterinaria = new Veterinaria<Animales.Animales, Producto>();
             // Asegúrate de que la veterinaria se haya inicializado correctamente
             Assert.IsNotNull(veterinaria);
         }
@@ -48,7 +48,7 @@ namespace Prueba
         [TestMethod]
         public void Veterinaria_AgregarAnimales()
         {
-            Veterinaria<Animales.Animales, Comida> veterinaria = new Veterinaria<Animales.Animales, Comida>();
+            Veterinaria<Animales.Animales, Producto> veterinaria = new Veterinaria<Animales.Animales, Producto>();
             Perro perro = new Perro("Poco", "Dog", "Perro", 13, Alimentacion.carnivoro, "PitBull");
             veterinaria.listaPacientes.Add(perro);
 
@@ -59,8 +59,8 @@ namespace Prueba
         [TestMethod]
         public void Veterinaria_AgregarComida()
         {
-            Veterinaria<Animales.Animales, Comida> veterinaria = new Veterinaria<Animales.Animales, Comida>();
-            Comida comida = new Comida("Croquetas", "Grande"); // Puedes ajustar los valores según tu implementación
+            Veterinaria<Animales.Animales, Producto> veterinaria = new Veterinaria<Animales.Animales, Producto>();
+            Producto comida = new Producto("Croquetas", "Grande"); // Puedes ajustar los valores según tu implementación
             veterinaria.listaComida.Add(comida);
             // Asegúrate de que la comida se haya agregado correctamente a la lista
             Assert.IsTrue(veterinaria.listaComida.Contains(comida));
@@ -69,7 +69,7 @@ namespace Prueba
         [TestMethod]
         public void Veterinaria_EliminarElemento()
         {
-            Veterinaria<Animales.Animales, Comida> veterinaria = new Veterinaria<Animales.Animales, Comida>();
+            Veterinaria<Animales.Animales, Producto> veterinaria = new Veterinaria<Animales.Animales, Producto>();
             Animales.Animales perro = new Perro("Poco", "Dog", "Perro", 13, Alimentacion.carnivoro, "PitBull"); // Puedes ajustar los valores según tu implementación
             veterinaria.listaPacientes.Add(perro);
 
