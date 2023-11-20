@@ -80,13 +80,21 @@ namespace WindFormCrud
                 {
                     foreach (var persona in personas)
                     {
-                        if (textUser.Text == persona.correo && textPass.Text == persona.clave && comboBox1.Text == persona.perfil)
+                        if (textUser.Text == persona.correo && textPass.Text == persona.clave)
                         {
-                            UserNameLogin.setTipoPerfil(comboBox1.Text);
-                            UserNameLogin.setUserName(persona.nombre);
+                            if(comboBox1.Text == persona.perfil)
+                            {
+                                UserNameLogin.setTipoPerfil(comboBox1.Text);
+                                UserNameLogin.setUserName(persona.nombre);
 
-                            agregarRegistroTxt(persona.nombre);
-                            this.DialogResult = DialogResult.OK;
+                                agregarRegistroTxt(persona.nombre);
+                                this.DialogResult = DialogResult.OK;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Seleccione correctamente su perfil");
+                            }
+ 
                         }
                     }
 

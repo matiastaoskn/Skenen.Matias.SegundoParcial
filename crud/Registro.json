@@ -2,13 +2,37 @@
   {
     "Tipo": "Conejo",
     "Datos": {
-      "nombre": "12",
+      "nombre": "asd",
       "edad": 12,
       "raza": "carnivoro",
       "alimentacion": 0,
       "Comportamiento": "bueno",
       "Habitad": "grande",
       "TipoDeAnimal": "Conejo"
+    }
+  },
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "nombre": "perrito",
+      "edad": 12,
+      "raza": "dog",
+      "alimentacion": 0,
+      "Tamaño": "pequeño",
+      "Entrenamiento": "poco",
+      "TipoDeAnimal": "Perro"
+    }
+  },
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "nombre": "aasd",
+      "edad": 21,
+      "raza": "asd",
+      "alimentacion": 0,
+      "Tamaño": "pequeño",
+      "Entrenamiento": "asd",
+      "TipoDeAnimal": "Perro"
     }
   }
 ]

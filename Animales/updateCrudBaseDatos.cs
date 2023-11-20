@@ -61,7 +61,7 @@ namespace Animal
                                 }
 
 
-                                animales = new Animales.Gato(peso, vidas, valorColumna1, "Gato", edad, alimentacion, valorColumna3);
+                                animales = new Animales.Gato(peso, vidas, valorColumna1, edad, alimentacion, valorColumna3);
                                 veterinaria.listaPacientes.Add(animales);
 
                             }
@@ -98,7 +98,7 @@ namespace Animal
                                     // La conversión fue exitosa, y el valor de vidas se encuentra en la variable 'vidas'
                                 }
 
-                                this.animales = new Animales.Perro(valorColumna5, valorColumna6, valorColumna1, "Perro", edad, alimentacion, valorColumna3);
+                                this.animales = new Animales.Perro(valorColumna5, valorColumna6, valorColumna1, edad, alimentacion, valorColumna3);
                                 veterinaria.listaPacientes.Add(animales);
                             }
                             else if (reader["TIPO"].ToString() == "Conejo")
