@@ -34,4 +34,11 @@ namespace CrudVeterinaria
         }
     }
 
+    public class DatosIngresadosIncorrectos : Exception
+    {
+        public DatosIngresadosIncorrectos() : base("Datos ingresados incorrectos")
+        {
+        }
+    }
+
 }

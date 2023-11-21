@@ -52,7 +52,6 @@
             label1.Size = new Size(58, 21);
             label1.TabIndex = 0;
             label1.Text = "Correo";
-            label1.Click += label1_Click;
             // 
             // label2
             // 

@@ -232,11 +232,11 @@ namespace WindFormCrud
             }
         }
         /// <summary>
-        /// Permite al usuario abrir archivos y deserializar archivos tipo JSON, indicando la ruta del archivo brindado por el usuario
+        /// Abre un archivo JSON seleccionado mediante un cuadro de diálogo de apertura de archivos.
+        /// Lee el contenido del archivo JSON, deserializa la lista de objetos serializados y los agrega a la lista de pacientes de la veterinaria.
+        /// Actualiza el visor después de la operación.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void abrirArchivosJson(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Archivos JSON (*.json)|*.json";
@@ -302,8 +302,9 @@ namespace WindFormCrud
         }
         //Ingresos animales
         /// <summary>
-        /// segun el usuario seleccione, se ingresara a su respectivo formulario del animal, generando un nuevo objeto y capturando el cierre del mismo
-        /// Este formulario se abre de forma modal, lo cual no permite visualizar su DialogResult.
+        /// Abre un formulario de ingreso de datos para un perro.
+        /// Configura el formulario como hijo del formulario principal.
+        /// Captura el evento FormClosed para ejecutar acciones específicas cuando el formulario se cierra.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -317,6 +318,13 @@ namespace WindFormCrud
 
             formIngresoPerro.Show();
         }
+        /// <summary>
+        /// Abre un formulario de ingreso de datos para un gato.
+        /// Configura el formulario como hijo del formulario principal.
+        /// Captura el evento FormClosed para ejecutar acciones específicas cuando el formulario se cierra.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void formIngresoGato(object sender, EventArgs e)
         {
             GatoIngreso formIngresoGato = new GatoIngreso();
@@ -326,6 +334,13 @@ namespace WindFormCrud
 
             formIngresoGato.Show();
         }
+        /// <summary>
+        /// Abre un formulario de ingreso de datos para un conejo.
+        /// Configura el formulario como hijo del formulario principal.
+        /// Captura el evento FormClosed para ejecutar acciones específicas cuando el formulario se cierra.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void formIngresoConejo(object sender, EventArgs e)
         {
             ConejoIngreso formIngresoConejo = new ConejoIngreso();
@@ -335,6 +350,13 @@ namespace WindFormCrud
 
             formIngresoConejo.Show();
         }
+        /// <summary>
+        /// Abre un formulario de ingreso de datos para un producto.
+        /// Configura el formulario como hijo del formulario principal.
+        /// Captura el evento FormClosed para ejecutar acciones específicas cuando el formulario se cierra.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void formIngresoProducto(object sender, EventArgs e)
         {
             ProductoIngreso formIngresoProducto = new ProductoIngreso();
@@ -346,12 +368,10 @@ namespace WindFormCrud
         }
         // Modificar animales
         /// <summary>
-        /// Se consulta si hay un item selecionado en el listBox, se usa esa referencia como indice y se consulta como referencia en la lista
-        /// Si la referencia es del tipo seleccionado, se generan los dos contructores recopilando la informacion del indice
-        /// Al confirmar, se actualiza la referencia con los cambios realizados
+        /// Abre un formulario de modificación de datos para un perro si hay un perro seleccionado en la lista.
+        /// Obtiene el perro seleccionado, crea un formulario de ingreso de perro con los datos existentes y lo muestra.
+        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void modificarPerroForm(object sender, EventArgs e)
         {
             if (this.listBoxMenu.SelectedIndex > -1)
@@ -384,6 +404,11 @@ namespace WindFormCrud
                 }
             }
         }
+        /// <summary>
+        /// Abre un formulario de modificación de datos para un gato si hay un "gato" seleccionado en la lista.
+        /// Obtiene el "gato" seleccionado, crea un formulario de ingreso de "gato" con los datos existentes y lo muestra.
+        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
+        /// </summary>
         private void modificarGatoForm(object sender, EventArgs e)
         {
             if (this.listBoxMenu.SelectedIndex > -1)
@@ -415,6 +440,11 @@ namespace WindFormCrud
                 }
             }
         }
+        /// <summary>
+        /// Abre un formulario de modificación de datos para un conejo si hay un "conejo" seleccionado en la lista.
+        /// Obtiene el "conejo" seleccionado, crea un formulario de ingreso de "conejo" con los datos existentes y lo muestra.
+        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
+        /// </summary>
         private void modificarConejoForm(object sender, EventArgs e)
         {
             if (this.listBoxMenu.SelectedIndex > -1)
@@ -450,6 +480,10 @@ namespace WindFormCrud
             }
 
         }
+        /// <summary>
+        /// Obtiene el "producto" seleccionado, crea un formulario de ingreso de "producto" con los datos existentes y lo muestra.
+        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
+        /// </summary>
         private void modificarProducto(object sender, EventArgs e)
         {
             // Verificar si hay un ítem seleccionado en el listBoxMenu
@@ -519,6 +553,10 @@ namespace WindFormCrud
             }
 
         }
+        /// <summary>
+        /// Filtra y muestra en el listBox solo los pacientes de tipo "Conejo".
+        /// Limpia el listBox antes de agregar los resultados del filtro.
+        /// </summary>
         private void filtroTipoConejo(object sender, EventArgs e)
         {
 
@@ -532,7 +570,10 @@ namespace WindFormCrud
             }
 
         }
-        private void normalizarToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Actualiza el visor para mostrar la lista de pacientes en su estado actual.
+        /// </summary>
+        private void normalizarLista(object sender, EventArgs e)
         {
             ActualizarVisor();
         }
@@ -575,6 +616,10 @@ namespace WindFormCrud
                 this.listBoxMenu.Items.Add($"{paciente.nombre} - Edad: {paciente.edad} - Raza: {paciente.raza} - Alimentacion: {paciente.alimentacion} - Tipo: {paciente.TipoDeAnimal} ");
             }
         }
+        /// <summary>
+        /// Valida el perfil del usuario y ajusta la habilitación de ciertos controles 
+        /// en función del perfil.
+        /// </summary>
         private void validarUsuario()
         {
             switch (perfil)
@@ -593,6 +638,10 @@ namespace WindFormCrud
 
             }
         }
+        /// <summary>
+        /// Inicia un hilo para actualizar la base de datos a través de un objeto 'updateCrudBaseDatos'.
+        /// Después de la actualización, se llama a ActualizarVisor() y se dispara el evento ActualizacionBaseDatosCompletaEvent.
+        /// </summary>
         public void actualizarCrudBaseDatos()
         {
             Thread actualizarThread = new Thread(() =>
@@ -606,6 +655,10 @@ namespace WindFormCrud
 
             ActualizacionBaseDatosCompletaEvent?.Invoke();
         }
+        /// <summary>
+        /// Inicia un hilo para eliminar un elemento de la base de datos según el nombre proporcionado.
+        /// Después de la eliminación, se dispara el evento ElementoEliminadoEvent con el nombre del elemento eliminado.
+        /// </summary>
         public void eliminarElementoBaseDatos(string nombre)
         {
             Thread eliminarThread = new Thread(() =>
@@ -627,6 +680,10 @@ namespace WindFormCrud
             });
             eliminarThread.Start();
         }
+        /// <summary>
+        /// Guarda de forma asíncrona los datos de la lista de pacientes de la veterinaria en un archivo JSON.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación de guardado asíncrono.</returns>
         public async Task guardarDatosAutomaticoAsync()
         {
             try
@@ -664,8 +721,6 @@ namespace WindFormCrud
                 throw new RegistroNoGuardado();
             }
         }
-
-
     }
 
 }

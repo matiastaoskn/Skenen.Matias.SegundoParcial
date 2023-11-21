@@ -96,6 +96,10 @@ namespace WindFormCrud
                             }
  
                         }
+                        else
+                        {
+                            throw new DatosIngresadosIncorrectos();
+                        }
                     }
 
                 }
@@ -133,11 +137,6 @@ namespace WindFormCrud
                 MessageBox.Show($"Error: {ex.Message}", "Error de registro TXT", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new RegistroNoGuardado();
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 

@@ -49,7 +49,9 @@ namespace CrudVeterinaria
 
 
         }
-
+        /// <summary>
+        /// Agrega un nuevo registro de Producto en la base de datos o actualiza uno existente.
+        /// </summary>
         public void agregarRegistro()
         {
             this.comida = new Producto(textBox1.Text, "grande");
@@ -106,18 +108,47 @@ namespace CrudVeterinaria
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Evento que se dispara al hacer clic en el botón de agregar.
+        /// Agrega el registro y cierra el formulario.
+        /// </summary>
+        private void agregarBoton(object sender, EventArgs e)
         {
 
             this.DialogResult = DialogResult.OK;
             agregarRegistro();
             this.Close();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Evento que se dispara al hacer clic en el botón de cancelar.
+        /// Cierra el formulario sin agregar o actualizar el registro.
+        /// </summary>
+        private void CancelarBoton(object sender, EventArgs e)
         {
             this.Close();
         }
+        /// <summary>
+        /// Determina si el objeto actual es igual a otro objeto.
+        /// La comparación se realiza mediante las propiedades relevantes de la clase.
+        /// </summary>
+        /// <param name="obj">El objeto a comparar con el objeto actual.</param>
+        /// <returns>
+        /// True si el objeto actual es igual al parámetro obj; de lo contrario, False.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            ProductoIngreso other = (ProductoIngreso)obj;
+
+            // Comparar las propiedades relevantes
+            return
+                this.textBox1.Text == other.textBox1.Text &&
+                this.textBox2.Text == other.textBox2.Text;
+        }
+
     }
 }

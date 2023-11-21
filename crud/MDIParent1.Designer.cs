@@ -95,7 +95,7 @@
             btnAbrirMenu.Name = "btnAbrirMenu";
             btnAbrirMenu.Size = new Size(54, 24);
             btnAbrirMenu.Text = "Abrir";
-            btnAbrirMenu.Click += abrirToolStripMenuItem_Click;
+            btnAbrirMenu.Click += abrirArchivosJson;
             // 
             // agregarBoton
             // 
@@ -269,7 +269,7 @@
             normalizarToolStripMenuItem.Name = "normalizarToolStripMenuItem";
             normalizarToolStripMenuItem.Size = new Size(152, 24);
             normalizarToolStripMenuItem.Text = "Normalizar";
-            normalizarToolStripMenuItem.Click += normalizarToolStripMenuItem_Click;
+            normalizarToolStripMenuItem.Click += normalizarLista;
             // 
             // toolStrip
             // 

@@ -14,7 +14,6 @@ namespace WindFormCrud
             InitializeComponent();
             TipoAnimal = "Perro";
         }
-
         public PerroIngreso(Animales.Animales animales, Animales.Perro perros) : this()
         {
             esActualizacion = true;
@@ -42,9 +41,9 @@ namespace WindFormCrud
             }
 
         }
- 
         /// <summary>
-        /// Este metodo valida los datos ingresados por el usuario para no generar error de tipo null
+        /// Valida los datos ingresados por el usuario en el formulario de ingreso o actualización de perros.
+        /// Si los campos son válidos, crea un nuevo objeto Perro o actualiza uno existente en la base de datos.
         /// </summary>
         private void validarInputs()
         {
@@ -212,6 +211,31 @@ namespace WindFormCrud
                     ((TextBox)control).Clear();
                 }
             }
+        }
+        /// <summary>
+        /// Compara dos objetos PerroIngreso para determinar si son iguales.
+        /// </summary>
+        /// <param name="obj">El objeto a comparar con el objeto actual.</param>
+        /// <returns>
+        /// True si los objetos son iguales; de lo contrario, False.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            PerroIngreso other = (PerroIngreso)obj;
+
+            // Comparar las propiedades relevantes
+            return
+                this.textBox1.Text == other.textBox1.Text &&
+                this.textBox2.Text == other.textBox2.Text &&
+                this.textBox4.Text == other.textBox4.Text &&
+                this.comboBox1.Text == other.comboBox1.Text &&
+                this.comboBox2.Text == other.comboBox2.Text &&
+                this.textBox6.Text == other.textBox6.Text;
         }
     }
 }

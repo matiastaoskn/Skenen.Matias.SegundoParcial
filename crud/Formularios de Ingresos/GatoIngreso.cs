@@ -43,10 +43,9 @@ namespace WindFormCrud
 
         }
         /// <summary>
-        /// Este metodo valida los datos ingresados por el usuario para no generar error de tipo null
+        /// Valida los datos ingresados por el usuario en el formulario de ingreso o actualización de Gato.
+        /// Si los campos son válidos, crea un nuevo objeto Gato o actualiza uno existente en la base de datos.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void validarInputs()
         {
             try
@@ -222,7 +221,29 @@ namespace WindFormCrud
                 }
             }
         }
+        /// <summary>
+        /// Determina si el objeto actual de tipo ConejoIngreso es igual a otro objeto. La comparación se basa en la igualdad
+        /// de las propiedades relevantes de dos instancias de ConejoIngreso, incluyendo textBox1, textBox2, textBox4, textBox5, textBox6 y comboBox1.
+        /// </summary>
+        /// <param name="obj">El objeto a comparar con el objeto actual.</param>
+        /// <returns>True si los objetos son iguales; de lo contrario, false.</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            GatoIngreso other = (GatoIngreso)obj;
+
+            // Comparar las propiedades relevantes
+            return
+                this.textBox1.Text == other.textBox1.Text &&
+                this.textBox2.Text == other.textBox2.Text &&
+                this.textBox4.Text == other.textBox4.Text &&
+                this.textBox5.Text == other.textBox5.Text &&
+                this.textBox6.Text == other.textBox6.Text &&
+                this.comboBox1.Text == other.comboBox1.Text;
+        }
     }
-
-
 }

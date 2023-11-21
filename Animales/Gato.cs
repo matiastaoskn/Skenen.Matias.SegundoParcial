@@ -3,6 +3,9 @@ using System.Text;
 
 namespace Animales
 {
+    /// <summary>
+    /// Clase que representa a un gato, heredando de la clase base Animales.
+    /// </summary>
     public class Gato : Animales, IfechaCarga
     {
         public int? Vidas { get; set; }
@@ -27,18 +30,16 @@ namespace Animales
         {
             Console.WriteLine("Este animal maulla.");
         }
-
-        public override string ToString()
-        {
-            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.Vidas}-{this.Peso}-Gato | {cargarFecha()}";
-        }
-
         public string cargarFecha()
         {
             string fecha = DateTime.Now.ToString("dd/MM");
             return fecha;
         }
 
+        public override string ToString()
+        {
+            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.Vidas}-{this.Peso}-Gato | {cargarFecha()}";
+        }
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
