@@ -72,9 +72,10 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            pictureBox1 = new PictureBox();
             progressBar1 = new ProgressBar();
-            button1 = new Button();
+            label7 = new Label();
+            pictureBox1 = new PictureBox();
+            label8 = new Label();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -113,43 +114,43 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(177, 6);
+            toolStripSeparator3.Size = new Size(141, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(177, 6);
+            toolStripSeparator4.Size = new Size(141, 6);
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(177, 6);
+            toolStripSeparator5.Size = new Size(141, 6);
             // 
             // btnPerroMenuAgregar
             // 
             btnPerroMenuAgregar.Name = "btnPerroMenuAgregar";
-            btnPerroMenuAgregar.Size = new Size(180, 24);
+            btnPerroMenuAgregar.Size = new Size(144, 24);
             btnPerroMenuAgregar.Text = "Perro";
             btnPerroMenuAgregar.Click += formIngresoPerro;
             // 
             // btnGatoMenuAgregar
             // 
             btnGatoMenuAgregar.Name = "btnGatoMenuAgregar";
-            btnGatoMenuAgregar.Size = new Size(180, 24);
+            btnGatoMenuAgregar.Size = new Size(144, 24);
             btnGatoMenuAgregar.Text = "Gato";
             btnGatoMenuAgregar.Click += formIngresoGato;
             // 
             // btnConejoMenuAgregar
             // 
             btnConejoMenuAgregar.Name = "btnConejoMenuAgregar";
-            btnConejoMenuAgregar.Size = new Size(180, 24);
+            btnConejoMenuAgregar.Size = new Size(144, 24);
             btnConejoMenuAgregar.Text = "Conejo";
             btnConejoMenuAgregar.Click += formIngresoConejo;
             // 
             // productosToolStripMenuItem
             // 
             productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            productosToolStripMenuItem.Size = new Size(180, 24);
+            productosToolStripMenuItem.Size = new Size(144, 24);
             productosToolStripMenuItem.Text = "Productos";
             productosToolStripMenuItem.Click += formIngresoProducto;
             // 
@@ -322,7 +323,7 @@
             // 
             // statusStrip
             // 
-            statusStrip.Location = new Point(0, 566);
+            statusStrip.Location = new Point(0, 611);
             statusStrip.Name = "statusStrip";
             statusStrip.Padding = new Padding(1, 0, 16, 0);
             statusStrip.Size = new Size(984, 22);
@@ -334,7 +335,7 @@
             listBoxMenu.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxMenu.FormattingEnabled = true;
             listBoxMenu.ItemHeight = 28;
-            listBoxMenu.Location = new Point(356, 103);
+            listBoxMenu.Location = new Point(356, 101);
             listBoxMenu.Name = "listBoxMenu";
             listBoxMenu.Size = new Size(616, 424);
             listBoxMenu.TabIndex = 4;
@@ -342,7 +343,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(358, 85);
+            label1.Location = new Point(358, 83);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 6;
@@ -351,7 +352,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(414, 85);
+            label2.Location = new Point(414, 83);
             label2.Name = "label2";
             label2.Size = new Size(33, 15);
             label2.TabIndex = 7;
@@ -360,7 +361,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(453, 85);
+            label3.Location = new Point(453, 83);
             label3.Name = "label3";
             label3.Size = new Size(31, 15);
             label3.TabIndex = 8;
@@ -369,7 +370,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(490, 85);
+            label4.Location = new Point(490, 83);
             label4.Name = "label4";
             label4.Size = new Size(78, 15);
             label4.TabIndex = 9;
@@ -378,7 +379,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(574, 85);
+            label5.Location = new Point(574, 83);
             label5.Name = "label5";
             label5.Size = new Size(60, 15);
             label5.TabIndex = 11;
@@ -387,45 +388,55 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(640, 85);
+            label6.Location = new Point(640, 83);
             label6.Name = "label6";
             label6.Size = new Size(60, 15);
             label6.TabIndex = 12;
             label6.Text = "Atributo 2";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(947, 72);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(25, 25);
-            pictureBox1.TabIndex = 14;
-            pictureBox1.TabStop = false;
-            // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(356, 533);
+            progressBar1.Location = new Point(358, 559);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(616, 23);
+            progressBar1.Size = new Size(616, 30);
             progressBar1.TabIndex = 16;
             // 
-            // button1
+            // label7
             // 
-            button1.Location = new Point(12, 533);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 17;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            label7.AutoSize = true;
+            label7.Location = new Point(608, 541);
+            label7.Name = "label7";
+            label7.Size = new Size(113, 15);
+            label7.TabIndex = 18;
+            label7.Text = "LISTA DE PACIENTES";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(941, 71);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(31, 27);
+            pictureBox1.TabIndex = 20;
+            pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(890, 83);
+            label8.Name = "label8";
+            label8.Size = new Size(45, 15);
+            label8.TabIndex = 21;
+            label8.Text = "Estado:";
             // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(984, 588);
-            Controls.Add(button1);
-            Controls.Add(progressBar1);
+            ClientSize = new Size(984, 633);
+            Controls.Add(label8);
             Controls.Add(pictureBox1);
+            Controls.Add(label7);
+            Controls.Add(progressBar1);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -495,9 +506,10 @@
         private ToolStripMenuItem productosToolStripMenuItem;
         private ToolStripMenuItem pToolStripMenuItem;
         private ToolStripMenuItem normalizarToolStripMenuItem;
-        private PictureBox pictureBox1;
         private ProgressBar progressBar1;
-        private Button button1;
+        private Label label7;
+        private PictureBox pictureBox1;
+        private Label label8;
     }
 }
 

@@ -15,7 +15,6 @@ namespace Animal
 
             if (ado.probarConexcion())
             {
-                Console.WriteLine("Se conecto");
 
                 try
                 {

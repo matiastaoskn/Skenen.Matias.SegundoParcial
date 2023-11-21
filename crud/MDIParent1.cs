@@ -651,18 +651,15 @@ namespace WindFormCrud
         /// Inicia un hilo para actualizar la base de datos a través de un objeto 'updateCrudBaseDatos'.
         /// Después de la actualización, se llama a ActualizarVisor() y se dispara el evento ActualizacionBaseDatosCompletaEvent.
         /// </summary>
-        public void actualizarCrudBaseDatos()
+        public async void actualizarCrudBaseDatos()
         {
-            Thread actualizarThread = new Thread(() =>
+            await Task.Run(() =>
             {
                 updateCrudBaseDatos actualizador = new updateCrudBaseDatos();
                 actualizador.actualizarCrudBaseDatos(veterinaria);
                 ActualizarVisor();
             });
 
-            actualizarThread.Start();
-
-            Task.Run(() => OperacionAdicionalDespuesDeActualizarBaseDatos());
 
             ActualizacionBaseDatosCompletaEvent?.Invoke();
         }
@@ -738,25 +735,10 @@ namespace WindFormCrud
             // Dominio de la maquina del usuario
             string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
             // Retrocedo de la carpeta bin
-            string rutaRelativa = "";
-            string filePath = "";
-
-            switch (estado)
-            {
-                case "confirmado":
-                    rutaRelativa = Path.Combine("..", "..", "..", "verificado.png");
-                    break;
-                case "esperando":
-                    rutaRelativa = Path.Combine("..", "..", "..", "espera.png");
-                    break;
-                case "eliminado":
-                    rutaRelativa = Path.Combine("..", "..", "..", "eliminado.png");
-                    break;
-            }
-
+            string rutaRelativa = Path.Combine("..", "..", "..", "verificado.png");
             if (!string.IsNullOrEmpty(rutaRelativa))
             {
-                filePath = Path.Combine(directorioEjecutable, rutaRelativa);
+                string filePath = Path.Combine(directorioEjecutable, rutaRelativa);
 
                 // Cargar la imagen original de forma asíncrona
                 await Task.Run(() =>
@@ -774,39 +756,29 @@ namespace WindFormCrud
         /// <summary>
         /// Realiza una operación adicional después de actualizar la base de datos, como cargar una imagen de confirmación.
         /// </summary>
-        private async void OperacionAdicionalDespuesDeActualizarBaseDatos()
-        {
-            await cargarImagenAsync("confirmado");
-            
 
-        }
 
         private void barraprogreso()
         {
             // Inicializa la barra de progreso
             progressBar1.Value = 0;
 
-            // Supongamos que tienes 100 elementos para procesar
             int totalElementos = 10;
 
-            // Inicia un hilo para la operación CRUD
             Thread thread = new Thread(() =>
             {
-                // ...
 
                 for (int i = 0; i < totalElementos; i++)
                 {
-                    // Actualiza la barra de progreso de manera segura
                     Invoke((MethodInvoker)delegate
                     {
                         int progreso = (int)((veterinaria.listaPacientes.Count / (double)totalElementos) * 100);
                         progressBar1.Value = progreso;
+
                     });
 
-                    // ...
                 }
 
-                // ...
                 if (veterinaria.listaPacientes.Count == 10)
                 {
                     // Muestra un mensaje al completar
@@ -817,6 +789,8 @@ namespace WindFormCrud
 
             thread.Start();
         }
+
+
     }
 
 }

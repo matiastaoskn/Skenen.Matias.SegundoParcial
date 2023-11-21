@@ -11,6 +11,5 @@ namespace CrudVeterinaria
         public void actualizarCrudBaseDatos();
 
         Task eliminarElementoBaseDatos(string nombre);
-
     }
 }
