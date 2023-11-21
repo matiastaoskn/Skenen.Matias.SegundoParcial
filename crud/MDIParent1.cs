@@ -149,7 +149,7 @@ namespace WindFormCrud
                         if (resultado == DialogResult.Yes)
                         {
                             this.veterinaria.listaPacientes.RemoveAt(indice);
-                            await cargarImagenAsync("elimando");
+                            await cargarImagenAsync();
                             await eliminarElementoBaseDatos(nombreElementoAEliminar);
                         }
                     }
@@ -168,7 +168,7 @@ namespace WindFormCrud
                             if (resultadoProducto == DialogResult.Yes)
                             {
                                 this.veterinaria.listaComida.RemoveAt(indiceProducto);
-                                await cargarImagenAsync("elimando");
+                                await cargarImagenAsync();
                                 await eliminarElementoBaseDatos(nombreElementoAEliminar);
                             }
                         }
@@ -658,6 +658,7 @@ namespace WindFormCrud
                 updateCrudBaseDatos actualizador = new updateCrudBaseDatos();
                 actualizador.actualizarCrudBaseDatos(veterinaria);
                 ActualizarVisor();
+                cargarImagenAsync();
             });
 
 
@@ -730,7 +731,7 @@ namespace WindFormCrud
         /// <summary>
         /// Carga una imagen de forma asíncrona en un PictureBox según el estado proporcionado.
         /// </summary>
-        private async Task cargarImagenAsync(string estado)
+        private async Task cargarImagenAsync()
         {
             // Dominio de la maquina del usuario
             string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
@@ -745,11 +746,17 @@ namespace WindFormCrud
                 {
                     Image imagenOriginal = Image.FromFile(filePath);
 
-                    int ancho = 25;
-                    int altura = 25;
+                    int ancho = 30;
+                    int altura = 30;
                     Image imagenPequeña = imagenOriginal.GetThumbnailImage(ancho, altura, null, IntPtr.Zero);
 
                     pictureBox1.Image = imagenPequeña;
+
+                    // Esperar dos segundos
+                    Task.Delay(2000).Wait();
+
+                    // Establecer la imagen del pictureBox en null después de dos segundos
+                    pictureBox1.Image = null;
                 });
             }
         }
@@ -775,6 +782,9 @@ namespace WindFormCrud
                         int progreso = (int)((veterinaria.listaPacientes.Count / (double)totalElementos) * 100);
                         progressBar1.Value = progreso;
 
+                        this.SetStyle(ControlStyles.UserPaint, true);
+                        progressBar1.ForeColor = Color.Yellow;
+
                     });
 
                 }
@@ -789,8 +799,6 @@ namespace WindFormCrud
 
             thread.Start();
         }
-
-
     }
 
 }

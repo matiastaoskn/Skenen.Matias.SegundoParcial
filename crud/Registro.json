@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "nombre": "sa",
+      "edad": 12,
+      "raza": "as",
+      "alimentacion": 0,
+      "Tamaño": "pequeño",
+      "Entrenamiento": "sa",
+      "TipoDeAnimal": "Perro"
+    }
+  }
+]

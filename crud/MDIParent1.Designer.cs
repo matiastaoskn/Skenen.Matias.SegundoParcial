@@ -396,6 +396,8 @@
             // 
             // progressBar1
             // 
+            progressBar1.BackColor = SystemColors.ActiveCaptionText;
+            progressBar1.ForeColor = SystemColors.HotTrack;
             progressBar1.Location = new Point(358, 559);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(616, 30);
