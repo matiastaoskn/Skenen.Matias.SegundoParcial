@@ -72,8 +72,10 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            pictureBox1 = new PictureBox();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip
@@ -389,12 +391,21 @@
             label6.TabIndex = 12;
             label6.Text = "Atributo 2";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(947, 72);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(25, 25);
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
+            // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(984, 588);
+            Controls.Add(pictureBox1);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -415,6 +426,7 @@
             menuStrip.PerformLayout();
             toolStrip.ResumeLayout(false);
             toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -463,6 +475,7 @@
         private ToolStripMenuItem productosToolStripMenuItem;
         private ToolStripMenuItem pToolStripMenuItem;
         private ToolStripMenuItem normalizarToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }
 

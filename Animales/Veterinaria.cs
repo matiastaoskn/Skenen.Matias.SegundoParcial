@@ -9,10 +9,11 @@ namespace Animales
         public List<T>? listaPacientes;
         public List<P>? listaComida;
 
-        public Veterinaria()
+        public Veterinaria(int maxPacientes)
         {
             this.listaPacientes = new List<T>();
             this.listaComida = new List<P>();
+            this.cantMaxPacientes = maxPacientes;
         }
 
         public static bool operator ==(Animales a, Veterinaria<T, P> b)
@@ -52,8 +53,6 @@ namespace Animales
                     {
                         Console.WriteLine("Este animal ya se encuentra en la veterinaria");
                     }
-
-
                 }
                 else
                 {
@@ -92,17 +91,17 @@ namespace Animales
             return b;
         }
 
-
-        //Para no pedir advertencia  
-        public override bool Equals(object? o)
+        public override bool Equals(object? obj)
         {
-            return true;
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            var otherVeterinaria = (Veterinaria<T, P>)obj;
+            return Equals(listaPacientes, otherVeterinaria.listaPacientes) &&
+                   Equals(listaComida, otherVeterinaria.listaComida);
         }
 
-        public override int GetHashCode()
-        {
-            return 0;
-        }
 
 
     }

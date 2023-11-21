@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using Animal;
 using System.Drawing.Text;
 using System.IO;
+using Timer = System.Threading.Timer;
+using System.Diagnostics;
 
 namespace WindFormCrud
 {
@@ -31,18 +33,25 @@ namespace WindFormCrud
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             validarUsuario();
-            veterinaria = new Veterinaria<Animales.Animales, Producto>();
+            veterinaria = new Veterinaria<Animales.Animales, Producto>(10);
             stripUser.Text = UserNameLogin.UserName;
             stripDateTime.Text = DateTime.Now.ToString();
             ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
-
+            actualizarCrudBaseDatos();
         }
+        /// <summary>
+        /// Maneja el evento de eliminación de un elemento, actualizando la vista del formulario principal después de eliminar un elemento.
+        /// </summary>
         private void MDIformularioMain_ElementoEliminadoEvent(string nombreElemento)
         {
             // Actualiza la vista después de eliminar un elemento
             ActualizarVisor();
         }
-        private void ActualizarVisor()
+        /// <summary>
+        /// Actualiza el visor de la interfaz de usuario, limpiando y llenando un ListBox con la información de pacientes y productos.
+        /// Si se llama desde un subproceso diferente, invoca al hilo principal y guarda automáticamente los datos.
+        /// </summary>
+        private async void ActualizarVisor()
         {
             if (listBoxMenu.InvokeRequired)
             {
@@ -52,6 +61,7 @@ namespace WindFormCrud
             }
             else
             {
+                
                 // Actualizar la interfaz de usuario en el hilo principal.
                 this.listBoxMenu.Items.Clear();
 
@@ -63,6 +73,7 @@ namespace WindFormCrud
                 foreach (Animal.Producto paciente in veterinaria.listaComida)
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
+                    
                 }
 
             }
@@ -81,6 +92,7 @@ namespace WindFormCrud
 
             //Desoues de guardar el objeto, consulta su dialogo result.
             DialogResult dialogo = ingresoAnimal.DialogResult;
+            
 
             if (dialogo == DialogResult.OK)
             {
@@ -140,6 +152,7 @@ namespace WindFormCrud
                         if (resultado == DialogResult.Yes)
                         {
                             this.veterinaria.listaPacientes.RemoveAt(indice);
+                            await cargarImagenAsync("elimando");
                             await eliminarElementoBaseDatos(nombreElementoAEliminar);
                         }
                     }
@@ -158,6 +171,7 @@ namespace WindFormCrud
                             if (resultadoProducto == DialogResult.Yes)
                             {
                                 this.veterinaria.listaComida.RemoveAt(indiceProducto);
+                                await cargarImagenAsync("elimando");
                                 await eliminarElementoBaseDatos(nombreElementoAEliminar);
                             }
                         }
@@ -652,6 +666,8 @@ namespace WindFormCrud
 
             actualizarThread.Start();
 
+            Task.Run(() => OperacionAdicionalDespuesDeActualizarBaseDatos());
+
             ActualizacionBaseDatosCompletaEvent?.Invoke();
         }
         /// <summary>
@@ -669,7 +685,6 @@ namespace WindFormCrud
                     SqlCommand cmd = new SqlCommand(consulta, conexion.Conectar());
                     cmd.Parameters.AddWithValue("@NombreAEliminar", nombre);
                     cmd.ExecuteNonQuery();
-                    nombre += " - Elemento Eliminado";
                     ElementoEliminadoEvent?.Invoke(nombre);
                 }
                 catch (Exception ex)
@@ -719,7 +734,57 @@ namespace WindFormCrud
                 throw new RegistroNoGuardado();
             }
         }
+        /// <summary>
+        /// Carga una imagen de forma asíncrona en un PictureBox según el estado proporcionado.
+        /// </summary>
+        private async Task cargarImagenAsync(string estado)
+        {
+            // Dominio de la maquina del usuario
+            string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
+            // Retrocedo de la carpeta bin
+            string rutaRelativa = "";
+            string filePath = "";
 
+            switch (estado)
+            {
+                case "confirmado":
+                    rutaRelativa = Path.Combine("..", "..", "..", "verificado.png");
+                    break;
+                case "esperando":
+                    rutaRelativa = Path.Combine("..", "..", "..", "espera.png");
+                    break;
+                case "eliminado":
+                    rutaRelativa = Path.Combine("..", "..", "..", "eliminado.png");
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(rutaRelativa))
+            {
+                filePath = Path.Combine(directorioEjecutable, rutaRelativa);
+
+                // Cargar la imagen original de forma asíncrona
+                await Task.Run(() =>
+                {
+                    Image imagenOriginal = Image.FromFile(filePath);
+
+                    int ancho = 25;
+                    int altura = 25;
+                    Image imagenPequeña = imagenOriginal.GetThumbnailImage(ancho, altura, null, IntPtr.Zero);
+
+                    pictureBox1.Image = imagenPequeña;
+                });
+            }
+        }
+        /// <summary>
+        /// Realiza una operación adicional después de actualizar la base de datos, como cargar una imagen de confirmación.
+        /// </summary>
+        private async void OperacionAdicionalDespuesDeActualizarBaseDatos()
+        {
+            await cargarImagenAsync("confirmado");
+
+        }
+
+        
     }
 
 }

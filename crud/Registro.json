@@ -34,5 +34,41 @@
       "Entrenamiento": "asd",
       "TipoDeAnimal": "Perro"
     }
+  },
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "nombre": "perrito",
+      "edad": 12,
+      "raza": "sa",
+      "alimentacion": 0,
+      "Tamaño": "mediano",
+      "Entrenamiento": "ca",
+      "TipoDeAnimal": "Perro"
+    }
+  },
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "nombre": "aa",
+      "edad": 12,
+      "raza": "da",
+      "alimentacion": 0,
+      "Tamaño": "pequeño",
+      "Entrenamiento": "a",
+      "TipoDeAnimal": "Perro"
+    }
+  },
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "nombre": "perrito",
+      "edad": 12,
+      "raza": "s",
+      "alimentacion": 0,
+      "Tamaño": "pequeño",
+      "Entrenamiento": "s",
+      "TipoDeAnimal": "Perro"
+    }
   }
 ]
