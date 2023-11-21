@@ -63,56 +63,52 @@ namespace WindFormCrud
         /// Si condicen estas dos, el usuario entra al programa, guardando su nombre
         /// </summary>
         private void deserializarJson()
-        {
-            // Dominio de la maquina del usuario
-            string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
-            //Retrocedo de la carpeta bin
-            string rutaArchivo = Path.Combine("..", "..", "..", "MOCK_DATA.json");
-            string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaArchivo));
-
-            if (File.Exists(filePath))
             {
-                string json_str = File.ReadAllText(filePath);
+                // Dominio de la maquina del usuario
+                string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
+                //Retrocedo de la carpeta bin
+                string rutaArchivo = Path.Combine("..", "..", "..", "MOCK_DATA.json");
+                string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaArchivo));
 
-                List<Persona> personas = JsonSerializer.Deserialize<List<Persona>>(json_str);
-
-                try
+                if (File.Exists(filePath))
                 {
-                    foreach (var persona in personas)
-                    {
-                        if (textUser.Text == persona.correo && textPass.Text == persona.clave)
-                        {
-                            if(comboBox1.Text == persona.perfil)
-                            {
-                                UserNameLogin.setTipoPerfil(comboBox1.Text);
-                                UserNameLogin.setUserName(persona.nombre);
+                    string json_str = File.ReadAllText(filePath);
 
-                                agregarRegistroTxt(persona.nombre);
-                                this.DialogResult = DialogResult.OK;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Seleccione correctamente su perfil");
-                            }
- 
-                        }
-                        else
+                    List<Persona> personas = JsonSerializer.Deserialize<List<Persona>>(json_str);
+
+                    try
+                    {
+                        foreach (var persona in personas)
                         {
-                            throw new DatosIngresadosIncorrectos();
+                        
+                            if (textUser.Text == persona.correo && textPass.Text == persona.clave)
+                            {
+                                if(comboBox1.Text == persona.perfil)
+                                {
+                                    UserNameLogin.setTipoPerfil(comboBox1.Text);
+                                    UserNameLogin.setUserName(persona.nombre);
+
+                                    agregarRegistroTxt(persona.nombre);
+                                    this.DialogResult = DialogResult.OK;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Seleccione correctamente su perfil");
+                                }
+                            }
                         }
+
+                    }
+                    catch (CredencialesInvalidasException ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw new CredencialesInvalidasException();
                     }
 
-                }
-                catch (CredencialesInvalidasException ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw new CredencialesInvalidasException();
-                }
 
+                }
 
             }
-
-        }
         /// <summary>
         /// Este metodo deja un registro con el nombre y la fecha actual, en un archivo txt
         /// </summary>

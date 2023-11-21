@@ -29,12 +29,11 @@ namespace WindFormCrud
         public MDIformularioMain()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             validarUsuario();
             veterinaria = new Veterinaria<Animales.Animales, Producto>();
             stripUser.Text = UserNameLogin.UserName;
-
             stripDateTime.Text = DateTime.Now.ToString();
-            actualizarCrudBaseDatos();
             ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
 
         }
@@ -122,7 +121,7 @@ namespace WindFormCrud
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (perfil == "administrador")
             {
@@ -141,7 +140,7 @@ namespace WindFormCrud
                         if (resultado == DialogResult.Yes)
                         {
                             this.veterinaria.listaPacientes.RemoveAt(indice);
-                            eliminarElementoBaseDatos(nombreElementoAEliminar);
+                            await eliminarElementoBaseDatos(nombreElementoAEliminar);
                         }
                     }
                     else
@@ -159,7 +158,7 @@ namespace WindFormCrud
                             if (resultadoProducto == DialogResult.Yes)
                             {
                                 this.veterinaria.listaComida.RemoveAt(indiceProducto);
-                                eliminarElementoBaseDatos(nombreElementoAEliminar);
+                                await eliminarElementoBaseDatos(nombreElementoAEliminar);
                             }
                         }
                     }
@@ -659,9 +658,9 @@ namespace WindFormCrud
         /// Inicia un hilo para eliminar un elemento de la base de datos según el nombre proporcionado.
         /// Después de la eliminación, se dispara el evento ElementoEliminadoEvent con el nombre del elemento eliminado.
         /// </summary>
-        public void eliminarElementoBaseDatos(string nombre)
+        public async Task eliminarElementoBaseDatos(string nombre)
         {
-            Thread eliminarThread = new Thread(() =>
+            await Task.Run(() =>
             {
                 try
                 {
@@ -678,7 +677,6 @@ namespace WindFormCrud
                     MessageBox.Show(ex.Message);
                 }
             });
-            eliminarThread.Start();
         }
         /// <summary>
         /// Guarda de forma asíncrona los datos de la lista de pacientes de la veterinaria en un archivo JSON.
@@ -721,6 +719,7 @@ namespace WindFormCrud
                 throw new RegistroNoGuardado();
             }
         }
+
     }
 
 }
