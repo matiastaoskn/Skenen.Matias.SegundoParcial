@@ -54,7 +54,42 @@ namespace CrudVeterinaria
         /// </summary>
         public void agregarRegistro()
         {
-            this.comida = new Producto(textBox1.Text, "grande");
+            try
+            {
+                if (string.IsNullOrWhiteSpace(this.textBox1.Text) &&
+                    string.IsNullOrWhiteSpace(this.textBox2.Text));
+                {
+                }
+            }
+            catch (CamposVaciosException)
+            {
+                MessageBox.Show($"Campos vacios", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new CamposVaciosException();
+            }
+
+            string nombre = this.textBox1.Text;
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("El nombre no puede estar en blanco");
+                return;
+            }
+            if (int.TryParse(nombre, out _))
+            {
+                MessageBox.Show("El nombre no puede ser un número");
+                return;
+            }
+            string tamaño = this.textBox2.Text;
+            if (string.IsNullOrWhiteSpace(tamaño))
+            {
+                MessageBox.Show("El tamaño no puede estar en blanco");
+                return;
+            }
+            if (int.TryParse(tamaño, out _))
+            {
+                MessageBox.Show("El tamaño no puede ser un número");
+                return;
+            }
+
             if (esActualizacion == false)
             {
                 try
@@ -86,6 +121,7 @@ namespace CrudVeterinaria
                     MessageBox.Show($"Error SQL: {ex.Message}");
                 }
 
+                this.comida = new Producto(textBox1.Text, "grande");
             }
             else
             {
@@ -108,6 +144,8 @@ namespace CrudVeterinaria
                 }
             }
         }
+
+        
         /// <summary>
         /// Evento que se dispara al hacer clic en el botón de agregar.
         /// Agrega el registro y cierra el formulario.

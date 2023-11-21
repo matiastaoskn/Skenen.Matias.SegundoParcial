@@ -70,5 +70,17 @@
       "Entrenamiento": "s",
       "TipoDeAnimal": "Perro"
     }
+  },
+  {
+    "Tipo": "Conejo",
+    "Datos": {
+      "nombre": "asd",
+      "edad": 12,
+      "raza": "asd",
+      "alimentacion": 0,
+      "Comportamiento": "ad",
+      "Habitad": "asd",
+      "TipoDeAnimal": "Conejo"
+    }
   }
 ]

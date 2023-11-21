@@ -69,7 +69,7 @@ namespace WindFormCrud
             string nombre = this.textBox1.Text;
             if (string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("La raza no puede estar en blanco");
+                MessageBox.Show("El nombre no puede estar en blanco");
                 return;
             }
             if (int.TryParse(nombre, out _))
