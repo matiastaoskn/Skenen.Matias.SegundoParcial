@@ -10,11 +10,50 @@ namespace Animal
 {
     public class conexcionBaseDatos
     {
+        public SqlConnection conexcion;
+        public static string cadena_conexcion;
+        
         public static SqlConnection Conectar()
         {
-            SqlConnection cn = new SqlConnection("SERVER=DESKTOP-645MCUC\\SQLEXPRESS;DATABASE=VETERINARIA;integrated security=true");
-            cn.Open();
-            return cn;
+            SqlConnection conexion = new SqlConnection(cadena_conexcion);
+            conexion.Open();
+            return conexion;
+
+        }
+        
+        static conexcionBaseDatos()
+        {
+            conexcionBaseDatos.cadena_conexcion = Properties.Resources.miConexion;
+            //conexcionBaseDatos.cadena_conexcion = @"Data Source=localhost\\SQLEXPRESS;Initial Catalog=VETERINARIA;Integrated Security=True";
+        }
+
+        public conexcionBaseDatos()
+        {
+            this.conexcion = new SqlConnection(conexcionBaseDatos.cadena_conexcion);
+        }
+
+        public bool probarConexcion()
+        {
+            bool retorno = false;
+
+            try
+            {
+                this.conexcion.Open();
+                retorno = true;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                if(this.conexcion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexcion.Close();
+                }
+                
+            }
+            return retorno;
         }
     }
 }

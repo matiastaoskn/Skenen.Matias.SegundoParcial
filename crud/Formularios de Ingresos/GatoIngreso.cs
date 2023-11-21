@@ -1,4 +1,5 @@
-﻿using CrudVeterinaria;
+﻿using Animal;
+using CrudVeterinaria;
 using System.Data.SqlClient;
 
 namespace WindFormCrud
@@ -27,9 +28,9 @@ namespace WindFormCrud
 
             try
             {
-                conexion.Conectar();
+                conexcionBaseDatos.Conectar();
                 string consulta = $"SELECT ID FROM ANIMALES WHERE NOMBRE = '{textBox1.Text}'";
-                SqlCommand cmd2 = new SqlCommand(consulta, conexion.Conectar());
+                SqlCommand cmd2 = new SqlCommand(consulta, conexcionBaseDatos.Conectar());
 
                 id = (int)cmd2.ExecuteScalar();
 
@@ -128,7 +129,7 @@ namespace WindFormCrud
                 try
                 {
                     string insertar = "INSERT INTO ANIMALES(TIPO,NOMBRE,EDAD,RAZA, ALIMENTACION, VIDAS, PESO, TAMAÑO, ENTRENAMIENTO, HABITAD, COMPORTAMIENTO)VALUES(@TIPO,@NOMBRE,@EDAD,@RAZA,@ALIMENTACION,@VIDAS,@PESO,@TAMAÑO,@ENTRENAMIENTO,@HABITAD,@COMPORTAMIENTO)";
-                    SqlCommand cmd = new SqlCommand(insertar, conexion.Conectar());
+                    SqlCommand cmd = new SqlCommand(insertar, conexcionBaseDatos.Conectar());
                     cmd.Parameters.AddWithValue("@TIPO", TipoAnimal);
                     cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
                     cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
@@ -160,10 +161,10 @@ namespace WindFormCrud
             {
                 try
                 {
-                    conexion.Conectar();  // Asumiendo que Conectar() abre la conexión
+                    conexcionBaseDatos.Conectar();  // Asumiendo que Conectar() abre la conexión
                     string actualizar = "UPDATE ANIMALES SET NOMBRE=@NOMBRE, EDAD=@EDAD, RAZA=@RAZA, ALIMENTACION=@ALIMENTACION, VIDAS=@VIDAS, PESO=@PESO WHERE ID=@ID";
 
-                    using (SqlCommand cmd = new SqlCommand(actualizar, conexion.Conectar()))
+                    using (SqlCommand cmd = new SqlCommand(actualizar, conexcionBaseDatos.Conectar()))
                     {
                         cmd.Parameters.AddWithValue("@ID", id); // Usar el nombre original en la condición WHERE
                         cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);

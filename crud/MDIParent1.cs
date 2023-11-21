@@ -1,13 +1,8 @@
-﻿using Animales;
-using WindFormCrud.Ingresos;
-using Newtonsoft.Json.Converters;
+﻿using Animal;
+using Animales;
 using CrudVeterinaria;
 using System.Data.SqlClient;
-using Animal;
-using System.Drawing.Text;
-using System.IO;
-using Timer = System.Threading.Timer;
-using System.Diagnostics;
+using WindFormCrud.Ingresos;
 
 namespace WindFormCrud
 {
@@ -61,19 +56,21 @@ namespace WindFormCrud
             }
             else
             {
-                
+
                 // Actualizar la interfaz de usuario en el hilo principal.
                 this.listBoxMenu.Items.Clear();
 
                 foreach (Animales.Animales paciente in veterinaria.listaPacientes)
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
+                    barraprogreso();
                 }
 
                 foreach (Animal.Producto paciente in veterinaria.listaComida)
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
-                    
+                    barraprogreso();
+
                 }
 
             }
@@ -92,7 +89,7 @@ namespace WindFormCrud
 
             //Desoues de guardar el objeto, consulta su dialogo result.
             DialogResult dialogo = ingresoAnimal.DialogResult;
-            
+
 
             if (dialogo == DialogResult.OK)
             {
@@ -299,7 +296,6 @@ namespace WindFormCrud
                                 var conejo = Newtonsoft.Json.JsonConvert.DeserializeObject<Conejo>(objetoSerializado.Datos.ToString());
 
                                 veterinaria.listaPacientes.Add(conejo);
-
                                 break;
                         }
                     }
@@ -680,9 +676,9 @@ namespace WindFormCrud
             {
                 try
                 {
-                    conexion.Conectar();
+                    conexcionBaseDatos.Conectar();
                     string consulta = "DELETE FROM ANIMALES WHERE NOMBRE = @NombreAEliminar";
-                    SqlCommand cmd = new SqlCommand(consulta, conexion.Conectar());
+                    SqlCommand cmd = new SqlCommand(consulta, conexcionBaseDatos.Conectar());
                     cmd.Parameters.AddWithValue("@NombreAEliminar", nombre);
                     cmd.ExecuteNonQuery();
                     ElementoEliminadoEvent?.Invoke(nombre);
@@ -781,10 +777,46 @@ namespace WindFormCrud
         private async void OperacionAdicionalDespuesDeActualizarBaseDatos()
         {
             await cargarImagenAsync("confirmado");
+            
 
         }
 
-        
+        private void barraprogreso()
+        {
+            // Inicializa la barra de progreso
+            progressBar1.Value = 0;
+
+            // Supongamos que tienes 100 elementos para procesar
+            int totalElementos = 10;
+
+            // Inicia un hilo para la operación CRUD
+            Thread thread = new Thread(() =>
+            {
+                // ...
+
+                for (int i = 0; i < totalElementos; i++)
+                {
+                    // Actualiza la barra de progreso de manera segura
+                    Invoke((MethodInvoker)delegate
+                    {
+                        int progreso = (int)((veterinaria.listaPacientes.Count / (double)totalElementos) * 100);
+                        progressBar1.Value = progreso;
+                    });
+
+                    // ...
+                }
+
+                // ...
+                if (veterinaria.listaPacientes.Count == 10)
+                {
+                    // Muestra un mensaje al completar
+                    MessageBox.Show("Lista de pacientes completada");
+                    progressBar1.Value = 0;
+                }
+            });
+
+            thread.Start();
+        }
     }
 
 }

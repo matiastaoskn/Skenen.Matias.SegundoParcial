@@ -23,7 +23,7 @@ namespace Animal
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Nombre: {this.nombre} tamaño: {this.tamaño}");
+            sb.AppendLine($"Nombre: {this.nombre} tamaño: {this.tamaño} - Tipo: Producto");
             return sb.ToString();
         }
 

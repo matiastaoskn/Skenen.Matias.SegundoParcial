@@ -38,7 +38,7 @@ namespace Animales
 
         public override string ToString()
         {
-            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.Vidas}-{this.Peso}-Gato | {cargarFecha()}";
+            return $"{this.nombre}-{this.edad}-{this.raza}-{this.alimentacion}-{this.Vidas}-{this.Peso} - Tipo: {TipoDeAnimal} | {cargarFecha()}";
         }
         public override bool Equals(object obj)
         {

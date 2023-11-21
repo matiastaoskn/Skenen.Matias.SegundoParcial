@@ -73,6 +73,8 @@
             label5 = new Label();
             label6 = new Label();
             pictureBox1 = new PictureBox();
+            progressBar1 = new ProgressBar();
+            button1 = new Button();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -111,43 +113,43 @@
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(141, 6);
+            toolStripSeparator3.Size = new Size(177, 6);
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(141, 6);
+            toolStripSeparator4.Size = new Size(177, 6);
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(141, 6);
+            toolStripSeparator5.Size = new Size(177, 6);
             // 
             // btnPerroMenuAgregar
             // 
             btnPerroMenuAgregar.Name = "btnPerroMenuAgregar";
-            btnPerroMenuAgregar.Size = new Size(144, 24);
+            btnPerroMenuAgregar.Size = new Size(180, 24);
             btnPerroMenuAgregar.Text = "Perro";
             btnPerroMenuAgregar.Click += formIngresoPerro;
             // 
             // btnGatoMenuAgregar
             // 
             btnGatoMenuAgregar.Name = "btnGatoMenuAgregar";
-            btnGatoMenuAgregar.Size = new Size(144, 24);
+            btnGatoMenuAgregar.Size = new Size(180, 24);
             btnGatoMenuAgregar.Text = "Gato";
             btnGatoMenuAgregar.Click += formIngresoGato;
             // 
             // btnConejoMenuAgregar
             // 
             btnConejoMenuAgregar.Name = "btnConejoMenuAgregar";
-            btnConejoMenuAgregar.Size = new Size(144, 24);
+            btnConejoMenuAgregar.Size = new Size(180, 24);
             btnConejoMenuAgregar.Text = "Conejo";
             btnConejoMenuAgregar.Click += formIngresoConejo;
             // 
             // productosToolStripMenuItem
             // 
             productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            productosToolStripMenuItem.Size = new Size(144, 24);
+            productosToolStripMenuItem.Size = new Size(180, 24);
             productosToolStripMenuItem.Text = "Productos";
             productosToolStripMenuItem.Click += formIngresoProducto;
             // 
@@ -399,12 +401,30 @@
             pictureBox1.TabIndex = 14;
             pictureBox1.TabStop = false;
             // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(356, 533);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(616, 23);
+            progressBar1.TabIndex = 16;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(12, 533);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 17;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(984, 588);
+            Controls.Add(button1);
+            Controls.Add(progressBar1);
             Controls.Add(pictureBox1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -476,6 +496,8 @@
         private ToolStripMenuItem pToolStripMenuItem;
         private ToolStripMenuItem normalizarToolStripMenuItem;
         private PictureBox pictureBox1;
+        private ProgressBar progressBar1;
+        private Button button1;
     }
 }
 
