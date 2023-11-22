@@ -680,6 +680,7 @@ namespace WindFormCrud
                     cmd.Parameters.AddWithValue("@NombreAEliminar", nombre);
                     cmd.ExecuteNonQuery();
                     ElementoEliminadoEvent?.Invoke(nombre);
+                    MessageBox.Show("DATO ELIMINADO");
                 }
                 catch (Exception ex)
                 {

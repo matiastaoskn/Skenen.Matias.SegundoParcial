@@ -34,7 +34,6 @@ namespace WindFormCrud
 
                 id = (int)cmd2.ExecuteScalar();
 
-                MessageBox.Show($"{id}");
             }
             catch (Exception e)
             {
@@ -208,7 +207,7 @@ namespace WindFormCrud
                     cmd.Parameters.AddWithValue("@COMPORTAMIENTO", DBNull.Value);
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("DATOS INGRESADOS");
+                    MessageBox.Show("DATOS INGRESADO");
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -236,6 +235,7 @@ namespace WindFormCrud
                         cmd.Parameters.AddWithValue("@ENTRENAMIENTO", textBox6.Text);
 
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("DATO ACTUALIZADO");
                     }
                 }
                 catch (Exception ex)

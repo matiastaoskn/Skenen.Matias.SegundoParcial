@@ -25,7 +25,6 @@ namespace CrudVeterinaria
             TipoAnimal = "Producto";
         }
 
-        //Chekear esto
         public ProductoIngreso(Producto comida) : this()
         {
             esActualizacion = true;
@@ -39,8 +38,6 @@ namespace CrudVeterinaria
                 SqlCommand cmd2 = new SqlCommand(consulta, conexcionBaseDatos.Conectar());
 
                 id = (int)cmd2.ExecuteScalar();
-
-                MessageBox.Show($"{id}");
             }
             catch (Exception e)
             {
@@ -111,7 +108,7 @@ namespace CrudVeterinaria
 
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("DATOS INGRESADOS");
+                    MessageBox.Show("DATOS INGRESADO");
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -136,6 +133,7 @@ namespace CrudVeterinaria
                         cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
                         cmd.Parameters.AddWithValue("@TAMAÑO", textBox2.Text);
                         cmd.ExecuteNonQuery();
+                        MessageBox.Show("DATO ACTUALIZADO");
                     }
                 }
                 catch (Exception ex)
