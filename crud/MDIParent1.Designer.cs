@@ -62,7 +62,8 @@
             btnGuardar = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             stripDateTime = new ToolStripButton();
-            stripUser = new ToolStripButton();
+            tipoUsuario = new ToolStripButton();
+            nombreUsuario = new ToolStripButton();
             statusStrip = new StatusStrip();
             toolTip = new ToolTip(components);
             listBoxMenu = new ListBox();
@@ -278,7 +279,7 @@
             // 
             // toolStrip
             // 
-            toolStrip.Items.AddRange(new ToolStripItem[] { btnGuardar, toolStripSeparator1, stripDateTime, stripUser });
+            toolStrip.Items.AddRange(new ToolStripItem[] { btnGuardar, toolStripSeparator1, stripDateTime, tipoUsuario, nombreUsuario });
             toolStrip.Location = new Point(0, 28);
             toolStrip.Name = "toolStrip";
             toolStrip.Size = new Size(984, 25);
@@ -311,15 +312,25 @@
             stripDateTime.Size = new Size(98, 22);
             stripDateTime.Text = "toolStripButton1";
             // 
-            // stripUser
+            // tipoUsuario
             // 
-            stripUser.Alignment = ToolStripItemAlignment.Right;
-            stripUser.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            stripUser.Image = (Image)resources.GetObject("stripUser.Image");
-            stripUser.ImageTransparentColor = Color.Magenta;
-            stripUser.Name = "stripUser";
-            stripUser.Size = new Size(98, 22);
-            stripUser.Text = "toolStripButton2";
+            tipoUsuario.Alignment = ToolStripItemAlignment.Right;
+            tipoUsuario.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            tipoUsuario.Image = (Image)resources.GetObject("tipoUsuario.Image");
+            tipoUsuario.ImageTransparentColor = Color.Magenta;
+            tipoUsuario.Name = "tipoUsuario";
+            tipoUsuario.Size = new Size(98, 22);
+            tipoUsuario.Text = "toolStripButton2";
+            // 
+            // nombreUsuario
+            // 
+            nombreUsuario.Alignment = ToolStripItemAlignment.Right;
+            nombreUsuario.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            nombreUsuario.Image = (Image)resources.GetObject("nombreUsuario.Image");
+            nombreUsuario.ImageTransparentColor = Color.Magenta;
+            nombreUsuario.Name = "nombreUsuario";
+            nombreUsuario.Size = new Size(98, 22);
+            nombreUsuario.Text = "toolStripButton2";
             // 
             // statusStrip
             // 
@@ -423,11 +434,11 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(890, 83);
+            label8.Location = new Point(852, 83);
             label8.Name = "label8";
-            label8.Size = new Size(45, 15);
+            label8.Size = new Size(83, 15);
             label8.TabIndex = 21;
-            label8.Text = "Estado:";
+            label8.Text = "Base de Datos:";
             // 
             // MDIformularioMain
             // 
@@ -504,7 +515,7 @@
         private Label label5;
         private Label label6;
         private ToolStripButton stripDateTime;
-        private ToolStripButton stripUser;
+        private ToolStripButton nombreUsuario;
         private ToolStripMenuItem productosToolStripMenuItem;
         private ToolStripMenuItem pToolStripMenuItem;
         private ToolStripMenuItem normalizarToolStripMenuItem;
@@ -512,6 +523,7 @@
         private Label label7;
         private PictureBox pictureBox1;
         private Label label8;
+        private ToolStripButton tipoUsuario;
     }
 }
 

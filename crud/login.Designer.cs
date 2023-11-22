@@ -39,15 +39,13 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(86, 92);
+            label1.Location = new Point(86, 121);
             label1.Name = "label1";
             label1.Size = new Size(58, 21);
             label1.TabIndex = 0;
@@ -57,7 +55,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(67, 126);
+            label2.Location = new Point(67, 155);
             label2.Name = "label2";
             label2.Size = new Size(89, 21);
             label2.TabIndex = 1;
@@ -65,14 +63,14 @@
             // 
             // textUser
             // 
-            textUser.Location = new Point(162, 90);
+            textUser.Location = new Point(162, 119);
             textUser.Name = "textUser";
             textUser.Size = new Size(100, 23);
             textUser.TabIndex = 2;
             // 
             // textPass
             // 
-            textPass.Location = new Point(162, 124);
+            textPass.Location = new Point(162, 153);
             textPass.Name = "textPass";
             textPass.PasswordChar = '*';
             textPass.Size = new Size(100, 23);
@@ -136,7 +134,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.CornflowerBlue;
-            label5.Location = new Point(105, 23);
+            label5.Location = new Point(105, 52);
             label5.Name = "label5";
             label5.Size = new Size(184, 37);
             label5.TabIndex = 9;
@@ -146,38 +144,17 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(95, 60);
+            label6.Location = new Point(95, 89);
             label6.Name = "label6";
             label6.Size = new Size(204, 21);
             label6.TabIndex = 10;
             label6.Text = "VETERINARIA PET ANIMALS";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(109, 159);
-            label7.Name = "label7";
-            label7.Size = new Size(45, 21);
-            label7.TabIndex = 11;
-            label7.Text = "Perfil";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "vendedor", "supervisor", "administrador" });
-            comboBox1.Location = new Point(162, 157);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 12;
             // 
             // login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(373, 302);
-            Controls.Add(comboBox1);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -209,7 +186,5 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private ComboBox comboBox1;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Animal
 {
-    public class Producto
+    public class Producto: IfechaCarga
     {
         public string nombre;
         public string tamaño;
@@ -20,10 +20,15 @@ namespace Animal
             this.tamaño = tamaño;
         }
 
+        public string cargarFecha()
+        {
+            string fecha = DateTime.Now.ToString("dd/MM");
+            return fecha;
+        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Nombre: {this.nombre} tamaño: {this.tamaño} - Tipo: Producto");
+            sb.AppendLine($"Nombre: {this.nombre} tamaño: {this.tamaño} - Tipo: Producto | {cargarFecha()}");
             return sb.ToString();
         }
 

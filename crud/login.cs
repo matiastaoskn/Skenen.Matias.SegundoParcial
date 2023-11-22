@@ -63,52 +63,54 @@ namespace WindFormCrud
         /// Si condicen estas dos, el usuario entra al programa, guardando su nombre
         /// </summary>
         private void deserializarJson()
+        {
+            // Dominio de la maquina del usuario
+            string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
+            //Retrocedo de la carpeta bin
+            string rutaArchivo = Path.Combine("..", "..", "..", "MOCK_DATA.json");
+            string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaArchivo));
+            bool credencialesCorrectas = false;
+
+            if (File.Exists(filePath))
             {
-                // Dominio de la maquina del usuario
-                string directorioEjecutable = AppDomain.CurrentDomain.BaseDirectory;
-                //Retrocedo de la carpeta bin
-                string rutaArchivo = Path.Combine("..", "..", "..", "MOCK_DATA.json");
-                string filePath = Path.GetFullPath(Path.Combine(directorioEjecutable, rutaArchivo));
+                string json_str = File.ReadAllText(filePath);
 
-                if (File.Exists(filePath))
+                List<Persona> personas = JsonSerializer.Deserialize<List<Persona>>(json_str);
+
+                try
                 {
-                    string json_str = File.ReadAllText(filePath);
-
-                    List<Persona> personas = JsonSerializer.Deserialize<List<Persona>>(json_str);
-
-                    try
+                    foreach (var persona in personas)
                     {
-                        foreach (var persona in personas)
+
+                        if (textUser.Text == persona.correo && textPass.Text == persona.clave)
                         {
-                        
-                            if (textUser.Text == persona.correo && textPass.Text == persona.clave)
-                            {
-                                if(comboBox1.Text == persona.perfil)
-                                {
-                                    UserNameLogin.setTipoPerfil(comboBox1.Text);
-                                    UserNameLogin.setUserName(persona.nombre);
+                            UserNameLogin.setTipoPerfil(persona.perfil);
+                            UserNameLogin.setUserName(persona.nombre);
 
-                                    agregarRegistroTxt(persona.nombre);
-                                    this.DialogResult = DialogResult.OK;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Seleccione correctamente su perfil");
-                                }
-                            }
+                            agregarRegistroTxt(persona.nombre);
+                            this.DialogResult = DialogResult.OK;
+                            credencialesCorrectas = true;
+                            break;
                         }
-
                     }
-                    catch (CredencialesInvalidasException ex)
+
+                    if (!credencialesCorrectas)
                     {
-                        MessageBox.Show($"Error: {ex.Message}", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        throw new CredencialesInvalidasException();
+                        // Mostrar mensaje de error.
+                        MessageBox.Show("Credenciales incorrectas. Verifica tu correo y contraseña.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
 
                 }
+                catch (CredencialesInvalidasException ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new CredencialesInvalidasException();
+                }
+
 
             }
+
+        }
         /// <summary>
         /// Este metodo deja un registro con el nombre y la fecha actual, en un archivo txt
         /// </summary>

@@ -3,38 +3,63 @@
   <Class Name="Animales.Animales">
     <Position X="4.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAACEgAAAAAAEAAAEAIAAAAoAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAEAAAAAACEgAAAAAAEAAAEAAAAAAoAAAAAAiA=</HashCode>
       <FileName>Animales.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Animales.Conejo">
     <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAgAAAAAAAAAAAAAAAABAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEgAAQAAAAAAAAAAAAAAAACAAAAQA=</HashCode>
       <FileName>Conejo.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Animales.Gato">
     <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAEAAgAAAAEAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAABAAAAEgAAQAAAEAAAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Gato.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Animales.Perro">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAEAAgABAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAAEgAAQAAAEAAQAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Perro.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Animales.Veterinaria">
+  <Class Name="Animales.Veterinaria&lt;T, P&gt;">
     <Position X="6.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAwAEAAAAAAAAAAIAAAAAAACAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAQAAwAEAAAAAAAAAAAAAAAAAACAAAiA=</HashCode>
       <FileName>Veterinaria.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Animal.updateCrudBaseDatos">
+    <Position X="10.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAQAIAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>updateCrudBaseDatos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animal.Producto">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAACEgAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Producto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Animal.IfechaCarga">
+    <Position X="10.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IfechaCarga.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="Alimentacion">
     <Position X="8.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>

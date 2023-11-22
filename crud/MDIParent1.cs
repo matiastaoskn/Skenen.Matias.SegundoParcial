@@ -29,18 +29,14 @@ namespace WindFormCrud
             this.StartPosition = FormStartPosition.CenterScreen;
             validarUsuario();
             veterinaria = new Veterinaria<Animales.Animales, Producto>(10);
-            stripUser.Text = UserNameLogin.UserName;
-            stripDateTime.Text = DateTime.Now.ToString();
-            ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
             actualizarCrudBaseDatos();
-        }
-        /// <summary>
-        /// Maneja el evento de eliminación de un elemento, actualizando la vista del formulario principal después de eliminar un elemento.
-        /// </summary>
-        private void MDIformularioMain_ElementoEliminadoEvent(string nombreElemento)
-        {
-            // Actualiza la vista después de eliminar un elemento
-            ActualizarVisor();
+
+            nombreUsuario.Text = UserNameLogin.UserName;
+            tipoUsuario.Text = UserNameLogin.TipoPerfil;
+            stripDateTime.Text = DateTime.Now.ToString();
+
+            ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
+
         }
         /// <summary>
         /// Actualiza el visor de la interfaz de usuario, limpiando y llenando un ListBox con la información de pacientes y productos.
@@ -799,6 +795,14 @@ namespace WindFormCrud
             });
 
             thread.Start();
+        }
+
+        /// <summary>
+        /// Maneja el evento de eliminación de un elemento, actualizando la vista del formulario principal después de eliminar un elemento.
+        /// </summary>
+        private void MDIformularioMain_ElementoEliminadoEvent(string nombreElemento)
+        {
+            ActualizarVisor();
         }
     }
 
