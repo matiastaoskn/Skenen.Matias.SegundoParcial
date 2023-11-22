@@ -22,7 +22,7 @@ NOMBRE Y APELLIDO: Matias Skenen
 ![Veterinaria](https://github.com/matiastaoskn/Skenen.Matias.PrimerParcial/assets/93952537/79edb92f-120a-4423-abbf-b47f19e9f3a5)
 
 
-![ClassDiagram1_1](https://github.com/matiastaoskn/Skenen.Matias.PrimerParcial/assets/93952537/4680adff-104d-4352-86d0-584b54b99243)
-![ClassDiagram1](https://github.com/matiastaoskn/Skenen.Matias.PrimerParcial/assets/93952537/cdd968ac-563b-4b44-bf54-488204a4cb89)
+![Diagrama Crud](https://github.com/matiastaoskn/Skenen.Matias.SegundoParcial/assets/93952537/83caec1a-d53f-498f-acbc-74f48fabafd5)
+![Diagrama Animales](https://github.com/matiastaoskn/Skenen.Matias.SegundoParcial/assets/93952537/0159bba7-7fab-4f11-8215-94d71276b5d1)
 
 
