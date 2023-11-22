@@ -755,11 +755,11 @@ namespace WindFormCrud
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(listaSerializada, Newtonsoft.Json.Formatting.Indented);
 
                 File.WriteAllText(filePath, json);
+
             }
-            catch (Exception ex)
+            catch (RegistroNoGuardadoException ex)
             {
-                MessageBox.Show($"Error al guardar los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw new RegistroNoGuardado();
+                MessageBox.Show($"Error: {ex.Message}", "Error de registro TXT", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         /// <summary>

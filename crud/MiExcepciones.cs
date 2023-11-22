@@ -6,40 +6,28 @@ using System.Threading.Tasks;
 
 namespace CrudVeterinaria
 {
+
     public class CredencialesInvalidasException : Exception
     {
-        public CredencialesInvalidasException() : base("Credenciales inválidas.")
-        {
-        }
+        public CredencialesInvalidasException() : base() { }
+        public CredencialesInvalidasException(string message) : base(message) { }
+        public CredencialesInvalidasException(string message, Exception innerException) : base(message, innerException) { }
     }
 
-    public class RegistroNoGuardado : Exception
+    public class RegistroNoGuardadoException : Exception
     {
-        public RegistroNoGuardado() : base("El registro de usuario no se guardo")
-        {
-        }
+        public RegistroNoGuardadoException() : base() { }
+        public RegistroNoGuardadoException(string message) : base(message) { }
+        public RegistroNoGuardadoException(string message, Exception innerException) : base(message, innerException) { }
     }
 
-    public class CamposVaciosException: Exception
+    public class CamposVaciosException : Exception
     {
-        public CamposVaciosException() : base("Todos los campos estan vacios")
-        {
-        }
+        public CamposVaciosException() : base("Se encontraron campos vacíos.") { }
+        public CamposVaciosException(string message) : base(message) { }
+        public CamposVaciosException(string message, Exception innerException) : base(message, innerException) { }
     }
 
-    public class InsuficientePermisoException : Exception
-    {
-        public InsuficientePermisoException() : base("Todos los campos estan vacios")
-        {
-        }
-    }
-
-    public class DatosIngresadosIncorrectos : Exception
-    {
-        public DatosIngresadosIncorrectos() : base("Datos ingresados incorrectos")
-        {
-        }
-    }
 
     public class AnimalIncorrectoException : Exception
     {

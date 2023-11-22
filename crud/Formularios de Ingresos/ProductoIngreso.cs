@@ -56,10 +56,9 @@ namespace CrudVeterinaria
                     throw new CamposVaciosException();
                 }
             }
-            catch (CamposVaciosException)
+            catch (CamposVaciosException ex)
             {
-                MessageBox.Show($"Campos vacios", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show($"Error: {ex.Message}", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             string nombre = this.textBox1.Text;

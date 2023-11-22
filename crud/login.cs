@@ -81,7 +81,6 @@ namespace WindFormCrud
                 {
                     foreach (var persona in personas)
                     {
-
                         if (textUser.Text == persona.correo && textPass.Text == persona.clave)
                         {
                             UserNameLogin.setTipoPerfil(persona.perfil);
@@ -96,15 +95,12 @@ namespace WindFormCrud
 
                     if (!credencialesCorrectas)
                     {
-                        // Mostrar mensaje de error.
-                        MessageBox.Show("Credenciales incorrectas. Verifica tu correo y contraseña.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw new CredencialesInvalidasException("Credenciales incorrectas. Verifica tu correo y contraseña.");
                     }
-
                 }
                 catch (CredencialesInvalidasException ex)
                 {
                     MessageBox.Show($"Error: {ex.Message}", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    throw new CredencialesInvalidasException();
                 }
 
 
@@ -130,10 +126,9 @@ namespace WindFormCrud
                     sw.WriteLine($"Usuario: {usuario} - Fecha y hora de inicio de sesión: {DateTime.Now}");
                 }
             }
-            catch (Exception ex)
+            catch (RegistroNoGuardadoException ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error de registro TXT", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw new RegistroNoGuardado();
             }
         }
     }

@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "Tipo": "Perro",
+    "Datos": {
+      "nombre": "Tobi",
+      "edad": 10,
+      "raza": "Pit bull",
+      "alimentacion": 0,
+      "Tamaño": "pequeño",
+      "Entrenamiento": "Poco",
+      "TipoDeAnimal": "Perro"
+    }
+  },
+  {
+    "Tipo": "Gato",
+    "Datos": {
+      "nombre": "Milla",
+      "edad": 4,
+      "raza": "Asiatico",
+      "alimentacion": 0,
+      "Vidas": 7,
+      "Peso": 10,
+      "TipoDeAnimal": "Gato"
+    }
+  },
+  {
+    "Tipo": "Conejo",
+    "Datos": {
+      "nombre": "Rabbit",
+      "edad": 3,
+      "raza": "Balines",
+      "alimentacion": 1,
+      "Comportamiento": "Tranquilo",
+      "Habitad": "Grande",
+      "TipoDeAnimal": "Conejo"
+    }
+  }
+]

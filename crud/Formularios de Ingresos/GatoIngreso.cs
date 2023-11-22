@@ -57,12 +57,12 @@ namespace WindFormCrud
                     string.IsNullOrWhiteSpace(this.textBox6.Text) &&
                     string.IsNullOrWhiteSpace(this.comboBox1.Text))
                 {
+                    throw new CamposVaciosException();
                 }
             }
-            catch (CamposVaciosException)
+            catch (CamposVaciosException ex)
             {
-                MessageBox.Show($"Campos vacios", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw new CamposVaciosException();
+                MessageBox.Show($"Error: {ex.Message}", "Error de registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             string tipoDeAnimal = this.TipoAnimal;
