@@ -1,58 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="WindFormCrud.AnimalIngresoForm">
-    <Position X="8" Y="12.25" Width="1.5" />
+    <Position X="8" Y="12.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Formularios de Ingresos\AnimalIngresoForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WindFormCrud.login">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="5.75" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAACAAAJgABAGAAIACAAAAAAAhAAAAACQAAQA=</HashCode>
+      <HashCode>AAAAAAAAACAAAJgABAGAAIACAAAAAAAhAAAAACQAAQA=</HashCode>
       <FileName>login.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WindFormCrud.MDIformularioMain">
     <Position X="5.25" Y="0.5" Width="2.5" />
+    <NestedTypes>
+      <Delegate Name="WindFormCrud.MDIformularioMain.ElementoEliminadoDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MDIParent1.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="WindFormCrud.MDIformularioMain.ActualizacionBaseDatosCompletaDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MDIParent1.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>IaFMBfUAEKCQCBgACmCyMAEKBAADCQQAABEAACAABBE=</HashCode>
+      <HashCode>IKBMBfUwQKCBiBgADnCgMKGKJIADCQQAJoEAYCHAABE=</HashCode>
       <FileName>MDIParent1.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="WindFormCrud.Ingresos.ConejoIngreso">
-    <Position X="5.25" Y="14.25" Width="1.5" />
+    <Position X="3.25" Y="18.5" Width="6.25" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAASAAAJiQBAKAAAACIABAAAAAEAAAAAQAAQA=</HashCode>
+      <HashCode>ACAAAAAAASAAAJiQhAKAAAACIABAgAAAEAAAAAQAAwA=</HashCode>
       <FileName>Formularios de Ingresos\ConejoIngreso.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WindFormCrud.GatoIngreso">
-    <Position X="7" Y="14.25" Width="1.5" />
+    <Position X="10.75" Y="19.5" Width="6.25" />
     <TypeIdentifier>
-      <HashCode>ACAABAAAASAAALiQBAKAAAACIABAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>ACAABAAAASAAALiQhAKAAAACIABAgAAAEAAAAAAAAgA=</HashCode>
       <FileName>Formularios de Ingresos\GatoIngreso.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WindFormCrud.PerroIngreso">
-    <Position X="8.75" Y="14.25" Width="1.5" />
+    <Position X="10.75" Y="12.25" Width="6.25" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAACAAALiQBAKAAAACIABIAAAAEBAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAACAAALiQhAKAAAACIABIgAAAEBAAEAAAAgA=</HashCode>
       <FileName>Formularios de Ingresos\PerroIngreso.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WindFormCrud.Persona">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAABAACAAAAAAAAAAAAAAACAAAAQAAAAAAA=</HashCode>
       <FileName>Persona.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WindFormCrud.UserNameLogin">
-    <Position X="1.75" Y="2" Width="1.5" />
+    <Position X="0.5" Y="2.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAABAAQAAAAAQAAA=</HashCode>
       <FileName>UserName.cs</FileName>
     </TypeIdentifier>
   </Class>
