@@ -16,7 +16,7 @@ namespace CrudVeterinaria
 {
     public partial class ProductoIngreso : AnimalIngresoForm
     {
-        public Animal.Producto? comida;
+        public Animal.Producto? Producto;
         bool esActualizacion = false;
         int id;
         public ProductoIngreso()
@@ -25,11 +25,13 @@ namespace CrudVeterinaria
             TipoAnimal = "Producto";
         }
 
-        public ProductoIngreso(Producto comida) : this()
+        public ProductoIngreso(Producto Producto) : this()
         {
             esActualizacion = true;
 
-            this.textBox1.Text = comida.nombre?.ToString();
+            this.textBox1.Text = Producto.nombre?.ToString();
+            this.textBox2.Text = Producto.nombre?.ToString();
+
 
             try
             {
@@ -86,6 +88,7 @@ namespace CrudVeterinaria
                 MessageBox.Show("El tamaño no puede ser un número");
                 return;
             }
+            this.Producto = new Producto(textBox1.Text, textBox2.Text);
 
             if (esActualizacion == false)
             {
@@ -118,7 +121,7 @@ namespace CrudVeterinaria
                     MessageBox.Show($"Error SQL: {ex.Message}");
                 }
 
-                this.comida = new Producto(textBox1.Text, "grande");
+                
             }
             else
             {

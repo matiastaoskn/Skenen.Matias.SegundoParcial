@@ -66,7 +66,7 @@ namespace WindFormCrud
                     barraprogreso();
                 }
 
-                foreach (Animal.Producto paciente in veterinaria.listaComida)
+                foreach (Producto paciente in veterinaria.listaComida)
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
                     barraprogreso();
@@ -118,7 +118,7 @@ namespace WindFormCrud
                 {
                     ProductoIngreso IngresoProducto = (ProductoIngreso)sender;
 
-                    this.veterinaria.listaComida.Add(IngresoProducto.comida);
+                    this.veterinaria.listaComida.Add(IngresoProducto.Producto);
                 }
 
                 this.ActualizarVisor();
@@ -516,7 +516,7 @@ namespace WindFormCrud
 
                         if (form2.DialogResult == DialogResult.OK)
                         {
-                            this.veterinaria.listaComida[comidaIndex] = form2.comida;
+                            this.veterinaria.listaComida[comidaIndex] = form2.Producto;
                             this.ActualizarVisor();
                         }
                     }
