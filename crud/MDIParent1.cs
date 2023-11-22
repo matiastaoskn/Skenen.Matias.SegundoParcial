@@ -18,6 +18,8 @@ namespace WindFormCrud
         public delegate void ActualizacionBaseDatosCompletaDelegate();
         public event ActualizacionBaseDatosCompletaDelegate ActualizacionBaseDatosCompletaEvent;
 
+        private Thread tiempoThread;
+
         /// <summary>
         /// Este contructor, inicializa una nueva lista de tipo Animales
         /// Toma el nombe de usuario guardado en el login
@@ -33,7 +35,9 @@ namespace WindFormCrud
 
             nombreUsuario.Text = UserNameLogin.UserName;
             tipoUsuario.Text = UserNameLogin.TipoPerfil;
-            stripDateTime.Text = DateTime.Now.ToString();
+
+            tiempoThread = new Thread(MostrarTiempo);
+            tiempoThread.Start();
 
             ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
 
@@ -407,6 +411,17 @@ namespace WindFormCrud
 
 
                 }
+                else
+                {
+                    try
+                    {
+                        throw new AnimalIncorrectoException("Seleccionó el animal equivocado");
+                    }
+                    catch (AnimalIncorrectoException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
         /// <summary>
@@ -443,6 +458,18 @@ namespace WindFormCrud
                         this.ActualizarVisor();
                     }
                 }
+                else
+                {
+                    try
+                    {
+                        throw new AnimalIncorrectoException("Seleccionó el animal equivocado");
+                    }
+                    catch (AnimalIncorrectoException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
             }
         }
         /// <summary>
@@ -481,6 +508,16 @@ namespace WindFormCrud
                         }
                     }
 
+                }else
+                {
+                    try
+                    {
+                        throw new AnimalIncorrectoException("Seleccionó el animal equivocado");
+                    }
+                    catch (AnimalIncorrectoException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 
@@ -804,7 +841,21 @@ namespace WindFormCrud
         {
             ActualizarVisor();
         }
-    }
+
+        private void MostrarTiempo()
+        {
+            while (true)
+            {
+                if (IsHandleCreated)
+                {
+                    // Verifica si el identificador de ventana está creado antes de usar Invoke
+                    Invoke(new Action(() => stripDateTime.Text = DateTime.Now.ToString()));
+                }
+                Thread.Sleep(1000);
+            }
+        }
+    }   
+
 
 }
 

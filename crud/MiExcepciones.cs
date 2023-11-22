@@ -41,4 +41,11 @@ namespace CrudVeterinaria
         }
     }
 
+    public class AnimalIncorrectoException : Exception
+    {
+        public AnimalIncorrectoException() : base() { }
+        public AnimalIncorrectoException(string message) : base(message) { }
+        public AnimalIncorrectoException(string message, Exception innerException) : base(message, innerException) { }
+    }
+
 }
