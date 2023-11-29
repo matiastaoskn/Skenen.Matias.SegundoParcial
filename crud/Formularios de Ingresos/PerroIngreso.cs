@@ -124,6 +124,8 @@ namespace WindFormCrud
             agregarPerro();
 
 
+            this.DialogResult = DialogResult.OK;
+            this.Close();
 
         }
         /// <summary>

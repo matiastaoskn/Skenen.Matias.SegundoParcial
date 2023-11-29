@@ -33,21 +33,12 @@
             menuStrip = new MenuStrip();
             btnAbrirMenu = new ToolStripMenuItem();
             agregarBoton = new ToolStripMenuItem();
-            toolStripSeparator3 = new ToolStripSeparator();
-            toolStripSeparator4 = new ToolStripSeparator();
-            toolStripSeparator5 = new ToolStripSeparator();
             btnPerroMenuAgregar = new ToolStripMenuItem();
             btnGatoMenuAgregar = new ToolStripMenuItem();
             btnConejoMenuAgregar = new ToolStripMenuItem();
             productosToolStripMenuItem = new ToolStripMenuItem();
             editMenu = new ToolStripMenuItem();
-            toolStripSeparator6 = new ToolStripSeparator();
-            toolStripSeparator7 = new ToolStripSeparator();
             modificarToolStripMenuItem = new ToolStripMenuItem();
-            btnModificarPerro = new ToolStripMenuItem();
-            btnModificarGato = new ToolStripMenuItem();
-            btnModificarConejo = new ToolStripMenuItem();
-            pToolStripMenuItem = new ToolStripMenuItem();
             btnEliminarMenu = new ToolStripMenuItem();
             ordenarMenu = new ToolStripMenuItem();
             edadesToolStripMenuItem = new ToolStripMenuItem();
@@ -73,10 +64,9 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            progressBar1 = new ProgressBar();
-            label7 = new Label();
             pictureBox1 = new PictureBox();
             label8 = new Label();
+            registroLoginsToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -86,7 +76,7 @@
             // 
             menuStrip.BackColor = Color.CornflowerBlue;
             menuStrip.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { btnAbrirMenu, agregarBoton, editMenu, ordenarMenu });
+            menuStrip.Items.AddRange(new ToolStripItem[] { btnAbrirMenu, agregarBoton, editMenu, ordenarMenu, registroLoginsToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(7, 2, 0, 2);
@@ -106,26 +96,11 @@
             // agregarBoton
             // 
             agregarBoton.BackColor = Color.CornflowerBlue;
-            agregarBoton.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator3, toolStripSeparator4, toolStripSeparator5, btnPerroMenuAgregar, btnGatoMenuAgregar, btnConejoMenuAgregar, productosToolStripMenuItem });
+            agregarBoton.DropDownItems.AddRange(new ToolStripItem[] { btnPerroMenuAgregar, btnGatoMenuAgregar, btnConejoMenuAgregar, productosToolStripMenuItem });
             agregarBoton.ImageTransparentColor = SystemColors.ActiveBorder;
             agregarBoton.Name = "agregarBoton";
             agregarBoton.Size = new Size(75, 24);
             agregarBoton.Text = "&Agregar";
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(141, 6);
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(141, 6);
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(141, 6);
             // 
             // btnPerroMenuAgregar
             // 
@@ -157,55 +132,17 @@
             // 
             // editMenu
             // 
-            editMenu.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator6, toolStripSeparator7, modificarToolStripMenuItem, btnEliminarMenu });
+            editMenu.DropDownItems.AddRange(new ToolStripItem[] { modificarToolStripMenuItem, btnEliminarMenu });
             editMenu.Name = "editMenu";
             editMenu.Size = new Size(60, 24);
             editMenu.Text = "&Editar";
             // 
-            // toolStripSeparator6
-            // 
-            toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(139, 6);
-            // 
-            // toolStripSeparator7
-            // 
-            toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(139, 6);
-            // 
             // modificarToolStripMenuItem
             // 
-            modificarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { btnModificarPerro, btnModificarGato, btnModificarConejo, pToolStripMenuItem });
             modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             modificarToolStripMenuItem.Size = new Size(142, 24);
             modificarToolStripMenuItem.Text = "Modificar";
-            // 
-            // btnModificarPerro
-            // 
-            btnModificarPerro.Name = "btnModificarPerro";
-            btnModificarPerro.Size = new Size(138, 24);
-            btnModificarPerro.Text = "Perros";
-            btnModificarPerro.Click += modificarPerroForm;
-            // 
-            // btnModificarGato
-            // 
-            btnModificarGato.Name = "btnModificarGato";
-            btnModificarGato.Size = new Size(138, 24);
-            btnModificarGato.Text = "Gatos";
-            btnModificarGato.Click += modificarGatoForm;
-            // 
-            // btnModificarConejo
-            // 
-            btnModificarConejo.Name = "btnModificarConejo";
-            btnModificarConejo.Size = new Size(138, 24);
-            btnModificarConejo.Text = "Conejos";
-            btnModificarConejo.Click += modificarConejoForm;
-            // 
-            // pToolStripMenuItem
-            // 
-            pToolStripMenuItem.Name = "pToolStripMenuItem";
-            pToolStripMenuItem.Size = new Size(138, 24);
-            pToolStripMenuItem.Text = "Producto";
-            pToolStripMenuItem.Click += modificarProducto;
+            modificarToolStripMenuItem.Click += modificarToolStripMenuItem_Click;
             // 
             // btnEliminarMenu
             // 
@@ -405,24 +342,6 @@
             label6.TabIndex = 12;
             label6.Text = "Atributo 2";
             // 
-            // progressBar1
-            // 
-            progressBar1.BackColor = SystemColors.ActiveCaptionText;
-            progressBar1.ForeColor = SystemColors.HotTrack;
-            progressBar1.Location = new Point(358, 559);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(616, 30);
-            progressBar1.TabIndex = 16;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(608, 541);
-            label7.Name = "label7";
-            label7.Size = new Size(113, 15);
-            label7.TabIndex = 18;
-            label7.Text = "LISTA DE PACIENTES";
-            // 
             // pictureBox1
             // 
             pictureBox1.Location = new Point(941, 71);
@@ -440,6 +359,13 @@
             label8.TabIndex = 21;
             label8.Text = "Base de Datos:";
             // 
+            // registroLoginsToolStripMenuItem
+            // 
+            registroLoginsToolStripMenuItem.Name = "registroLoginsToolStripMenuItem";
+            registroLoginsToolStripMenuItem.Size = new Size(123, 24);
+            registroLoginsToolStripMenuItem.Text = "Registro Logins";
+            registroLoginsToolStripMenuItem.Click += registroLoginsToolStripMenuItem_Click;
+            // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -448,8 +374,6 @@
             ClientSize = new Size(984, 633);
             Controls.Add(label8);
             Controls.Add(pictureBox1);
-            Controls.Add(label7);
-            Controls.Add(progressBar1);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -501,9 +425,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private ToolStripMenuItem btnModificarPerro;
-        private ToolStripMenuItem btnModificarGato;
-        private ToolStripMenuItem btnModificarConejo;
         private ToolStripMenuItem edadesToolStripMenuItem;
         private ToolStripMenuItem btnEdadesMayoraMenor;
         private ToolStripMenuItem btnEdadesMenoraMayor;
@@ -517,13 +438,11 @@
         private ToolStripButton stripDateTime;
         private ToolStripButton nombreUsuario;
         private ToolStripMenuItem productosToolStripMenuItem;
-        private ToolStripMenuItem pToolStripMenuItem;
         private ToolStripMenuItem normalizarToolStripMenuItem;
-        private ProgressBar progressBar1;
-        private Label label7;
         private PictureBox pictureBox1;
         private Label label8;
         private ToolStripButton tipoUsuario;
+        private ToolStripMenuItem registroLoginsToolStripMenuItem;
     }
 }
 

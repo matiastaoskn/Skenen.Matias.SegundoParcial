@@ -2,9 +2,9 @@
   {
     "Tipo": "Perro",
     "Datos": {
-      "nombre": "Tobi",
+      "nombre": "10",
       "edad": 10,
-      "raza": "Pit bull",
+      "raza": "carnivoro",
       "alimentacion": 0,
       "Tamaño": "pequeño",
       "Entrenamiento": "Poco",
@@ -14,9 +14,9 @@
   {
     "Tipo": "Gato",
     "Datos": {
-      "nombre": "Milla",
+      "nombre": "Gato",
       "edad": 4,
-      "raza": "Asiatico",
+      "raza": "carnivoro",
       "alimentacion": 0,
       "Vidas": 7,
       "Peso": 10,
@@ -26,10 +26,10 @@
   {
     "Tipo": "Conejo",
     "Datos": {
-      "nombre": "Rabbit",
+      "nombre": "Rabit",
       "edad": 3,
-      "raza": "Balines",
-      "alimentacion": 1,
+      "raza": "herviboro",
+      "alimentacion": 0,
       "Comportamiento": "Tranquilo",
       "Habitad": "Grande",
       "TipoDeAnimal": "Conejo"

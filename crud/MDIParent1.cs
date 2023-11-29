@@ -19,7 +19,7 @@ namespace WindFormCrud
         public event ActualizacionBaseDatosCompletaDelegate ActualizacionBaseDatosCompletaEvent;
 
         private Thread tiempoThread;
-
+        private bool detenerHilo = false;
         /// <summary>
         /// Este contructor, inicializa una nueva lista de tipo Animales
         /// Toma el nombe de usuario guardado en el login
@@ -28,18 +28,23 @@ namespace WindFormCrud
         public MDIformularioMain()
         {
             InitializeComponent();
+
+
             this.StartPosition = FormStartPosition.CenterScreen;
             validarUsuario();
+
             veterinaria = new Veterinaria<Animales.Animales, Producto>(10);
             actualizarCrudBaseDatos();
 
             nombreUsuario.Text = UserNameLogin.UserName;
             tipoUsuario.Text = UserNameLogin.TipoPerfil;
 
+
             tiempoThread = new Thread(MostrarTiempo);
             tiempoThread.Start();
 
             ElementoEliminadoEvent += MDIformularioMain_ElementoEliminadoEvent;
+
 
         }
         /// <summary>
@@ -63,13 +68,11 @@ namespace WindFormCrud
                 foreach (Animales.Animales paciente in veterinaria.listaPacientes)
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
-                    barraprogreso();
                 }
 
                 foreach (Producto paciente in veterinaria.listaComida)
                 {
                     listBoxMenu.Items.Add(paciente.ToString());
-                    barraprogreso();
 
                 }
 
@@ -187,9 +190,12 @@ namespace WindFormCrud
         /// <param name="e"></param>
         private void MDIParent1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            DetenerHilo();
             if (MessageBox.Show("¿Está seguro de que desea cerrar la aplicación?", "Cerrar Aplicación",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
+                // Si el usuario elige "No", cancelar el cierre del formulario.
+
                 e.Cancel = true;
             }
         }
@@ -374,187 +380,6 @@ namespace WindFormCrud
             formIngresoProducto.FormClosed += capturaEventoFormClosed;
 
             formIngresoProducto.Show();
-        }
-        // Modificar animales
-        /// <summary>
-        /// Abre un formulario de modificación de datos para un perro si hay un perro seleccionado en la lista.
-        /// Obtiene el perro seleccionado, crea un formulario de ingreso de perro con los datos existentes y lo muestra.
-        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
-        /// </summary>
-        private void modificarPerroForm(object sender, EventArgs e)
-        {
-            if (this.listBoxMenu.SelectedIndex > -1)
-            {
-                int selectedIndex = listBoxMenu.SelectedIndex;
-
-                string selectedAnimalType = veterinaria.listaPacientes[selectedIndex].TipoDeAnimal;
-
-
-                if (selectedAnimalType == "Perro")
-                {
-                    int indice = this.listBoxMenu.SelectedIndex;
-                    Animales.Animales a = this.veterinaria.listaPacientes[indice];
-
-                    Animales.Perro p = a as Animales.Perro;
-
-                    PerroIngreso form2 = new PerroIngreso(a, p);
-
-                    form2.ShowDialog();
-
-                    if (form2.DialogResult == DialogResult.OK)
-                    {
-
-                        this.veterinaria.listaPacientes[indice] = (form2.animales);
-
-                        this.ActualizarVisor();
-                    }
-
-
-                }
-                else
-                {
-                    try
-                    {
-                        throw new AnimalIncorrectoException("Seleccionó el animal equivocado");
-                    }
-                    catch (AnimalIncorrectoException ex)
-                    {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-        /// <summary>
-        /// Abre un formulario de modificación de datos para un gato si hay un "gato" seleccionado en la lista.
-        /// Obtiene el "gato" seleccionado, crea un formulario de ingreso de "gato" con los datos existentes y lo muestra.
-        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
-        /// </summary>
-        private void modificarGatoForm(object sender, EventArgs e)
-        {
-            if (this.listBoxMenu.SelectedIndex > -1)
-            {
-                int selectedIndex = listBoxMenu.SelectedIndex;
-
-                string selectedAnimalType = veterinaria.listaPacientes[selectedIndex].TipoDeAnimal;
-
-                int indice = this.listBoxMenu.SelectedIndex;
-                Animales.Animales a = this.veterinaria.listaPacientes[indice];
-
-                if (selectedAnimalType == "Gato")
-                {
-
-                    Animales.Gato p = a as Animales.Gato;
-
-
-                    GatoIngreso form2 = new GatoIngreso(a, p);
-
-                    form2.ShowDialog();
-
-                    if (form2.DialogResult == DialogResult.OK)
-                    {
-
-                        this.veterinaria.listaPacientes[indice] = (form2.animales);
-
-                        this.ActualizarVisor();
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        throw new AnimalIncorrectoException("Seleccionó el animal equivocado");
-                    }
-                    catch (AnimalIncorrectoException ex)
-                    {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
-            }
-        }
-        /// <summary>
-        /// Abre un formulario de modificación de datos para un conejo si hay un "conejo" seleccionado en la lista.
-        /// Obtiene el "conejo" seleccionado, crea un formulario de ingreso de "conejo" con los datos existentes y lo muestra.
-        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
-        /// </summary>
-        private void modificarConejoForm(object sender, EventArgs e)
-        {
-            if (this.listBoxMenu.SelectedIndex > -1)
-            {
-                int selectedIndex = listBoxMenu.SelectedIndex;
-
-                string selectedAnimalType = veterinaria.listaPacientes[selectedIndex].TipoDeAnimal;
-
-
-                if (selectedAnimalType == "Conejo")
-                {
-                    int indice = this.listBoxMenu.SelectedIndex;
-                    Animales.Animales a = this.veterinaria.listaPacientes[indice];
-                    if (a is Animales.Conejo)
-                    {
-
-                        Animales.Conejo p = a as Animales.Conejo;
-
-                        ConejoIngreso form2 = new ConejoIngreso(a, p);
-
-                        form2.ShowDialog();
-
-                        if (form2.DialogResult == DialogResult.OK)
-                        {
-
-                            this.veterinaria.listaPacientes[indice] = (form2.animales);
-
-                            this.ActualizarVisor();
-                        }
-                    }
-
-                }else
-                {
-                    try
-                    {
-                        throw new AnimalIncorrectoException("Seleccionó el animal equivocado");
-                    }
-                    catch (AnimalIncorrectoException ex)
-                    {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-
-        }
-        /// <summary>
-        /// Obtiene el "producto" seleccionado, crea un formulario de ingreso de "producto" con los datos existentes y lo muestra.
-        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
-        /// </summary>
-        private void modificarProducto(object sender, EventArgs e)
-        {
-            // Verificar si hay un ítem seleccionado en el listBoxMenu
-            if (this.listBoxMenu.SelectedIndex > -1)
-            {
-                int selectedIndex = listBoxMenu.SelectedIndex;
-
-                // Verificar si el índice pertenece a la lista de comida
-                if (selectedIndex < veterinaria.listaPacientes.Count + veterinaria.listaComida.Count)
-                {
-                    // El índice pertenece a la lista de comida
-                    int comidaIndex = selectedIndex - veterinaria.listaPacientes.Count;
-                    Animal.Producto a = this.veterinaria.listaComida[comidaIndex];
-
-                    // Verificar si es comida y mostrar el formulario correspondiente
-                    if (a is Animal.Producto)
-                    {
-                        Animal.Producto p = a as Animal.Producto;
-                        ProductoIngreso form2 = new ProductoIngreso(p);
-                        form2.ShowDialog();
-
-                        if (form2.DialogResult == DialogResult.OK)
-                        {
-                            this.veterinaria.listaComida[comidaIndex] = form2.Producto;
-                            this.ActualizarVisor();
-                        }
-                    }
-                }
-            }
         }
         //Ordenar por Tipo
         /// <summary>
@@ -795,46 +620,6 @@ namespace WindFormCrud
             }
         }
         /// <summary>
-        /// Realiza una operación adicional después de actualizar la base de datos, como cargar una imagen de confirmación.
-        /// </summary>
-
-
-        private void barraprogreso()
-        {
-            // Inicializa la barra de progreso
-            progressBar1.Value = 0;
-
-            int totalElementos = 10;
-
-            Thread thread = new Thread(() =>
-            {
-
-                for (int i = 0; i < totalElementos; i++)
-                {
-                    Invoke((MethodInvoker)delegate
-                    {
-                        int progreso = (int)((veterinaria.listaPacientes.Count / (double)totalElementos) * 100);
-                        progressBar1.Value = progreso;
-
-                        this.SetStyle(ControlStyles.UserPaint, true);
-                        progressBar1.ForeColor = Color.Yellow;
-
-                    });
-
-                }
-
-                if (veterinaria.listaPacientes.Count == 10)
-                {
-                    // Muestra un mensaje al completar
-                    MessageBox.Show("Lista de pacientes completada");
-                    progressBar1.Value = 0;
-                }
-            });
-
-            thread.Start();
-        }
-
-        /// <summary>
         /// Maneja el evento de eliminación de un elemento, actualizando la vista del formulario principal después de eliminar un elemento.
         /// </summary>
         private void MDIformularioMain_ElementoEliminadoEvent(string nombreElemento)
@@ -844,7 +629,7 @@ namespace WindFormCrud
 
         private void MostrarTiempo()
         {
-            while (true)
+            while (!detenerHilo)
             {
                 if (IsHandleCreated)
                 {
@@ -854,9 +639,125 @@ namespace WindFormCrud
                 Thread.Sleep(1000);
             }
         }
-    }   
+        private void DetenerHilo()
+        {
+            detenerHilo = true;
+            tiempoThread.Join();  // Espera a que el hilo termine
+        }
+        /// <summary>
+        /// Abre un formulario de modificación de datos para el elemento seleccionado en la lista.
+        /// Verifica el tipo de animal seleccionado y abre el formulario correspondiente.
+        /// Actualiza la lista de pacientes si se confirma la modificación desde el formulario de ingreso.
+        /// </summary>
+        /// 
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.listBoxMenu.SelectedIndex > -1)
+            {
+                int selectedIndex = listBoxMenu.SelectedIndex;
+
+                string selectedAnimalType = veterinaria.listaPacientes[selectedIndex].TipoDeAnimal;
+
+                if (selectedAnimalType == "Conejo")
+                {
+                    int indice = this.listBoxMenu.SelectedIndex;
+                    Animales.Animales a = this.veterinaria.listaPacientes[indice];
+
+                    if (a is Animales.Conejo)
+                    {
+
+                        Animales.Conejo p = a as Animales.Conejo;
+
+                        ConejoIngreso form2 = new ConejoIngreso(a, p);
+
+                        form2.ShowDialog();
+
+                        if (form2.DialogResult == DialogResult.OK)
+                        {
+
+                            this.veterinaria.listaPacientes[indice] = (form2.animales);
+
+                            this.ActualizarVisor();
+                        }
+                    }
+                }
+                if (selectedAnimalType == "Gato")
+                {
+                    int indice = this.listBoxMenu.SelectedIndex;
+                    Animales.Animales a = this.veterinaria.listaPacientes[indice];
+                    Animales.Gato p = a as Animales.Gato;
 
 
+                    GatoIngreso form2 = new GatoIngreso(a, p);
+
+                    form2.ShowDialog();
+
+                    if (form2.DialogResult == DialogResult.OK)
+                    {
+
+                        this.veterinaria.listaPacientes[indice] = (form2.animales);
+
+                        this.ActualizarVisor();
+                    }
+                }
+
+                if (selectedAnimalType == "Perro")
+                {
+                    int indice = this.listBoxMenu.SelectedIndex;
+                    Animales.Animales a = this.veterinaria.listaPacientes[indice];
+
+                    Animales.Perro p = a as Animales.Perro;
+
+                    PerroIngreso form2 = new PerroIngreso(a, p);
+
+                    form2.ShowDialog();
+
+                    if (form2.DialogResult == DialogResult.OK)
+                    {
+
+                        this.veterinaria.listaPacientes[indice] = (form2.animales);
+
+                        this.ActualizarVisor();
+                    }
+                }
+
+                // Verificar si el índice pertenece a la lista de comida
+                if (selectedIndex < veterinaria.listaPacientes.Count)
+                {
+                    // El índice pertenece a la lista de pacientes
+                    // Lógica de modificación para pacientes aquí
+                }
+                else if (selectedIndex < veterinaria.listaPacientes.Count + veterinaria.listaComida.Count)
+                {
+                    // El índice pertenece a la lista de comida
+                    int comidaIndex = selectedIndex - veterinaria.listaPacientes.Count;
+                    Animal.Producto a = this.veterinaria.listaComida[comidaIndex];
+
+                    // Verificar si es comida y mostrar el formulario correspondiente
+                    if (a is Animal.Producto)
+                    {
+                        Animal.Producto p = a as Animal.Producto;
+                        ProductoIngreso form2 = new ProductoIngreso(p);
+                        form2.ShowDialog();
+
+                        if (form2.DialogResult == DialogResult.OK)
+                        {
+                            this.veterinaria.listaComida[comidaIndex] = form2.Producto;
+                            this.ActualizarVisor();
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void registroLoginsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistroLogs registro = new RegistroLogs();
+            registro.MdiParent = this; // Establecer el formulario principal como el formulario MDI padre
+            registro.Show();
+        }
+    }
 }
 
 
