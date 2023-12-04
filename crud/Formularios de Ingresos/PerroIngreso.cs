@@ -229,7 +229,7 @@ namespace WindFormCrud
                     using (SqlCommand cmd = new SqlCommand(actualizar, conexcionBaseDatos.Conectar()))
                     {
                         cmd.Parameters.AddWithValue("@ID", id); // Usar el nombre original en la condición WHERE
-                        cmd.Parameters.AddWithValue("@NOMBRE", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@NOMBRE", textBox1.Text);
                         cmd.Parameters.AddWithValue("@EDAD", textBox2.Text);
                         cmd.Parameters.AddWithValue("@RAZA", comboBox1.Text);
                         cmd.Parameters.AddWithValue("@ALIMENTACION", textBox4.Text);
