@@ -37,8 +37,7 @@
             btnGatoMenuAgregar = new ToolStripMenuItem();
             btnConejoMenuAgregar = new ToolStripMenuItem();
             productosToolStripMenuItem = new ToolStripMenuItem();
-            editMenu = new ToolStripMenuItem();
-            modificarToolStripMenuItem = new ToolStripMenuItem();
+            modificarBoton = new ToolStripMenuItem();
             btnEliminarMenu = new ToolStripMenuItem();
             ordenarMenu = new ToolStripMenuItem();
             edadesToolStripMenuItem = new ToolStripMenuItem();
@@ -49,6 +48,7 @@
             btnOrdenarGato = new ToolStripMenuItem();
             btnOrdenarConejo = new ToolStripMenuItem();
             normalizarToolStripMenuItem = new ToolStripMenuItem();
+            registroLoginsToolStripMenuItem = new ToolStripMenuItem();
             toolStrip = new ToolStrip();
             btnGuardar = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -66,7 +66,6 @@
             label6 = new Label();
             pictureBox1 = new PictureBox();
             label8 = new Label();
-            registroLoginsToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -76,7 +75,7 @@
             // 
             menuStrip.BackColor = Color.CornflowerBlue;
             menuStrip.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { btnAbrirMenu, agregarBoton, editMenu, ordenarMenu, registroLoginsToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { btnAbrirMenu, agregarBoton, modificarBoton, btnEliminarMenu, ordenarMenu, registroLoginsToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(7, 2, 0, 2);
@@ -130,26 +129,19 @@
             productosToolStripMenuItem.Text = "Productos";
             productosToolStripMenuItem.Click += formIngresoProducto;
             // 
-            // editMenu
+            // modificarBoton
             // 
-            editMenu.DropDownItems.AddRange(new ToolStripItem[] { modificarToolStripMenuItem, btnEliminarMenu });
-            editMenu.Name = "editMenu";
-            editMenu.Size = new Size(60, 24);
-            editMenu.Text = "&Editar";
-            // 
-            // modificarToolStripMenuItem
-            // 
-            modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            modificarToolStripMenuItem.Size = new Size(142, 24);
-            modificarToolStripMenuItem.Text = "Modificar";
-            modificarToolStripMenuItem.Click += modificarToolStripMenuItem_Click;
+            modificarBoton.Name = "modificarBoton";
+            modificarBoton.Size = new Size(85, 24);
+            modificarBoton.Text = "Modificar";
+            modificarBoton.Click += ModificarElementos;
             // 
             // btnEliminarMenu
             // 
             btnEliminarMenu.Name = "btnEliminarMenu";
-            btnEliminarMenu.Size = new Size(142, 24);
+            btnEliminarMenu.Size = new Size(75, 24);
             btnEliminarMenu.Text = "Eliminar";
-            btnEliminarMenu.Click += eliminarToolStripMenuItem_Click;
+            btnEliminarMenu.Click += eliminarElementos;
             // 
             // ordenarMenu
             // 
@@ -168,15 +160,15 @@
             // btnEdadesMayoraMenor
             // 
             btnEdadesMayoraMenor.Name = "btnEdadesMayoraMenor";
-            btnEdadesMayoraMenor.Size = new Size(179, 24);
-            btnEdadesMayoraMenor.Text = "Mayor a menor";
+            btnEdadesMayoraMenor.Size = new Size(183, 24);
+            btnEdadesMayoraMenor.Text = "menor a Mayor ";
             btnEdadesMayoraMenor.Click += mayorAmenorOrdenarElementos;
             // 
             // btnEdadesMenoraMayor
             // 
             btnEdadesMenoraMayor.Name = "btnEdadesMenoraMayor";
-            btnEdadesMenoraMayor.Size = new Size(179, 24);
-            btnEdadesMenoraMayor.Text = "Menor a mayor";
+            btnEdadesMenoraMayor.Size = new Size(183, 24);
+            btnEdadesMenoraMayor.Text = "mayor a menor";
             btnEdadesMenoraMayor.Click += menorAmayorOrdenarElementos;
             // 
             // animalesToolStripMenuItem
@@ -213,6 +205,13 @@
             normalizarToolStripMenuItem.Size = new Size(152, 24);
             normalizarToolStripMenuItem.Text = "Normalizar";
             normalizarToolStripMenuItem.Click += normalizarLista;
+            // 
+            // registroLoginsToolStripMenuItem
+            // 
+            registroLoginsToolStripMenuItem.Name = "registroLoginsToolStripMenuItem";
+            registroLoginsToolStripMenuItem.Size = new Size(123, 24);
+            registroLoginsToolStripMenuItem.Text = "Registro Logins";
+            registroLoginsToolStripMenuItem.Click += registroLoginsToolStripMenuItem_Click;
             // 
             // toolStrip
             // 
@@ -359,13 +358,6 @@
             label8.TabIndex = 21;
             label8.Text = "Base de Datos:";
             // 
-            // registroLoginsToolStripMenuItem
-            // 
-            registroLoginsToolStripMenuItem.Name = "registroLoginsToolStripMenuItem";
-            registroLoginsToolStripMenuItem.Size = new Size(123, 24);
-            registroLoginsToolStripMenuItem.Text = "Registro Logins";
-            registroLoginsToolStripMenuItem.Click += registroLoginsToolStripMenuItem_Click;
-            // 
             // MDIformularioMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -384,6 +376,7 @@
             Controls.Add(statusStrip);
             Controls.Add(toolStrip);
             Controls.Add(menuStrip);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             IsMdiContainer = true;
             MainMenuStrip = menuStrip;
             Margin = new Padding(4, 3, 4, 3);
@@ -411,7 +404,6 @@
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripMenuItem agregarBoton;
-        private ToolStripMenuItem editMenu;
         private ToolStripMenuItem ordenarMenu;
         private ToolTip toolTip;
         private ToolStripMenuItem btnPerroMenuAgregar;
@@ -419,8 +411,6 @@
         private ToolStripMenuItem btnConejoMenuAgregar;
         private ToolStripButton btnGuardar;
         private ListBox listBoxMenu;
-        private ToolStripMenuItem modificarToolStripMenuItem;
-        private ToolStripMenuItem btnEliminarMenu;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -443,6 +433,8 @@
         private Label label8;
         private ToolStripButton tipoUsuario;
         private ToolStripMenuItem registroLoginsToolStripMenuItem;
+        private ToolStripMenuItem modificarBoton;
+        private ToolStripMenuItem btnEliminarMenu;
     }
 }
 

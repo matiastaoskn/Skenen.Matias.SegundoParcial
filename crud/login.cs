@@ -123,7 +123,7 @@ namespace WindFormCrud
 
                 using (StreamWriter sw = File.AppendText(filePath))
                 {
-                    sw.WriteLine($"Usuario: {usuario} - Fecha y hora de inicio de sesión: {DateTime.Now}");
+                    sw.WriteLine($"Usuario: {usuario} - Fecha y hora: {DateTime.Now}");
                 }
             }
             catch (RegistroNoGuardadoException ex)

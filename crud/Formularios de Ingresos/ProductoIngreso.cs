@@ -67,11 +67,16 @@ namespace CrudVeterinaria
                 MessageBox.Show("El nombre no puede estar en blanco");
                 return;
             }
-
-            string tamaño = this.textBox2.Text;
-            if (string.IsNullOrWhiteSpace(tamaño))
+            if (int.TryParse(nombre, out _))
             {
-                MessageBox.Show("El tamaño no puede estar en blanco");
+                MessageBox.Show("El nombre no puede ser un número");
+                return;
+            }
+
+            string tamaño = this.textBox2.Text; ;
+            if (int.TryParse(tamaño, out _))
+            {
+                MessageBox.Show("El tamaño no puede ser un número");
                 return;
             }
 
@@ -90,9 +95,6 @@ namespace CrudVeterinaria
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("DATOS INGRESADOS");
-
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
                     }
                 }
                 catch (SqlException ex)
@@ -119,12 +121,13 @@ namespace CrudVeterinaria
                     MessageBox.Show("Error al actualizar datos: " + ex.Message);
                 }
             }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void agregarBoton(object sender, EventArgs e)
         {
             agregarRegistro();
-            this.Close();
         }
 
         private void CancelarBoton(object sender, EventArgs e)

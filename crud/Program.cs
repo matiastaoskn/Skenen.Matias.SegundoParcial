@@ -16,10 +16,8 @@ namespace crud
 
             if (formlogin.DialogResult == DialogResult.OK)
             {
-                
-            }
-            
-            Application.Run(new MDIformularioMain());
+                Application.Run(new MDIformularioMain());
+            }   
         }
     }
 }

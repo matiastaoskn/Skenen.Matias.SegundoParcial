@@ -110,6 +110,7 @@
             Controls.Add(label2);
             Controls.Add(button2);
             Controls.Add(button1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "ProductoIngreso";
             Text = "ProductoIngreso";
             ResumeLayout(false);

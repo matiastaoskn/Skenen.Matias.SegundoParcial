@@ -6,15 +6,15 @@
       "edad": 10,
       "raza": "carnivoro",
       "alimentacion": 0,
-      "Tamaño": "pequeño",
-      "Entrenamiento": "Poco",
+      "Tamaño": "Poco",
+      "Entrenamiento": "pequeño",
       "TipoDeAnimal": "Perro"
     }
   },
   {
     "Tipo": "Gato",
     "Datos": {
-      "nombre": "Gato",
+      "nombre": "Milla",
       "edad": 4,
       "raza": "carnivoro",
       "alimentacion": 0,
@@ -26,10 +26,10 @@
   {
     "Tipo": "Conejo",
     "Datos": {
-      "nombre": "Rabit",
+      "nombre": "Rabbit",
       "edad": 3,
-      "raza": "herviboro",
-      "alimentacion": 0,
+      "raza": "Balines",
+      "alimentacion": 1,
       "Comportamiento": "Tranquilo",
       "Habitad": "Grande",
       "TipoDeAnimal": "Conejo"

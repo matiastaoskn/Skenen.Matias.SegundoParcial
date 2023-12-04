@@ -35,11 +35,11 @@ namespace WindFormCrud
                 id = (int)cmd2.ExecuteScalar();
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
- 
+
 
         }
         /// <summary>
@@ -182,7 +182,7 @@ namespace WindFormCrud
                     MessageBox.Show("Error al actualizar datos: " + ex.Message);
                 }
             }
-            
+
 
 
             this.DialogResult = DialogResult.OK;

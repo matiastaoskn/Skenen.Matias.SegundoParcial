@@ -167,6 +167,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.ControlText;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "login";
             Text = "INGRESO USUARIO";
             ResumeLayout(false);

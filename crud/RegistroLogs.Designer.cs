@@ -38,12 +38,12 @@
             listBox1.ItemHeight = 15;
             listBox1.Location = new Point(12, 26);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(232, 214);
+            listBox1.Size = new Size(297, 214);
             listBox1.TabIndex = 0;
             // 
             // button1
             // 
-            button1.Location = new Point(86, 267);
+            button1.Location = new Point(143, 267);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 1;
@@ -55,10 +55,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(270, 334);
+            ClientSize = new Size(321, 334);
             Controls.Add(button1);
             Controls.Add(listBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "RegistroLogs";
+            RightToLeftLayout = true;
             Text = "RegistroLogs";
             ResumeLayout(false);
         }

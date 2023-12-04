@@ -16,7 +16,7 @@ namespace WindFormCrud.Ingresos
             TipoAnimal = "Conejo";
         }
 
-        public ConejoIngreso(Animales.Animales animales, Animales.Conejo conejo): this()
+        public ConejoIngreso(Animales.Animales animales, Animales.Conejo conejo) : this()
         {
             esActualizacion = true;
 
