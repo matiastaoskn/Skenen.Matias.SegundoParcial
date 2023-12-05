@@ -282,15 +282,15 @@
             listBoxMenu.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxMenu.FormattingEnabled = true;
             listBoxMenu.ItemHeight = 28;
-            listBoxMenu.Location = new Point(356, 101);
+            listBoxMenu.Location = new Point(329, 101);
             listBoxMenu.Name = "listBoxMenu";
-            listBoxMenu.Size = new Size(616, 424);
+            listBoxMenu.Size = new Size(643, 424);
             listBoxMenu.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(358, 83);
+            label1.Location = new Point(329, 71);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 6;
@@ -299,7 +299,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(414, 83);
+            label2.Location = new Point(385, 71);
             label2.Name = "label2";
             label2.Size = new Size(33, 15);
             label2.TabIndex = 7;
@@ -308,7 +308,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(453, 83);
+            label3.Location = new Point(424, 71);
             label3.Name = "label3";
             label3.Size = new Size(31, 15);
             label3.TabIndex = 8;
@@ -317,7 +317,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(490, 83);
+            label4.Location = new Point(461, 71);
             label4.Name = "label4";
             label4.Size = new Size(78, 15);
             label4.TabIndex = 9;
@@ -326,7 +326,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(574, 83);
+            label5.Location = new Point(545, 71);
             label5.Name = "label5";
             label5.Size = new Size(60, 15);
             label5.TabIndex = 11;
@@ -335,7 +335,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(640, 83);
+            label6.Location = new Point(611, 71);
             label6.Name = "label6";
             label6.Size = new Size(60, 15);
             label6.TabIndex = 12;

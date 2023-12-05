@@ -2,35 +2,35 @@
   {
     "Tipo": "Perro",
     "Datos": {
-      "nombre": "10",
+      "nombre": "Perrito",
       "edad": 10,
       "raza": "carnivoro",
       "alimentacion": 0,
       "Tamaño": "Poco",
-      "Entrenamiento": "pequeño",
+      "Entrenamiento": "mediano",
       "TipoDeAnimal": "Perro"
     }
   },
   {
     "Tipo": "Gato",
     "Datos": {
-      "nombre": "Milla",
+      "nombre": "Michi",
       "edad": 4,
       "raza": "carnivoro",
       "alimentacion": 0,
       "Vidas": 7,
-      "Peso": 10,
+      "Peso": 20,
       "TipoDeAnimal": "Gato"
     }
   },
   {
     "Tipo": "Conejo",
     "Datos": {
-      "nombre": "Rabbit",
+      "nombre": "Rabbits",
       "edad": 3,
-      "raza": "Balines",
-      "alimentacion": 1,
-      "Comportamiento": "Tranquilo",
+      "raza": "herviboro",
+      "alimentacion": 0,
+      "Comportamiento": "Calmado",
       "Habitad": "Grande",
       "TipoDeAnimal": "Conejo"
     }
