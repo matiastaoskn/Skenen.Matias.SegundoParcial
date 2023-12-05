@@ -663,6 +663,10 @@ namespace WindFormCrud
             registro.MdiParent = this; // Establecer el formulario principal como el formulario MDI padre
             registro.Show();
         }
+        /// <summary>
+        /// Maneja el evento de modificación de elementos en respuesta a la selección de un ítem en listBoxMenu.
+        /// Determina si el índice seleccionado corresponde a un paciente o a una comida y llama al método correspondiente de modificación.
+        /// </summary>
         private void ModificarElementos(object sender, EventArgs e)
         {
             if (this.listBoxMenu.SelectedIndex > -1)
@@ -679,7 +683,10 @@ namespace WindFormCrud
                 }
             }
         }
-
+        /// <summary>
+        /// Modifica un paciente en la lista de pacientes de la veterinaria según su tipo de animal.
+        /// Invoca métodos específicos de modificación para diferentes tipos de animales (Conejo, Gato, Perro).
+        /// </summary>
         private void ModificarPaciente(int indice)
         {
             string selectedAnimalType = veterinaria.listaPacientes[indice].TipoDeAnimal;
@@ -698,41 +705,55 @@ namespace WindFormCrud
                 ModificarPerro(a, indice);
             }
         }
-
+        /// <summary>
+        /// Modifica un paciente de tipo Conejo en la lista de pacientes de la veterinaria.
+        /// Crea un formulario de modificación para Conejo, lo muestra y actualiza la lista.
+        /// </summary>
         private void ModificarConejo(Animales.Animales a, int indice)
         {
             Animales.Conejo p = a as Animales.Conejo;
-            ConejoIngreso form2 = new ConejoIngreso(a, p);
-            MostrarYActualizar(form2, indice);
+            ConejoIngreso formularioModificacionConejo = new ConejoIngreso(a, p);
+            MostrarYActualizar(formularioModificacionConejo, indice);
         }
-
+        /// <summary>
+        /// Modifica un paciente de tipo Gato en la lista de pacientes de la veterinaria.
+        /// Crea un formulario de modificación para Gato, lo muestra y actualiza la lista.
+        /// </summary>
         private void ModificarGato(Animales.Animales a, int indice)
         {
             Animales.Gato p = a as Animales.Gato;
-            GatoIngreso form2 = new GatoIngreso(a, p);
-            MostrarYActualizar(form2, indice);
+            GatoIngreso formularioModificacionGato = new GatoIngreso(a, p);
+            MostrarYActualizar(formularioModificacionGato, indice);
         }
-
+        /// <summary>
+        /// Modifica un paciente de tipo Perro en la lista de pacientes de la veterinaria.
+        /// Crea un formulario de modificación para Perro, lo muestra y actualiza la lista.
+        /// </summary>
         private void ModificarPerro(Animales.Animales a, int indice)
         {
             Animales.Perro p = a as Animales.Perro;
-            PerroIngreso form2 = new PerroIngreso(a, p);
-            MostrarYActualizar(form2, indice);
+            PerroIngreso formularioModificacionPerro = new PerroIngreso(a, p);
+            MostrarYActualizar(formularioModificacionPerro, indice);
         }
-
+        /// <summary>
+        /// Modifica un elemento de comida en la lista de comida de la veterinaria.
+        /// Crea un formulario de modificación para el elemento de comida, lo muestra y actualiza la lista.
+        /// </summary>
         private void ModificarComida(int indice)
         {
             int comidaIndex = indice - veterinaria.listaPacientes.Count;
-            Animal.Producto a = this.veterinaria.listaComida[comidaIndex];
+            Animal.Producto elemento = this.veterinaria.listaComida[comidaIndex];
 
-            if (a is Animal.Producto)
+            if (elemento is Animal.Producto)
             {
-                Animal.Producto p = a as Animal.Producto;
-                ProductoIngreso form2 = new ProductoIngreso(p);
-                MostrarYActualizar(form2, comidaIndex);
+                Animal.Producto p = elemento as Animal.Producto;
+                ProductoIngreso formularioModificacionComida = new ProductoIngreso(p);
+                MostrarYActualizar(formularioModificacionComida, comidaIndex);
             }
         }
-
+        /// <summary>
+        /// Muestra un formulario y actualiza la lista correspondiente en la veterinaria según el resultado del formulario.
+        /// </summary>
         private void MostrarYActualizar(Form form, int index)
         {
             form.ShowDialog();
