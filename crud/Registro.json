@@ -2,12 +2,12 @@
   {
     "Tipo": "Perro",
     "Datos": {
-      "nombre": "Perrito",
+      "nombre": "Nieve",
       "edad": 10,
       "raza": "carnivoro",
       "alimentacion": 0,
-      "Tamaño": "Poco",
-      "Entrenamiento": "mediano",
+      "Tamaño": "mediano",
+      "Entrenamiento": "Poco",
       "TipoDeAnimal": "Perro"
     }
   },
@@ -28,8 +28,8 @@
     "Datos": {
       "nombre": "Rabbits",
       "edad": 3,
-      "raza": "herviboro",
-      "alimentacion": 0,
+      "raza": "carnivoro",
+      "alimentacion": 1,
       "Comportamiento": "Calmado",
       "Habitad": "Grande",
       "TipoDeAnimal": "Conejo"
