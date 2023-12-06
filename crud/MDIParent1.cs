@@ -694,46 +694,22 @@ namespace WindFormCrud
 
             if (selectedAnimalType == "Conejo" && a is Animales.Conejo)
             {
-                ModificarConejo(a, indice);
+                Animales.Conejo p = a as Animales.Conejo;
+                ConejoIngreso formularioModificacionConejo = new ConejoIngreso(a, p);
+                MostrarYActualizar(formularioModificacionConejo, indice);
             }
             else if (selectedAnimalType == "Gato" && a is Animales.Gato)
             {
-                ModificarGato(a, indice);
+                Animales.Gato p = a as Animales.Gato;
+                GatoIngreso formularioModificacionGato = new GatoIngreso(a, p);
+                MostrarYActualizar(formularioModificacionGato, indice);
             }
             else if (selectedAnimalType == "Perro" && a is Animales.Perro)
             {
-                ModificarPerro(a, indice);
+                Animales.Perro p = a as Animales.Perro;
+                PerroIngreso formularioModificacionPerro = new PerroIngreso(a, p);
+                MostrarYActualizar(formularioModificacionPerro, indice);
             }
-        }
-        /// <summary>
-        /// Modifica un paciente de tipo Conejo en la lista de pacientes de la veterinaria.
-        /// Crea un formulario de modificación para Conejo, lo muestra y actualiza la lista.
-        /// </summary>
-        private void ModificarConejo(Animales.Animales a, int indice)
-        {
-            Animales.Conejo p = a as Animales.Conejo;
-            ConejoIngreso formularioModificacionConejo = new ConejoIngreso(a, p);
-            MostrarYActualizar(formularioModificacionConejo, indice);
-        }
-        /// <summary>
-        /// Modifica un paciente de tipo Gato en la lista de pacientes de la veterinaria.
-        /// Crea un formulario de modificación para Gato, lo muestra y actualiza la lista.
-        /// </summary>
-        private void ModificarGato(Animales.Animales a, int indice)
-        {
-            Animales.Gato p = a as Animales.Gato;
-            GatoIngreso formularioModificacionGato = new GatoIngreso(a, p);
-            MostrarYActualizar(formularioModificacionGato, indice);
-        }
-        /// <summary>
-        /// Modifica un paciente de tipo Perro en la lista de pacientes de la veterinaria.
-        /// Crea un formulario de modificación para Perro, lo muestra y actualiza la lista.
-        /// </summary>
-        private void ModificarPerro(Animales.Animales a, int indice)
-        {
-            Animales.Perro p = a as Animales.Perro;
-            PerroIngreso formularioModificacionPerro = new PerroIngreso(a, p);
-            MostrarYActualizar(formularioModificacionPerro, indice);
         }
         /// <summary>
         /// Modifica un elemento de comida en la lista de comida de la veterinaria.
